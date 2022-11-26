@@ -3,16 +3,41 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './utils/header/header.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { HomepageComponent } from './utils/homepage/homepage.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatIconModule} from "@angular/material/icon";
+import {MatSelectModule} from "@angular/material/select";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
+import {GeoService} from "./utils/service/geo.service";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { SigninComponent } from './auth/signin/signin.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    SignupComponent,
+    HomepageComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatAutocompleteModule,
   ],
-  providers: [],
+  providers: [GeoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

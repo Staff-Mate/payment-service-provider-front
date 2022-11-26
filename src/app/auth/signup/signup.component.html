@@ -1,0 +1,151 @@
+<div class="signup" >
+  <div class="discash-banner" >
+    <svg aria-hidden="true" class="svg-inline--fa fa-arrow-left fa-w-14 cancel-banner" data-icon="arrow-left" data-prefix="fas"
+         focusable="false" role="img" viewBox="0 0 448 512"
+         xmlns="http://www.w3.org/2000/svg" [routerLink]="'/'">
+      <path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+            fill="currentColor" ></path >
+    </svg >
+    <img alt="banner" class="banner-img" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/signup-bg-banner.svg" ></div >
+  <div class="signup-section" >
+    <div class="form-section" >
+      <svg aria-hidden="true" class="svg-inline--fa fa-arrow-left fa-w-14 go-back-arrow" data-icon="arrow-left" data-prefix="fas"
+           focusable="false" role="img" viewBox="0 0 448 512"
+           xmlns="http://www.w3.org/2000/svg" >
+        <path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+              fill="currentColor" ></path >
+      </svg >
+      <div class="signup-header" ><img alt="logo" class="discash-logo" src="assets/logo.png" >
+        <h1 >Help us out with some details, and we’ll reach out to you!</h1 ></div >
+      <div class="input-section" >
+        <form autocomplete="off" >
+          <div class="inputs" >
+            <div class="name-inputs input-row" >
+              <div class="input-block" >
+                <div class="required-field-container" >
+                  <p class="input-label first-name-input-label"
+                                                          id="firstNameLabel" >First Name<span
+                    *ngIf="checkRequired('firstName')" class="required-star">*</span></p >
+                </div >
+
+                <mat-form-field appearance="outline">
+                  <input matInput class="first-name-input" data-field="first_name" data-label="firstNameLabel"
+                         data-required="firstNameRequired" name="first-name" [formControl]="firstName"
+                         placeholder=""  type="text" >
+                </mat-form-field>
+              </div >
+              <div class="input-block" >
+                <div class="required-field-container" ><p class="input-label last-name-input-label" id="lastNameLabel" >
+                  Last Name<span
+                  *ngIf="checkRequired('lastName')" class="required-star">*</span></p >
+                </div >
+
+                <mat-form-field appearance="outline">
+                  <input matInput class="last-name-input" data-field="last_name" data-label="lastNameLabel"
+                         data-required="lastNameRequired" name="last-name" [formControl]="lastName"
+                         placeholder=""  type="text" >
+                </mat-form-field>
+            </div >
+            </div>
+            <div class="contact-inputs input-row" >
+              <div class="contact-phone-input input-block" >
+                <div class="required-field-container" ><p class="input-label phone-input-label" id="phoneLabel" >Phone
+                                                                                                                 Number<span
+                    *ngIf="checkRequired('phone')" class="required-star">*</span></p >
+                  </div >
+                <mat-form-field appearance="outline">
+                <input matInput class="phone-input" data-field="phone_number" data-label="phoneLabel"
+                       data-required="phoneRequired" maxlength="14"
+                       name="phone-input" placeholder="" required="" type="tel" [formControl]="phone">
+                </mat-form-field>
+              </div >
+              <div class="contact-email-input input-block" >
+                <div class="required-field-container" ><p class="input-label email-input-label" id="emailLabel" >Email<span
+                    *ngIf="checkRequired('email')" class="required-star">*</span></p >
+                  </div >
+                <mat-form-field appearance="outline">
+                <input matInput class="email-input" data-field="email_id" data-label="emailLabel" data-required="emailRequired" name="email-input"
+                       placeholder="" required="" type="email" [formControl]="email">
+                </mat-form-field>
+              </div >
+            </div >
+            <div class="company-inputs input-row" >
+              <div class="company-name-input input-block" >
+                <div class="required-field-container" ><p class="input-label company-name-label" id="companyNameLabel" >
+                  Company<span
+                  *ngIf="checkRequired('company')" class="required-star">*</span></p >
+                </div >
+
+                <mat-form-field appearance="outline">
+                <input matInput class="company-name" data-field="company" data-label="companyNameLabel" data-required="companyNameRequired" name="company-name"
+                       placeholder="" required="" type="text" [formControl]="company">
+                </mat-form-field>
+              </div >
+              <div class="city-name-input input-block" >
+                <div class="required-field-container" ><p class="input-label" id="cityLabel" >Which city is your company
+                                                                                              based out of?<span
+                    *ngIf="checkRequired('address')" class="required-star">*</span></p ></div >
+                <mat-form-field appearance="outline">
+                  <input type="text"
+                         placeholder="Country"
+                         aria-label="Country"
+                         matInput
+                         [formControl]="country"
+                         [matAutocomplete]="auto">
+
+                  <mat-autocomplete #auto="matAutocomplete"  >
+                    <mat-option *ngFor="let option of filteredCountries | async" [value]="option.name"
+                                (onSelectionChange)="onCountryChange(option.isoCode)">
+                      {{ option.name }}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <mat-icon matSuffix (click)="addressForm.reset()">cancel</mat-icon>
+
+                </mat-form-field>
+                <p></p>
+
+                <mat-form-field appearance="outline">
+                  <input type="text"
+                         placeholder="State"
+                         aria-label="State"
+                         matInput
+                         [formControl]="state"
+                         [matAutocomplete]="autoState">
+
+                  <mat-autocomplete #autoState="matAutocomplete"  >
+                    <mat-option *ngFor="let option of filteredStates | async" [value]="option.name"
+                                (onSelectionChange)="onStateChange(option.isoCode)">
+                      {{ option.name }}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <mat-icon matSuffix (click)="city.reset();state.reset()">cancel</mat-icon>
+
+                </mat-form-field>
+                <p></p>
+                <mat-form-field appearance="outline">
+                  <input type="text"
+                         placeholder="City"
+                         aria-label="City"
+                         matInput
+                         [formControl]="city"
+                         [matAutocomplete]="autoCity">
+
+                  <mat-autocomplete #autoCity="matAutocomplete"  >
+                    <mat-option *ngFor="let option of filteredCities | async" [value]="option.name">
+                      {{ option.name }}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <mat-icon matSuffix (click)="city.reset()">cancel</mat-icon>
+
+                </mat-form-field>
+              </div >
+            </div >
+          </div >
+        </form >
+      </div >
+      <div class="submit-container" >
+        <button class="blue-green-btn">Let’s Connect<span id="loader" ></span ></button >
+      </div >
+    </div >
+  </div >
+</div >

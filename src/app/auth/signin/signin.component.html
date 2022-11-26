@@ -1,0 +1,62 @@
+<div class="signup" >
+  <div class="discash-banner" >
+    <svg aria-hidden="true" class="svg-inline--fa fa-arrow-left fa-w-14 cancel-banner" data-icon="arrow-left" data-prefix="fas"
+         focusable="false" role="img" viewBox="0 0 448 512"
+         xmlns="http://www.w3.org/2000/svg" [routerLink]="'/'">
+      <path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+            fill="currentColor" ></path >
+    </svg >
+    <img alt="banner" class="banner-img" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/signup-bg-banner.svg" ></div >
+  <div class="signup-section" >
+    <div class="form-section" >
+      <svg aria-hidden="true" class="svg-inline--fa fa-arrow-left fa-w-14 go-back-arrow" data-icon="arrow-left" data-prefix="fas"
+           focusable="false" role="img" viewBox="0 0 448 512"
+           xmlns="http://www.w3.org/2000/svg" >
+        <path d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+              fill="currentColor" ></path >
+      </svg >
+      <div class="signup-header" ><img alt="logo" class="discash-logo" src="assets/logo.png" >
+        <h1 >Help us out with some details, and we’ll reach out to you!</h1 ></div >
+      <div class="input-section" >
+        <form autocomplete="off" >
+          <div class="inputs" >
+            <div class="company-inputs input-row" >
+              <div class="company-name-input input-block" >
+                <div class="required-field-container" >
+                  <p class="input-label company-name-label" id="companyNameLabel" >
+                  Email</p >
+                </div >
+
+                <mat-form-field appearance="outline">
+                  <input matInput class="email" data-field="email" data-label="emailLabel"
+                         data-required="emailRequired" name="email" autocomplete="username"
+                         placeholder=""  type="text" [formControl]="email">
+                </mat-form-field>
+              </div >
+              <div class="password-input input-block" >
+                <div class="required-field-container" ><p class="input-label" id="passwordLabel" >Password</p ></div >
+                <mat-form-field appearance="outline">
+                  <input [type]="hide ? 'password' : 'text'"
+                         placeholder="Password"
+                         aria-label="Password"
+                         matInput
+                         [formControl]="password" autocomplete="current-password">
+
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                          [attr.aria-pressed]="hide" type="button">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+
+                </mat-form-field>
+
+              </div >
+            </div >
+          </div >
+        </form >
+      </div >
+      <div class="submit-container" >
+        <button class="blue-green-btn">Let’s Connect<span id="loader" ></span ></button >
+      </div >
+    </div >
+  </div >
+</div >

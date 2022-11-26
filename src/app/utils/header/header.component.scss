@@ -1,0 +1,19 @@
+header{
+  justify-content: space-between;
+  padding: 50px 90px;
+  background: transparent;
+}
+
+header .menu-full .left img {
+  width: 250px;
+}
+
+@media screen and (max-width: 1280px) and (min-width: 1024px) {
+  header {
+    padding: 40px;
+
+    .menu-full .left img {
+      width: 200px;
+    }
+  }
+}
