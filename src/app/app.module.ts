@@ -23,6 +23,12 @@ import { ProfileComponent } from './profile/profile/profile.component';
 import { DevelopersComponent } from './developers/developers/developers.component';
 import {MatListModule} from "@angular/material/list";
 import {PaymentServicesService} from "./payment-services/services/payment-services.service";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -37,19 +43,25 @@ import {PaymentServicesService} from "./payment-services/services/payment-servic
     ProfileComponent,
     DevelopersComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatSelectModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatAutocompleteModule,
-        MatListModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    HttpClientModule
+  ],
   providers: [GeoService,PaymentServicesService],
   bootstrap: [AppComponent]
 })

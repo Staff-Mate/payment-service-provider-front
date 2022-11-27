@@ -6,7 +6,7 @@ import {PaymentServicesService} from "../services/payment-services.service";
 @Component({
   selector: 'app-payment-services',
   templateUrl: './payment-services.component.html',
-  styleUrls: ['./payment-services.component.scss']
+  styleUrls: ['../../styles/sections.style.scss']
 })
 export class PaymentServicesComponent implements OnInit {
   activeServices: Array<PaymentService> = new Array<PaymentService>();

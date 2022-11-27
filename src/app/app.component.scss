@@ -7,7 +7,7 @@ h1, h2, h3, h4, h5, h6, label, li, p, ul {
 ::ng-deep.mat-typography h1,::ng-deep.mat-typography h2,::ng-deep.mat-typography h3,
 ::ng-deep.mat-typography h4,::ng-deep.mat-typography h5,::ng-deep.mat-typography h6,
 ::ng-deep.mat-typography label,::ng-deep.mat-typography li,::ng-deep.mat-typography p,
-::ng-deep.mat-typography ul{
+::ng-deep.mat-typography ul, ::ng-deep .mat-option, ::ng-deep .mat-select{
   padding: 0;
   margin: 0;
   font-family: "Montserrat",sans-serif;
@@ -23,6 +23,11 @@ h1, h2, h3, h4, h5, h6, label, li, p, ul {
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
   padding: 1em 0 1em 1em!important;
+}
+
+
+::ng-deep .mat-datepicker-content{
+  border-radius: 28px!important;
 }
 
 ::ng-deep .mat-autocomplete-panel{
@@ -56,4 +61,21 @@ h1, h2, h3, h4, h5, h6, label, li, p, ul {
 ::ng-deep .mat-list-avatar{
   border-radius: 0!important;
   height: auto!important;
+}
+
+
+::ng-deep .mat-table,::ng-deep .mat-table .mat-cell, ::ng-deep .mat-header-cell{
+  font-family: "Montserrat",sans-serif!important;
+  font-size: 20px!important;
+
+}
+
+::ng-deep .mat-select-panel{
+  border-radius: 28px!important;
+}
+
+@media screen and (max-width: 1280px) and (min-width: 1024px) {
+  ::ng-deep .mat-table .mat-cell, ::ng-deep .mat-header-cell{
+    font-size: 18px!important;
+  }
 }

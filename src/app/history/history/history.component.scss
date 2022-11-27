@@ -1,0 +1,114 @@
+.section .mat-cell > img{
+  width: 30px;
+}
+table {
+  background-color: var(--light-gray);
+  width: 100%;
+  table-layout: fixed;
+  box-shadow: none!important;
+}
+table {
+  border-collapse: collapse;
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 1em;
+  border-bottom: 2px solid white;
+}
+
+.mat-cell{
+  padding: 10px 10px!important;
+}
+
+.cell-amount{
+  text-align: left;
+  width: fit-content;
+}
+.cell-desc{
+  overflow: hidden;
+  width:auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.mat-header-cell,.mat-sort-header-arrow{
+  color: black!important;
+}
+
+.mat-column-service{
+  width: 100px!important;
+  text-align: center;
+  color: gray;
+}
+.mat-column-amount{
+  width: 150px!important;
+  text-align: left;
+  color: gray;
+}
+.mat-column-date{
+  width: 200px!important;
+  text-align: left;
+  color: gray;
+}
+.mat-column-status{
+  width: 50px!important;
+  text-align: center;
+}
+.mat-column-description{
+  width: 100%!important;
+  color: gray;
+}
+
+.payments-banner{
+  flex-direction: column!important;
+  margin-top: 10px!important;
+}
+
+.mat-paginator{
+  width: 100%;
+}
+
+.finished-icon{
+  color: var(--discash-green);
+}
+
+.canceled-icon{
+  color: var(--discash-red);
+}
+.active-icon{
+  color: var(--discash-blue);
+}
+
+.filter{
+  background-color: var(--light-gray);
+  width: 100%;
+  border-radius: 28px;
+  padding: 20px;
+}
+
+.option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  img {
+    width: 30px;
+    aspect-ratio: 1;
+    height: 30px;
+
+  }
+  p{
+    flex: 1;
+    text-align: center;
+  }
+}
+
+form{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}

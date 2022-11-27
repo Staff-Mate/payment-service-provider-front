@@ -51,3 +51,11 @@ $theme: mat-light-theme($primary, $accent);
 input{
   font-size: 16px!important;
 }
+
+:root{
+  --discash-green: #bae1a2;
+  --discash-red: #e1a2a2;
+  --discash-blue: #769aeba6;
+  --background-teal: #e6f4ff;
+  --light-gray: rgb(242 242 242);
+}
