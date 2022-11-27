@@ -21,28 +21,32 @@ export class Client{
   styleUrls: ['../styles/signform.component.scss']
 })
 export class SignupComponent implements OnInit {
-  client: Client = new Client();
-  form: FormGroup = new FormGroup({})
-  addressForm: FormGroup = new FormGroup({});
+  client: Client;
+  form: FormGroup
+  addressForm: FormGroup;
   stateIsoCode: string = "";
   country: FormControl = new FormControl();
 
-  firstName: FormControl = new FormControl();
-  lastName: FormControl = new FormControl();
-  phone: FormControl = new FormControl();
-  email: FormControl = new FormControl();
-  company: FormControl = new FormControl();
+  firstName: FormControl;
+  lastName: FormControl;
+  phone: FormControl;
+  email: FormControl;
+  company: FormControl;
 
 
-  countries: Array<ICountry> = new Array<ICountry>();
-  state: FormControl = new FormControl();
-  states: Array<IState> = new Array<IState>();
-  city: FormControl = new FormControl();
-  cities: Array<ICity> = new Array<ICity>();
+  countries: Array<ICountry>;
+  state: FormControl;
+  states: Array<IState>;
+  city: FormControl;
+  cities: Array<ICity>;
+  password: FormControl;
+  confirmPassword: FormControl;
 
   filteredCountries: Observable<ICountry[]> = new Observable<ICountry[]>();
   filteredStates: Observable<IState[]> = new Observable<IState[]>();
   filteredCities: Observable<ICity[]> = new Observable<ICity[]>();
+  hideConfirmPassword: boolean = true;
+  hidePassword: boolean = true;
 
   constructor(private geoService: GeoService) {
   }
@@ -63,6 +67,8 @@ export class SignupComponent implements OnInit {
     this.firstName = new FormControl('',Validators.required);
     this.lastName = new FormControl('',Validators.required);
     this.phone = new FormControl();
+    this.password = new FormControl();
+    this.confirmPassword = new FormControl();
     this.email = new FormControl('',[Validators.required, Validators.email]);
     this.company = new FormControl('',Validators.required);
 
@@ -72,11 +78,17 @@ export class SignupComponent implements OnInit {
       lastName: this.lastName,
       phone: this.phone,
       email: this.email,
-      company: this.company
+      company: this.company,
+      password: this.password,
+      confirmPassword: this.confirmPassword
     })
   }
 
   initAddressForm(){
+    this.country = new FormControl();
+    this.state = new FormControl();
+    this.city = new FormControl();
+
     this.addressForm = new FormGroup({
       country: this.country,
       state: this.state,

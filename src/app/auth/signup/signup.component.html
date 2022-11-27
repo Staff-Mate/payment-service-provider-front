@@ -140,6 +140,34 @@
 
                 </mat-form-field>
               </div >
+              <div class="password-input input-block" >
+                <div class="required-field-container" ><p class="input-label" id="passwordLabel" >Password<span
+                    *ngIf="checkRequired('password')" class="required-star">*</span></p ></div >
+                <mat-form-field appearance="outline">
+                  <input [type]="hidePassword ? 'password' : 'text'"
+                         placeholder="Password"
+                         aria-label="Password"
+                         matInput
+                         [formControl]="password">
+                  <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+                          [attr.aria-pressed]="hidePassword" type="button">
+                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+              <div class="required-field-container" ><p class="input-label" id="confirmPasswordLabel" >Confirm Password<span
+                *ngIf="checkRequired('confirmPassword')" class="required-star">*</span></p ></div >
+              <mat-form-field appearance="outline">
+                <input [type]="confirmPassword ? 'password' : 'text'"
+                       placeholder="Confirm Password"
+                       aria-label="Confirm Password"
+                       matInput
+                       [formControl]="confirmPassword">
+                <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hideConfirmPassword" type="button">
+                  <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </div >
             </div >
           </div >
         </form >
