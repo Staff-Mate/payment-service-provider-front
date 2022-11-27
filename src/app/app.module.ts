@@ -17,10 +17,12 @@ import {GeoService} from "./utils/service/geo.service";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { SigninComponent } from './auth/signin/signin.component';
 import { UserHomepageComponent } from './utils/user-homepage/user-homepage.component';
-import { ServicesComponent } from './services/services/services.component';
+import { PaymentServicesComponent } from './payment-services/payment-services/payment-services.component';
 import { HistoryComponent } from './history/history/history.component';
 import { ProfileComponent } from './profile/profile/profile.component';
 import { DevelopersComponent } from './developers/developers/developers.component';
+import {MatListModule} from "@angular/material/list";
+import {PaymentServicesService} from "./payment-services/services/payment-services.service";
 
 @NgModule({
   declarations: [
@@ -30,24 +32,25 @@ import { DevelopersComponent } from './developers/developers/developers.componen
     HomepageComponent,
     SigninComponent,
     UserHomepageComponent,
-    ServicesComponent,
+    PaymentServicesComponent,
     HistoryComponent,
     ProfileComponent,
     DevelopersComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-  ],
-  providers: [GeoService],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatAutocompleteModule,
+        MatListModule,
+    ],
+  providers: [GeoService,PaymentServicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -52,3 +52,8 @@ h1, h2, h3, h4, h5, h6, label, li, p, ul {
   font-family: "Montserrat",sans-serif!important;
   font-size: 18px!important;
 }
+
+::ng-deep .mat-list-avatar{
+  border-radius: 0!important;
+  height: auto!important;
+}
