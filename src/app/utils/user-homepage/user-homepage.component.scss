@@ -6,6 +6,8 @@
   height: 50px;
   min-width: fit-content;
   justify-content: space-between;
+  opacity: 1;
+  transition: 0.5s ease-in;
 
   img {
     width: 250px;
@@ -26,10 +28,6 @@
   transition: background 0.5s ease-in;
 }
 
-.homepage .left-coming:hover {
-  background: transparent linear-gradient(65deg, #3a36c6, #66ceac) 0 0 no-repeat padding-box;
-}
-
 .homepage .right-coming {
   padding: 20px 10% 20px 10%;
   border-radius: 133px 0 0 133px;
@@ -39,26 +37,16 @@
   z-index: 2;
 }
 
-.homepage .right-coming :after {
-  content: "";
-  padding: 20px 10% 20px 10%;
-  border-radius: 133px 0 0 133px;
-  margin-left: 30%;
-  background: transparent linear-gradient(65deg, #3a36c6, #66ceac) 0 0 no-repeat padding-box;
-  text-align: left;
-  transition: 0.5s ease-in;
-  opacity: 0;
-  z-index: 1;
-  inset: 0;
-
-}
-
-.homepage .right-coming:hover:after {
-  opacity: 1;
-}
-
 .navigation-section h1 {
   flex: 1;
+}
+
+.homepage:hover .navigation-section{
+  opacity: 0.5;
+}
+
+.homepage .navigation-section:hover{
+  opacity: 1;
 }
 
 @media screen and (min-height: 800px) {
