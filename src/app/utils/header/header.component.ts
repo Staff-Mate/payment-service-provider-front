@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   isHome: boolean = true;
 
   constructor(private route: ActivatedRoute) {
-    let res = this.route.routeConfig?.component?.name.includes("Homepage");
+    let res = this.route.routeConfig?.component?.name.includes("Homepage") || this.route.routeConfig?.component?.name.includes("PaymentComponent") ;
     this.isHome = res == undefined ? false : res;
   }
 

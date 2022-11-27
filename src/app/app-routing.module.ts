@@ -7,6 +7,7 @@ import {UserHomepageComponent} from "./utils/user-homepage/user-homepage.compone
 import {ProfileComponent} from "./profile/profile/profile.component";
 import {HistoryComponent} from "./history/history/history.component";
 import {PaymentServicesComponent} from "./payment-services/payment-services/payment-services.component";
+import {PaymentComponent} from "./payment/payment/payment.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'payment-services', component: PaymentServicesComponent},
   {path: 'history', component: HistoryComponent},
   {path: 'profile', component: ProfileComponent},
+  {path: 'payment', component: PaymentComponent},
   {path: '**', redirectTo: ''}
 ];
 

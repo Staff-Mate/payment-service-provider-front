@@ -1,0 +1,23 @@
+<div class="page">
+  <app-header></app-header>
+  <div class="section ">
+    <div class="content main-banner">
+      <h1><span>Choose payment method</span></h1>
+      <h2>After you choose one of the payment methods, you will have to fill out additional payment information.</h2>
+      <div class="payment-methods">
+        <div class="payment-card" *ngFor="let service of allPaymentService">
+          <img
+            [alt]="service.fullName"
+            [src]="service.imagePath">
+          <h2>{{service.fullName}}</h2>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section main-banner">
+
+</div>

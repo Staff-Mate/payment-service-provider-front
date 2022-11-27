@@ -28,6 +28,8 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {HttpClientModule} from "@angular/common/http";
+import { PaymentComponent } from './payment/payment/payment.component';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import {HttpClientModule} from "@angular/common/http";
     UserHomepageComponent,
     PaymentServicesComponent,
     HistoryComponent,
-    ProfileComponent
+    ProfileComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatSortModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule
   ],
   providers: [GeoService, PaymentServicesService],
   bootstrap: [AppComponent]
