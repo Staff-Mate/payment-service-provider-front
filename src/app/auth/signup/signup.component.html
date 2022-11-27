@@ -49,17 +49,6 @@
             </div >
             </div>
             <div class="contact-inputs input-row" >
-              <div class="contact-phone-input input-block" >
-                <div class="required-field-container" ><p class="input-label phone-input-label" id="phoneLabel" >Phone
-                                                                                                                 Number<span
-                    *ngIf="checkRequired('phone')" class="required-star">*</span></p >
-                  </div >
-                <mat-form-field appearance="outline">
-                <input matInput class="phone-input" data-field="phone_number" data-label="phoneLabel"
-                       data-required="phoneRequired" maxlength="14"
-                       name="phone-input" placeholder="" required="" type="tel" [formControl]="phone">
-                </mat-form-field>
-              </div >
               <div class="contact-email-input input-block" >
                 <div class="required-field-container" ><p class="input-label email-input-label" id="emailLabel" >Email<span
                     *ngIf="checkRequired('email')" class="required-star">*</span></p >

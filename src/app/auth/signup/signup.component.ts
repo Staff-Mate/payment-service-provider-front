@@ -3,22 +3,13 @@ import {GeoService} from "../../utils/service/geo.service";
 import {ICountry, State, City, IState, ICity} from 'country-state-city';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
+import {Client} from "../dto/client.model";
 
-export class Client{
-  firstName: string="";
-  lastName: string="";
-  phone: string="";
-  email: string = "";
-  company: string = "";
-  country: string="";
-  state: string="";
-  city: string ="";
-}
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['../styles/signform.component.scss']
+  styleUrls: ['../../styles/signform.component.scss']
 })
 export class SignupComponent implements OnInit {
   client: Client;
