@@ -20,7 +20,6 @@ import {UserHomepageComponent} from './utils/user-homepage/user-homepage.compone
 import {PaymentServicesComponent} from './payment-services/payment-services/payment-services.component';
 import {HistoryComponent} from './history/history/history.component';
 import {ProfileComponent} from './profile/profile/profile.component';
-import {DevelopersComponent} from './developers/developers/developers.component';
 import {MatListModule} from "@angular/material/list";
 import {PaymentServicesService} from "./payment-services/services/payment-services.service";
 import {MatTableModule} from "@angular/material/table";
@@ -40,8 +39,7 @@ import {HttpClientModule} from "@angular/common/http";
     UserHomepageComponent,
     PaymentServicesComponent,
     HistoryComponent,
-    ProfileComponent,
-    DevelopersComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

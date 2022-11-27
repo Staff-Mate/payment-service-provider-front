@@ -17,4 +17,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onDevelopers() {
+    const link = document.createElement('a');
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'assets/AgencijaZaZaposljavanje2022_2023');
+    link.setAttribute('download', `AgencijaZaZaposljavanje2022_2023.pdf`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }
 }

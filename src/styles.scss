@@ -58,6 +58,24 @@ $theme: mat-light-theme($primary, $accent);
   text-decoration: none !important;
 }
 
+.disabled-blue-green-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: -webkit-max-content;
+  width: max-content;
+  margin-top: 50px;
+  padding: 15px 45px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  border-radius: 100px;
+  color: #8b8b8b;
+  border: none;
+  background: transparent linear-gradient(90deg, #c1c1c1, rgb(120 120 120 / 58%)) 0 0;
+  text-decoration: none !important;
+}
+
 input {
   font-size: 16px !important;
 }

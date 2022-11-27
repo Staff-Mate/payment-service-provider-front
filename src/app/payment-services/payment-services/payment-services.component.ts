@@ -20,4 +20,7 @@ export class PaymentServicesComponent implements OnInit {
     this.allPaymentServices = this.paymentService.getAllPaymentServices()
   }
 
+  checkIfActivated(service: PaymentService) {
+    return this.activeServices.map(value => value.code).includes(service.code);
+  }
 }

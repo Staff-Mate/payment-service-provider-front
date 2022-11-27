@@ -76,7 +76,7 @@
   width: 50px;
 }
 
-.revers {
+.reverse {
   .left-container > * {
     text-align: right;
   }
@@ -126,7 +126,10 @@
     text-align: center;
   }
 }
-
+.submit-container {
+  display: flex;
+  gap: 2em;
+}
 @media screen and (max-width: 870px) {
   .section .banner {
     flex-flow: column-reverse;
@@ -145,4 +148,9 @@
       width: 100%;
     }
   }
+
+  .section .reverse{
+    flex-flow: column;
+  }
+
 }

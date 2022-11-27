@@ -27,7 +27,7 @@
     <h2><span>Other Available Services</span></h2>
   </div>
   <div *ngFor="let service of allPaymentServices; let i = index">
-    <div *ngIf="i%2 == 0" class="banner revers">
+    <div *ngIf="i%2 == 0" class="banner reverse">
       <div class="right-container">
         <img
           [src]="service.imagePath" alt="Payment Service Provider">
@@ -35,12 +35,20 @@
       <div class="left-container">
         <h1>{{service.fullName}}</h1>
         <p>{{service.description}}</p>
+        <div class="submit-container">
+          <button class="light-blue-green-btn" *ngIf="!checkIfActivated(service)">Add</button>
+          <button class="disabled-blue-green-btn" disabled *ngIf="checkIfActivated(service)">Added</button>
+        </div>
       </div>
     </div>
     <div *ngIf="i%2 != 0" class="banner">
       <div class="left-container">
         <h3>{{service.fullName}}</h3>
         <p>{{service.description}}</p>
+        <div class="submit-container">
+          <button class="light-blue-green-btn" *ngIf="!checkIfActivated(service)">Add</button>
+          <button class="disabled-blue-green-btn" disabled *ngIf="checkIfActivated(service)">Added</button>
+        </div>
       </div>
       <div class="right-container">
         <img

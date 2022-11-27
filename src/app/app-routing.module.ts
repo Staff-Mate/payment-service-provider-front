@@ -4,7 +4,6 @@ import {SignupComponent} from "./auth/signup/signup.component";
 import {HomepageComponent} from "./utils/homepage/homepage.component";
 import {SigninComponent} from "./auth/signin/signin.component";
 import {UserHomepageComponent} from "./utils/user-homepage/user-homepage.component";
-import {DevelopersComponent} from "./developers/developers/developers.component";
 import {ProfileComponent} from "./profile/profile/profile.component";
 import {HistoryComponent} from "./history/history/history.component";
 import {PaymentServicesComponent} from "./payment-services/payment-services/payment-services.component";
@@ -17,7 +16,7 @@ const routes: Routes = [
   {path: 'payment-services', component: PaymentServicesComponent},
   {path: 'history', component: HistoryComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'developers', component: DevelopersComponent}
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
