@@ -1,11 +1,11 @@
-export class Client{
-  firstName: string="";
-  lastName: string="";
+export class Client {
+  firstName: string = "";
+  lastName: string = "";
   email: string = "";
   company: string = "";
-  country: string="";
-  state: string="";
-  city: string ="";
+  country: string = "";
+  state: string = "";
+  city: string = "";
 
 
   constructor(firstName: string, lastName: string, email: string, company: string, country: string, state: string, city: string) {

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {Form, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-signin',
@@ -12,12 +12,13 @@ export class SigninComponent implements OnInit {
   email: FormControl = new FormControl();
   hide: boolean = true;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
-  initForm(){
+  initForm() {
     this.password = new FormControl();
     this.email = new FormControl('', Validators.email)
 

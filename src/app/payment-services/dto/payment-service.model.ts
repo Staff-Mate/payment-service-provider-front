@@ -1,4 +1,4 @@
-export class PaymentService{
+export class PaymentService {
   imagePath: string = "";
   fullName: string = "";
   description: string = "";

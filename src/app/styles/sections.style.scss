@@ -1,7 +1,7 @@
-.section{
+.section {
 }
 
-.section .main-banner{
+.section .main-banner {
   h1 {
     font-size: 46px;
     line-height: 56px;
@@ -32,12 +32,13 @@
   text-align: center;
 }
 
-.section .banner{
+.section .banner {
   padding: 0 100px;
   margin-top: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   h3 {
     font-size: 24px;
     line-height: 36px;
@@ -50,15 +51,17 @@
     font-weight: 400;
     color: #3c3c3c;
   }
+
   .left-container {
     display: flex;
     flex-flow: column;
     flex: 1;
 
-    .mat-list{
+    .mat-list {
       width: 100%;
     }
   }
+
   .right-container {
     text-align: right;
     width: 50%;
@@ -69,7 +72,7 @@
   }
 }
 
-.mat-list-item img{
+.mat-list-item img {
   width: 50px;
 }
 
@@ -77,12 +80,13 @@
   .left-container > * {
     text-align: right;
   }
-  .right-container > *{
+
+  .right-container > * {
     float: left;
   }
 }
 
-@media screen and (max-width: 1280px) and (min-width: 1024px){
+@media screen and (max-width: 1280px) and (min-width: 1024px) {
   .section-title h2 {
     font-size: 36px;
     line-height: 42px;
@@ -92,16 +96,19 @@
     margin-top: 10px;
   }
 }
+
 @media screen and (max-width: 1023px) {
-  .section .banner{
+  .section .banner {
     .left-container {
       justify-content: center;
       align-items: flex-start;
+
       h1 {
         font-size: 32px;
         line-height: 44px;
         text-align: left;
       }
+
       h2 {
         font-size: 18px;
         margin-top: 20px;
@@ -119,16 +126,20 @@
     text-align: center;
   }
 }
+
 @media screen and (max-width: 870px) {
-  .section .banner{
+  .section .banner {
     flex-flow: column-reverse;
+
     .left-container {
       align-items: flex-start;
       margin-top: 50px;
-      h1,h2 {
+
+      h1, h2 {
         text-align: left;
       }
     }
+
     .right-container {
       margin-top: 60px;
       width: 100%;

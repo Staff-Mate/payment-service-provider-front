@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {GeoService} from "../../utils/service/geo.service";
-import {ICountry, State, City, IState, ICity} from 'country-state-city';
+import {Component, OnInit} from '@angular/core';
+import {GeoService} from "../service/geo.service";
+import {ICity, ICountry, IState} from 'country-state-city';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
 import {Client} from "../dto/client.model";
@@ -53,15 +53,15 @@ export class SignupComponent implements OnInit {
 
   }
 
-  initForm(){
+  initForm() {
 
-    this.firstName = new FormControl('',Validators.required);
-    this.lastName = new FormControl('',Validators.required);
+    this.firstName = new FormControl('', Validators.required);
+    this.lastName = new FormControl('', Validators.required);
     this.phone = new FormControl();
     this.password = new FormControl();
     this.confirmPassword = new FormControl();
-    this.email = new FormControl('',[Validators.required, Validators.email]);
-    this.company = new FormControl('',Validators.required);
+    this.email = new FormControl('', [Validators.required, Validators.email]);
+    this.company = new FormControl('', Validators.required);
 
     this.form = new FormGroup({
       address: this.addressForm,
@@ -75,7 +75,7 @@ export class SignupComponent implements OnInit {
     })
   }
 
-  initAddressForm(){
+  initAddressForm() {
     this.country = new FormControl();
     this.state = new FormControl();
     this.city = new FormControl();
@@ -85,23 +85,6 @@ export class SignupComponent implements OnInit {
       state: this.state,
       city: this.city
     })
-  }
-
-
-  private _filterCountry(value: string): ICountry[] {
-    const filterValue = value.toLowerCase();
-
-    return this.countries.filter(option => option.name.toLowerCase().includes(filterValue));
-  }
-  private _filterState(value: string): IState[] {
-    const filterValue = value.toLowerCase();
-
-    return this.states.filter(option => option.name.toLowerCase().includes(filterValue));
-  }
-  private _filterCity(value: string): ICity[] {
-    const filterValue = value.toLowerCase();
-
-    return this.cities.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 
   onCountryChange(isoCode: string) {
@@ -124,7 +107,26 @@ export class SignupComponent implements OnInit {
     );
 
   }
-  checkRequired(control: string){
+
+  checkRequired(control: string) {
     return this.form.get(control)?.hasValidator(Validators.required)
+  }
+
+  private _filterCountry(value: string): ICountry[] {
+    const filterValue = value.toLowerCase();
+
+    return this.countries.filter(option => option.name.toLowerCase().includes(filterValue));
+  }
+
+  private _filterState(value: string): IState[] {
+    const filterValue = value.toLowerCase();
+
+    return this.states.filter(option => option.name.toLowerCase().includes(filterValue));
+  }
+
+  private _filterCity(value: string): ICity[] {
+    const filterValue = value.toLowerCase();
+
+    return this.cities.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 }

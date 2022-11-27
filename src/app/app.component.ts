@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
 
@@ -10,9 +10,9 @@ import {DomSanitizer} from "@angular/platform-browser";
 export class AppComponent {
   title = 'Discash';
 
-  constructor(private matIconRegistry: MatIconRegistry, private  domSanitizer: DomSanitizer) {
-    this.matIconRegistry.addSvgIcon('canceled',this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/canceled.svg'))
-    this.matIconRegistry.addSvgIcon('active',this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/active.svg'))
-    this.matIconRegistry.addSvgIcon('finished',this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/finished.svg'))
+  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+    this.matIconRegistry.addSvgIcon('canceled', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/canceled.svg'))
+    this.matIconRegistry.addSvgIcon('active', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/active.svg'))
+    this.matIconRegistry.addSvgIcon('finished', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/finished.svg'))
   }
 }

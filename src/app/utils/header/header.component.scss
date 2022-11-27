@@ -1,4 +1,4 @@
-header{
+header {
   justify-content: space-between;
   padding: 50px 90px;
   background: transparent;
@@ -7,22 +7,27 @@ header{
 header .menu-full .left img {
   width: 250px;
 }
+
 header .menu-full .right ul {
   display: flex;
   align-items: center;
   list-style-type: none;
-  li{
+
+  li {
     margin-left: 1em;
   }
 }
+
 header .menu-full, header .menu-full .left {
   display: flex;
   align-items: center;
 }
+
 header .menu-full {
   width: 100%;
   justify-content: space-between;
 }
+
 @media screen and (max-width: 1280px) and (min-width: 1024px) {
   header {
     padding: 40px;

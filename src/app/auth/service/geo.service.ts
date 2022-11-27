@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Country, State, City }  from 'country-state-city';
+import {Injectable} from '@angular/core';
+import {City, Country, State} from 'country-state-city';
 
 @Injectable()
 export class GeoService {
@@ -13,6 +13,6 @@ export class GeoService {
   }
 
   getCitiesByState(countryCode: string, stateCode: string) {
-    return City.getCitiesOfState(countryCode,stateCode);
+    return City.getCitiesOfState(countryCode, stateCode);
   }
 }

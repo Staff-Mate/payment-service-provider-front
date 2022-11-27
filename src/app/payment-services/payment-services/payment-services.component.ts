@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PaymentService} from "../dto/payment-service.model";
 import {PaymentServicesService} from "../services/payment-services.service";
 
@@ -12,7 +12,8 @@ export class PaymentServicesComponent implements OnInit {
   activeServices: Array<PaymentService> = new Array<PaymentService>();
   allPaymentServices: Array<PaymentService> = new Array<PaymentService>();
 
-  constructor(private paymentService: PaymentServicesService) { }
+  constructor(private paymentService: PaymentServicesService) {
+  }
 
   ngOnInit(): void {
     this.activeServices = this.paymentService.getActiveServices();

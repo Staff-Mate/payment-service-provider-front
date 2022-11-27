@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Client} from "../../auth/dto/client.model";
 
@@ -8,7 +8,7 @@ import {Client} from "../../auth/dto/client.model";
   styleUrls: ['./profile.component.scss', '../../styles/sections.style.scss', '../../styles/signform.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  client: Client = new Client('Erika','Waramunt','gp.recruit.hr@gmail.com','G-P Recruit','USA','Pennsylvania','Harrisburg');
+  client: Client = new Client('Erika', 'Waramunt', 'gp.recruit.hr@gmail.com', 'G-P Recruit', 'USA', 'Pennsylvania', 'Harrisburg');
   firstName: FormControl;
   lastName: FormControl;
   email: FormControl;
@@ -19,13 +19,14 @@ export class ProfileComponent implements OnInit {
   infoForm: FormGroup;
   activeView: string = "home"
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.initInfoForm()
   }
 
-  initInfoForm(){
+  initInfoForm() {
     this.firstName = new FormControl(this.client.firstName)
     this.lastName = new FormControl(this.client.lastName)
     this.email = new FormControl(this.client.email)

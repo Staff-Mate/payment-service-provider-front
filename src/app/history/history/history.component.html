@@ -3,44 +3,45 @@
   <div class="banner main-banner">
     <div class="left-container">
       <h1><span>Payment History</span></h1>
-      <h2>See all payments associated with your company. Use advanced search and filters to learn more about specific payments.</h2>
+      <h2>See all payments associated with your company. Use advanced search and filters to learn more about specific
+        payments.</h2>
 
     </div>
     <div class="right-container">
       <img
-        src="https://d18fuqpnk61mcc.cloudfront.net/build/images/resources/banner.svg" alt="Payment Service Provider">
+        alt="Payment Service Provider" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/resources/banner.svg">
     </div>
   </div>
 </div>
 <div class="section">
   <div class="banner">
     <div class="filter">
-      <form >
+      <form>
         <mat-form-field appearance="outline">
           <mat-select placeholder="Service">
             <mat-option>None</mat-option>
             <mat-option value="Bitcoin">
               <div class="option">
 
-                <img src="assets/bitcoin.png" alt="Bitcoin image">
+                <img alt="Bitcoin image" src="assets/bitcoin.png">
                 <p>Bitcoin</p>
               </div>
             </mat-option>
             <mat-option value="Card">
               <div class="option">
-                <img src="assets/card.png" alt="Card image">
+                <img alt="Card image" src="assets/card.png">
                 <p>Card</p>
               </div>
             </mat-option>
             <mat-option value="PayPal">
               <div class="option">
-                <img src="assets/paypal.png" alt="PayPal image">
+                <img alt="PayPal image" src="assets/paypal.png">
                 <p>PayPal</p>
               </div>
             </mat-option>
             <mat-option value="QR code">
               <div class="option">
-                <img src="assets/qr.png" alt="QR code image">
+                <img alt="QR code image" src="assets/qr.png">
                 <p>QR code</p>
               </div>
             </mat-option>
@@ -49,10 +50,10 @@
         <mat-form-field appearance="outline">
           <mat-select placeholder="Status">
             <mat-option>None</mat-option>
-            <mat-option value="Finished" >
+            <mat-option value="Finished">
               <div class="option">
                 <div>
-                  <mat-icon class="finished-icon"  svgIcon="finished"></mat-icon>
+                  <mat-icon class="finished-icon" svgIcon="finished"></mat-icon>
                 </div>
                 <p>Finished</p>
               </div>
@@ -71,50 +72,52 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field  appearance="outline">
+        <mat-form-field appearance="outline">
           <mat-date-range-input
             [formGroup]="filterForm"
             [rangePicker]="datePicker">
-            <input matStartDate placeholder="Start" [formControl]="startDate">
-            <input matEndDate placeholder="End" [formControl]="endDate">
+            <input [formControl]="startDate" matStartDate placeholder="Start">
+            <input [formControl]="endDate" matEndDate placeholder="End">
           </mat-date-range-input>
-          <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+          <mat-datepicker-toggle [for]="datePicker" matSuffix></mat-datepicker-toggle>
           <mat-date-range-picker #datePicker></mat-date-range-picker>
         </mat-form-field>
       </form>
     </div>
   </div>
   <div class="banner payments-banner">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive="date" matSortDirection="asc" matSortDisableClear>
+    <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table matSort matSortActive="date"
+           matSortDirection="asc" matSortDisableClear>
 
       <!-- Service Column -->
       <ng-container matColumnDef="service">
-        <th mat-header-cell *matHeaderCellDef> Service</th>
-        <td mat-cell *matCellDef="let element" class="cell-payment-type"> <img [src]="'assets/' + element.service + '.png'" [alt]="element.service + 'payment service' "> </td>
+        <th *matHeaderCellDef mat-header-cell> Service</th>
+        <td *matCellDef="let element" class="cell-payment-type" mat-cell><img
+          [alt]="element.service + 'payment service' " [src]="'assets/' + element.service + '.png'"></td>
       </ng-container>
 
       <!-- Date Column -->
       <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header="" disableClear> Date </th>
-        <td mat-cell *matCellDef="let element" class="cell-amount"> {{element.date | date:"dd MMM yyyy HH:mm" }} </td>
+        <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header=""> Date</th>
+        <td *matCellDef="let element" class="cell-amount" mat-cell> {{element.date | date:"dd MMM yyyy HH:mm" }} </td>
       </ng-container>
 
       <!-- Description Column -->
       <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef> Description </th>
-        <td mat-cell *matCellDef="let element" class="cell-desc"> {{element.description}} </td>
+        <th *matHeaderCellDef mat-header-cell> Description</th>
+        <td *matCellDef="let element" class="cell-desc" mat-cell> {{element.description}} </td>
       </ng-container>
 
       <!-- Amount Column -->
       <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef> Amount </th>
-        <td mat-cell *matCellDef="let element" class="cell-amount"> $ {{element.amount}} </td>
+        <th *matHeaderCellDef mat-header-cell> Amount</th>
+        <td *matCellDef="let element" class="cell-amount" mat-cell> $ {{element.amount}} </td>
       </ng-container>
 
       <!-- Status Column -->
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> Status </th>
-        <td mat-cell *matCellDef="let element" class="cell-amount">
+        <th *matHeaderCellDef mat-header-cell> Status</th>
+        <td *matCellDef="let element" class="cell-amount" mat-cell>
           <mat-icon *ngIf="element.status == 'finished'" class="finished-icon">check_circle_outline</mat-icon>
           <mat-icon *ngIf="element.status == 'canceled'" class="canceled-icon">cancel</mat-icon>
           <mat-icon *ngIf="element.status == 'active'" class="active-icon">cached</mat-icon>
@@ -122,12 +125,12 @@
       </ng-container>
 
       <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter </td>
+      <tr *matNoDataRow class="mat-row">
+        <td class="mat-cell" colspan="4">No data matching the filter</td>
       </tr>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>

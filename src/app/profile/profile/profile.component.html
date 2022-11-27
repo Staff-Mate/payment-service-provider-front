@@ -3,9 +3,9 @@
   <div class="banner main-banner">
     <div class="left-container">
 
-      <div class="form-section" *ngIf="activeView == 'infoChange'">
+      <div *ngIf="activeView == 'infoChange'" class="form-section">
         <div class="input-section">
-          <form autocomplete="off" [formGroup]="infoForm">
+          <form [formGroup]="infoForm" autocomplete="off">
             <div class="inputs">
               <div class="name-inputs input-row">
 
@@ -15,8 +15,8 @@
                        id="firstNameLabel">First Name</p>
                   </div>
                   <mat-form-field appearance="outline">
-                    <input matInput class="first-name-input" data-field="first_name" data-label="firstNameLabel"
-                           data-required="firstNameRequired" name="first-name" [formControl]="firstName"
+                    <input [formControl]="firstName" class="first-name-input" data-field="first_name" data-label="firstNameLabel"
+                           data-required="firstNameRequired" matInput name="first-name"
                            placeholder="" type="text">
                   </mat-form-field>
                 </div>
@@ -27,8 +27,8 @@
                   </div>
 
                   <mat-form-field appearance="outline">
-                    <input matInput class="last-name-input" data-field="last_name" data-label="lastNameLabel"
-                           data-required="lastNameRequired" name="last-name" [formControl]="lastName"
+                    <input [formControl]="lastName" class="last-name-input" data-field="last_name" data-label="lastNameLabel"
+                           data-required="lastNameRequired" matInput name="last-name"
                            placeholder="" type="text">
                   </mat-form-field>
                 </div>
@@ -39,48 +39,53 @@
           </form>
         </div>
         <div class="submit-container">
-          <button class="blue-green-btn" (click)="onInfoSave()">Save<span id="saveInfo"></span></button>
-          <button class="light-blue-green-btn" (click)="activeView = 'home'">Cancel<span id="cancelInfo"></span></button>
+          <button (click)="onInfoSave()" class="blue-green-btn">Save<span id="saveInfo"></span></button>
+          <button (click)="activeView = 'home'" class="light-blue-green-btn">Cancel<span id="cancelInfo"></span>
+          </button>
         </div>
       </div>
-      <div class="form-section" *ngIf="activeView == 'passwordChange'">
+      <div *ngIf="activeView == 'passwordChange'" class="form-section">
         <div class="input-section">
-          <form autocomplete="off" [formGroup]="infoForm">
+          <form [formGroup]="infoForm" autocomplete="off">
             <div class="inputs">
 
-              <div class="password-input input-block" >
-                <div class="required-field-container" ><p class="input-label" id="passwordLabel" >Password</p ></div >
+              <div class="password-input input-block">
+                <div class="required-field-container"><p class="input-label" id="passwordLabel">Password</p></div>
                 <mat-form-field appearance="outline">
-                  <input [type]="hidePassword ? 'password' : 'text'"
-                         placeholder="Password"
+                  <input [formControl]="password"
+                         [type]="hidePassword ? 'password' : 'text'"
                          aria-label="Password"
                          matInput
-                         [formControl]="password">
-                  <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
-                          [attr.aria-pressed]="hidePassword" type="button">
+                         placeholder="Password">
+                  <button (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword"
+                          mat-icon-button
+                          matSuffix type="button">
                     <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
                 </mat-form-field>
-                <div class="required-field-container" ><p class="input-label" id="confirmPasswordLabel" >Confirm Password</p ></div >
+                <div class="required-field-container"><p class="input-label" id="confirmPasswordLabel">Confirm
+                  Password</p></div>
                 <mat-form-field appearance="outline">
-                  <input [type]="confirmPassword ? 'password' : 'text'"
-                         placeholder="Confirm Password"
+                  <input [formControl]="confirmPassword"
+                         [type]="confirmPassword ? 'password' : 'text'"
                          aria-label="Confirm Password"
                          matInput
-                         [formControl]="confirmPassword">
-                  <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'"
-                          [attr.aria-pressed]="hideConfirmPassword" type="button">
+                         placeholder="Confirm Password">
+                  <button (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword"
+                          mat-icon-button
+                          matSuffix type="button">
                     <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
                 </mat-form-field>
-              </div >
+              </div>
 
             </div>
           </form>
         </div>
         <div class="submit-container">
-          <button class="blue-green-btn" (click)="onPasswordSave()">Save<span id="savePassword"></span></button>
-          <button class="light-blue-green-btn" (click)="activeView = 'home'">Cancel<span id="cancelPassword"></span></button>
+          <button (click)="onPasswordSave()" class="blue-green-btn">Save<span id="savePassword"></span></button>
+          <button (click)="activeView = 'home'" class="light-blue-green-btn">Cancel<span id="cancelPassword"></span>
+          </button>
         </div>
       </div>
 
@@ -94,14 +99,17 @@
           </div>
         </div>
         <div class="submit-container">
-          <button class="light-blue-green-btn" (click)="activeView = 'infoChange'">Change owner<span id="loaderr1"></span></button>
-          <button class="light-blue-green-btn" (click)="activeView = 'passwordChange'">Change password<span id="loaderr2"></span></button>
+          <button (click)="activeView = 'infoChange'" class="light-blue-green-btn">Change owner<span
+            id="loaderr1"></span></button>
+          <button (click)="activeView = 'passwordChange'" class="light-blue-green-btn">Change password<span
+            id="loaderr2"></span></button>
         </div>
       </div>
     </div>
     <div class="right-container">
       <img
-        src="https://d18fuqpnk61mcc.cloudfront.net/build/images/crypto-exchanges-nft-platforms/track-transactions.svg" alt="CV image"></div>
+        alt="CV image"
+        src="https://d18fuqpnk61mcc.cloudfront.net/build/images/crypto-exchanges-nft-platforms/track-transactions.svg"></div>
   </div>
 </div>
 

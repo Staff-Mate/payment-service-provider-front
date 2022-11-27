@@ -3,20 +3,22 @@
   <div class="banner main-banner">
     <div class="left-container">
       <h1><span>Active Services</span></h1>
-      <h2>Here you can manage active payment services for your business. Only active services will be available for your customers to use.</h2>
+      <h2>Here you can manage active payment services for your business. Only active services will be available for your
+        customers to use.</h2>
       <mat-list>
         <mat-list-item *ngFor="let service of activeServices">
           <h5 mat-line>{{service.fullName}}</h5>
           <span mat-line>{{service.dateAdded | date}}</span>
-          <img mat-list-avatar [src]="'/assets/' + service.code + '.png'" [alt]="service.fullName + 'image'">
-          <button mat-stroked-button color="accent">Remove</button>
+          <img [alt]="service.fullName + 'image'" [src]="'/assets/' + service.code + '.png'" mat-list-avatar>
+          <button color="accent" mat-stroked-button>Remove</button>
         </mat-list-item>
 
       </mat-list>
     </div>
     <div class="right-container">
       <img
-        src="https://d18fuqpnk61mcc.cloudfront.net/build/images/payment-service-providers/api-banking-solution-payment-service-providers.svg" alt="Payment Service Provider">
+        alt="Payment Service Provider"
+        src="https://d18fuqpnk61mcc.cloudfront.net/build/images/payment-service-providers/api-banking-solution-payment-service-providers.svg">
     </div>
   </div>
 </div>
@@ -25,7 +27,7 @@
     <h2><span>Other Available Services</span></h2>
   </div>
   <div *ngFor="let service of allPaymentServices; let i = index">
-    <div class="banner revers" *ngIf="i%2 == 0">
+    <div *ngIf="i%2 == 0" class="banner revers">
       <div class="right-container">
         <img
           [src]="service.imagePath" alt="Payment Service Provider">
@@ -35,7 +37,7 @@
         <p>{{service.description}}</p>
       </div>
     </div>
-    <div class="banner"  *ngIf="i%2 != 0">
+    <div *ngIf="i%2 != 0" class="banner">
       <div class="left-container">
         <h3>{{service.fullName}}</h3>
         <p>{{service.description}}</p>

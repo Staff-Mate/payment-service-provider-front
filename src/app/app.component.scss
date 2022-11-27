@@ -1,17 +1,18 @@
 h1, h2, h3, h4, h5, h6, label, li, p, ul {
-  padding: 0!important;
-  margin: 0!important;
-  font-family: "Montserrat",sans-serif!important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
-::ng-deep.mat-typography h1,::ng-deep.mat-typography h2,::ng-deep.mat-typography h3,
-::ng-deep.mat-typography h4,::ng-deep.mat-typography h5,::ng-deep.mat-typography h6,
-::ng-deep.mat-typography label,::ng-deep.mat-typography li,::ng-deep.mat-typography p,
-::ng-deep.mat-typography ul, ::ng-deep .mat-option, ::ng-deep .mat-select{
+::ng-deep.mat-typography h1, ::ng-deep.mat-typography h2, ::ng-deep.mat-typography h3,
+::ng-deep.mat-typography h4, ::ng-deep.mat-typography h5, ::ng-deep.mat-typography h6,
+::ng-deep.mat-typography label, ::ng-deep.mat-typography li, ::ng-deep.mat-typography p,
+::ng-deep.mat-typography ul, ::ng-deep .mat-option, ::ng-deep .mat-select {
   padding: 0;
   margin: 0;
-  font-family: "Montserrat",sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
+
 ::ng-deep .mat-form-field-outline-start {
   border-radius: 28px 0 0 28px !important;
   min-width: 28px !important;
@@ -22,61 +23,62 @@ h1, h2, h3, h4, h5, h6, label, li, p, ul {
 }
 
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
-  padding: 1em 0 1em 1em!important;
+  padding: 1em 0 1em 1em !important;
 }
 
 
-::ng-deep .mat-datepicker-content{
-  border-radius: 28px!important;
+::ng-deep .mat-datepicker-content {
+  border-radius: 28px !important;
 }
 
-::ng-deep .mat-autocomplete-panel{
-  border-radius: 28px!important;
+::ng-deep .mat-autocomplete-panel {
+  border-radius: 28px !important;
 
 
 }
-::ng-deep ::-webkit-scrollbar{
-  width: 10px!important;
+
+::ng-deep ::-webkit-scrollbar {
+  width: 10px !important;
 }
 
 /* Track */
-::ng-deep ::-webkit-scrollbar-track{
-  box-shadow: inset 0 0 5px #F2F2F2!important;
+::ng-deep ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #F2F2F2 !important;
   border-radius: 0 !important;
-  margin-block: 25px!important;
+  margin-block: 25px !important;
 }
 
 /* Handle */
-::ng-deep ::-webkit-scrollbar-thumb{
-  background: #8B8B8B!important;
-  border-radius: 27px!important;
-  border: 4px solid rgba(0, 0, 0, 0)!important;
+::ng-deep ::-webkit-scrollbar-thumb {
+  background: #8B8B8B !important;
+  border-radius: 27px !important;
+  border: 4px solid rgba(0, 0, 0, 0) !important;
 }
 
-::ng-deep .mat-button{
-  font-family: "Montserrat",sans-serif!important;
-  font-size: 18px!important;
+::ng-deep .mat-button {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 18px !important;
 }
 
-::ng-deep .mat-list-avatar{
-  border-radius: 0!important;
-  height: auto!important;
+::ng-deep .mat-list-avatar {
+  border-radius: 0 !important;
+  height: auto !important;
 }
 
 
-::ng-deep .mat-table,::ng-deep .mat-table .mat-cell, ::ng-deep .mat-header-cell{
-  font-family: "Montserrat",sans-serif!important;
-  font-size: 20px!important;
+::ng-deep .mat-table, ::ng-deep .mat-table .mat-cell, ::ng-deep .mat-header-cell {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 20px !important;
 
 }
 
-::ng-deep .mat-select-panel{
-  border-radius: 28px!important;
+::ng-deep .mat-select-panel {
+  border-radius: 28px !important;
 }
 
 
 @media screen and (max-width: 1280px) and (min-width: 1024px) {
-  ::ng-deep .mat-table .mat-cell, ::ng-deep .mat-header-cell{
-    font-size: 18px!important;
+  ::ng-deep .mat-table .mat-cell, ::ng-deep .mat-header-cell {
+    font-size: 18px !important;
   }
 }
