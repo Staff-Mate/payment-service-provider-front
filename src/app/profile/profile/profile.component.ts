@@ -8,7 +8,7 @@ import {Client} from "../../auth/dto/client.model";
   styleUrls: ['./profile.component.scss', '../../styles/sections.style.scss', '../../styles/signform.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  client: Client = new Client('Erika', 'Waramunt', 'gp.recruit.hr@gmail.com', 'G-P Recruit', 'USA', 'Pennsylvania', 'Harrisburg');
+  client: Client = new Client('gp.recruit.hr@gmail.com','G-P Recruit','password','Erika', 'Waramunt',  'USA', 'Pennsylvania', 'Harrisburg');
   firstName: FormControl;
   lastName: FormControl;
   email: FormControl;

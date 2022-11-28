@@ -31,6 +31,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { PaymentComponent } from './payment/payment/payment.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import { PaymentServiceManagerComponent } from './payment-service-manger/payment-service-manager/payment-service-manager.component';
+import {UserService} from "./auth/service/user.service";
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { PaymentServiceManagerComponent } from './payment-service-manger/payment
     HttpClientModule,
     MatGridListModule
   ],
-  providers: [GeoService, PaymentServicesService],
+  providers: [GeoService, PaymentServicesService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,18 +1,17 @@
-export class Client {
+import {User} from "../service/user.service";
+
+export class Client extends User{
   firstName: string = "";
   lastName: string = "";
-  email: string = "";
-  company: string = "";
   country: string = "";
   state: string = "";
   city: string = "";
 
 
-  constructor(firstName: string, lastName: string, email: string, company: string, country: string, state: string, city: string) {
+  constructor(email: string, displayName: string, password: string, firstName: string, lastName: string, country: string, state: string, city: string) {
+    super(email, displayName, password);
     this.firstName = firstName;
     this.lastName = lastName;
-    this.email = email;
-    this.company = company;
     this.country = country;
     this.state = state;
     this.city = city;

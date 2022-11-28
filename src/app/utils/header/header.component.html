@@ -2,7 +2,7 @@
   <div class="menu-full">
     <div class="left"><a><img alt="Discash logo" routerLink="/" src="assets/logo.png"></a></div>
     <div *ngIf="!isHome" class="right">
-      <ul>
+      <ul *ngIf="user.permissions.includes('user')">
         <li>
           <button mat-button routerLink="/history">History</button>
         </li>
@@ -15,8 +15,28 @@
         <li>
           <button mat-button (click)="onDevelopers()">Developers</button>
         </li>
+        <li>
+          <button mat-button (click)="onSwitch()">Switch</button>
+        </li>
       </ul>
 
+      <ul *ngIf="user.permissions.includes('admin')" >
+        <li>
+          <button mat-button routerLink="/users">Users</button>
+        </li>
+        <li>
+          <button mat-button routerLink="/payment-service-manager">Services</button>
+        </li>
+        <li>
+          <button mat-button routerLink="/profile">Profile</button>
+        </li>
+        <li>
+          <button mat-button (click)="onDevelopers()">Developers</button>
+        </li>
+        <li>
+          <button mat-button (click)="onSwitch()">Switch</button>
+        </li>
+      </ul>
     </div>
   </div>
 </header>
