@@ -33,6 +33,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import { PaymentServiceManagerComponent } from './payment-service-manger/payment-service-manager/payment-service-manager.component';
 import {UserService} from "./auth/service/user.service";
 import { UserManagerComponent } from './user-manager/user-manager/user-manager.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { UserManagerComponent } from './user-manager/user-manager/user-manager.c
     MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTooltipModule
   ],
   providers: [GeoService, PaymentServicesService, UserService],
   bootstrap: [AppComponent]

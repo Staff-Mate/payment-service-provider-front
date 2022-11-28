@@ -11,10 +11,12 @@ import {PaymentComponent} from "./payment/payment/payment.component";
 import {
   PaymentServiceManagerComponent
 } from "./payment-service-manger/payment-service-manager/payment-service-manager.component";
+import {UserManagerComponent} from "./user-manager/user-manager/user-manager.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'user', component: UserHomepageComponent},
+  {path: 'user-manager', component: UserManagerComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'payment-services', component: PaymentServicesComponent},

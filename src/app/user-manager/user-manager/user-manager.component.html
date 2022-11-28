@@ -1,1 +1,98 @@
-<p>user-manager works!</p>
+<app-header></app-header>
+<div class="section">
+  <div class="banner main-banner">
+    <div class="left-container">
+      <h1><span>User Manger</span></h1>
+      <h2>Learn more about your customers and manage their accounts. Use search and filter tools to find specific group of customers and learn more about them.</h2>
+
+    </div>
+    <div class="right-container">
+      <img
+        alt="User Manger" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/careers/talent-and-expertise.svg">
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="banner">
+    <div class="filter">
+      <form [formGroup]="filterForm">
+        <mat-form-field appearance="fill" class="search-field">
+          <input matInput type="text" placeholder="Search">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" >
+          <mat-select placeholder="Service" [formControl]="service">
+            <mat-option>None</mat-option>
+            <mat-option value="Bitcoin">
+              <div class="option">
+
+                <img alt="Bitcoin image" src="assets/bitcoin.png">
+                <p>Bitcoin</p>
+              </div>
+            </mat-option>
+            <mat-option value="Card">
+              <div class="option">
+                <img alt="Card image" src="assets/card.png">
+                <p>Card</p>
+              </div>
+            </mat-option>
+            <mat-option value="PayPal">
+              <div class="option">
+                <img alt="PayPal image" src="assets/paypal.png">
+                <p>PayPal</p>
+              </div>
+            </mat-option>
+            <mat-option value="QR code">
+              <div class="option">
+                <img alt="QR code image" src="assets/qr.png">
+                <p>QR code</p>
+              </div>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </form>
+    </div>
+  </div>
+  <div class="banner column-banner">
+    <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table >
+
+
+      <!-- Company Name Column -->
+      <ng-container matColumnDef="company-name">
+        <th *matHeaderCellDef  mat-header-cell > Company Name</th>
+        <td *matCellDef="let element" class="cell-company-name" mat-cell> {{element.displayName}} </td>
+      </ng-container>
+
+      <!-- Owner Column -->
+      <ng-container matColumnDef="owner">
+        <th *matHeaderCellDef mat-header-cell> Owner</th>
+        <td *matCellDef="let element" class="cell-owner" mat-cell> {{element.firstName}} {{element.lastName}} </td>
+      </ng-container>
+
+      <!-- Contact Column -->
+      <ng-container matColumnDef="contact">
+        <th *matHeaderCellDef mat-header-cell> Contact</th>
+        <td *matCellDef="let element" class="cell-contact" mat-cell> {{element.email}} </td>
+      </ng-container>
+
+      <!-- Service Column -->
+      <ng-container matColumnDef="services">
+        <th *matHeaderCellDef mat-header-cell> Service</th>
+        <td *matCellDef="let element" class="cell-payment-type" mat-cell>
+          <img *ngFor="let service of element.paymentService"
+          [alt]="service + 'payment service' " [src]="'assets/' + service + '.png'" [matTooltip]="service">
+          <p *ngIf="element.paymentService.length == 0">/</p>
+        </td>
+      </ng-container>
+
+      <tr *matNoDataRow class="mat-row">
+        <td class="mat-cell" colspan="4">No data matching the filter</td>
+      </tr>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>

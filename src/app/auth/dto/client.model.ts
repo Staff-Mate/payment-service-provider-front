@@ -6,6 +6,7 @@ export class Client extends User{
   country: string = "";
   state: string = "";
   city: string = "";
+  paymentService: string[] = ['qr','card'];
 
 
   constructor(email: string, displayName: string, password: string, firstName: string, lastName: string, country: string, state: string, city: string) {

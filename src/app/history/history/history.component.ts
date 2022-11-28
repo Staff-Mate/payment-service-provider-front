@@ -74,7 +74,7 @@ const ELEMENT_DATA: Payment[] = [
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
-  styleUrls: ['./history.component.scss', '../../styles/sections.style.scss']
+  styleUrls: ['./history.component.scss', '../../styles/sections.style.scss', '../../styles/table.style.scss']
 })
 export class HistoryComponent implements OnInit {
   displayedColumns: string[] = ['service', 'date', 'description', 'amount', 'status'];
@@ -103,6 +103,7 @@ export class HistoryComponent implements OnInit {
       'status': this.status,
       'service': this.service
     })
+    console.log(ELEMENT_DATA)
   }
 
   ngAfterViewInit() {
