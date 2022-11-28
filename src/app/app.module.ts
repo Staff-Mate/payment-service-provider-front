@@ -30,6 +30,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {HttpClientModule} from "@angular/common/http";
 import { PaymentComponent } from './payment/payment/payment.component';
 import {MatGridListModule} from "@angular/material/grid-list";
+import { PaymentServiceManagerComponent } from './payment-service-manger/payment-service-manager/payment-service-manager.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
     PaymentServicesComponent,
     HistoryComponent,
     ProfileComponent,
-    PaymentComponent
+    PaymentComponent,
+    PaymentServiceManagerComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,9 @@ import {ProfileComponent} from "./profile/profile/profile.component";
 import {HistoryComponent} from "./history/history/history.component";
 import {PaymentServicesComponent} from "./payment-services/payment-services/payment-services.component";
 import {PaymentComponent} from "./payment/payment/payment.component";
+import {
+  PaymentServiceManagerComponent
+} from "./payment-service-manger/payment-service-manager/payment-service-manager.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -15,6 +18,7 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'payment-services', component: PaymentServicesComponent},
+  {path: 'payment-service-manager', component: PaymentServiceManagerComponent},
   {path: 'history', component: HistoryComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'payment', component: PaymentComponent},

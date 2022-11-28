@@ -2,18 +2,10 @@
 <div class="section">
   <div class="banner main-banner">
     <div class="left-container">
-      <h1><span>Active Services</span></h1>
-      <h2>Here you can manage active payment services for your business. Only active services will be available for your
-        customers to use.</h2>
-      <mat-list>
-        <mat-list-item *ngFor="let service of activeServices">
-          <h5 mat-line>{{service.fullName}}</h5>
-          <span mat-line>{{service.dateAdded | date}}</span>
-          <img [alt]="service.fullName + 'image'" [src]="'/assets/' + service.code + '.png'" mat-list-avatar>
-          <button color="accent" mat-stroked-button>Remove</button>
-        </mat-list-item>
-
-      </mat-list>
+      <h1><span>Payment Service Manager</span></h1>
+      <h2>Manage all payment services available to users of Discash. Here you can make new payment service and make it
+        available to users or edit already existing one.</h2>
+      <button class="blue-green-btn">New</button>
     </div>
     <div class="right-container">
       <img
@@ -36,8 +28,8 @@
         <h1>{{service.fullName}}</h1>
         <p>{{service.description}}</p>
         <div class="submit-container">
-          <button class="light-blue-green-btn" *ngIf="!checkIfActivated(service)">Add</button>
-          <button class="disabled-blue-green-btn" disabled *ngIf="checkIfActivated(service)">Added</button>
+          <button class="light-blue-green-btn">Edit</button>
+          <button class="light-red-btn" disabled>Delete</button>
         </div>
       </div>
     </div>
@@ -46,8 +38,8 @@
         <h3>{{service.fullName}}</h3>
         <p>{{service.description}}</p>
         <div class="submit-container">
-          <button class="light-blue-green-btn" *ngIf="!checkIfActivated(service)">Add</button>
-          <button class="disabled-blue-green-btn" disabled *ngIf="checkIfActivated(service)">Added</button>
+          <button class="light-blue-green-btn">Edit</button>
+          <button class="light-red-btn" disabled>Delete</button>
         </div>
       </div>
       <div class="right-container">
