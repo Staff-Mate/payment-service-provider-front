@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Client} from "../../auth/dto/client.model";
+import {User, UserService} from "../../auth/service/user.service";
 
 @Component({
   selector: 'app-profile',
@@ -8,6 +9,7 @@ import {Client} from "../../auth/dto/client.model";
   styleUrls: ['./profile.component.scss', '../../styles/sections.style.scss', '../../styles/signform.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  user: User | Client;
   client: Client = new Client('gp.recruit.hr@gmail.com','G-P Recruit','password','Erika', 'Waramunt',  'USA', 'Pennsylvania', 'Harrisburg');
   firstName: FormControl;
   lastName: FormControl;
@@ -19,11 +21,18 @@ export class ProfileComponent implements OnInit {
   infoForm: FormGroup;
   activeView: string = "home"
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
     this.initInfoForm()
+    this.user = this.userService.getLoggedInUser();
+    this.userService.userChanged.subscribe((response)=>{
+      this.user = response;
+      if(this.user.permissions.includes('user')){
+        this.user = this.client
+      }
+    })
   }
 
   initInfoForm() {

@@ -91,15 +91,15 @@
 
       <div *ngIf="activeView == 'home'" class="profile-home">
         <div class="profile-info">
-          <h1><span>{{client.displayName}}</span></h1>
-          <p>{{client.city}}, {{client.state}}, {{client.country}}</p>
-          <h2>{{client.firstName}} {{client.lastName}}</h2>
+          <h1><span>{{user.displayName}}</span></h1>
+          <p *ngIf="user.permissions.includes('user')">{{client.city}}, {{client.state}}, {{client.country}}</p>
+          <h2 *ngIf="user.permissions.includes('user')">{{client.firstName}} {{client.lastName}}</h2>
           <div class="profile-contact">
-            <h2>{{client.email}}</h2>
+            <h2>{{user.email}}</h2>
           </div>
         </div>
         <div class="submit-container">
-          <button (click)="activeView = 'infoChange'" class="light-blue-green-btn">Change owner<span
+          <button *ngIf="user.permissions.includes('user')" (click)="activeView = 'infoChange'" class="light-blue-green-btn">Change owner<span
             id="loaderr1"></span></button>
           <button (click)="activeView = 'passwordChange'" class="light-blue-green-btn">Change password<span
             id="loaderr2"></span></button>

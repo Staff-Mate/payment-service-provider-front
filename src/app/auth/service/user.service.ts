@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Subject} from "rxjs";
 
 export class User{
   email: string;
@@ -17,22 +18,27 @@ export class User{
 @Injectable()
 export class UserService {
 
+  active: User;
   admin: User = new User('discash@gmail.com','Administrator','password');
   user: User = new User('user@gmail.com','User','password');
+  userChanged: Subject<User> = new Subject<User>();
 
   constructor() {
     this.user.permissions = ['user']
+    this.active = this.admin
   }
 
   getLoggedInUser(){
-    return this.admin;
+    return this.active;
   }
 
   getOtherUser(permissions: string[]) {
     if(permissions.includes('admin')){
-      return this.user
+      this.active = this.user
+      this.userChanged.next(this.user)
     }else{
-      return this.admin
+      this.active = this.admin
+      this.userChanged.next(this.admin)
     }
   }
 }

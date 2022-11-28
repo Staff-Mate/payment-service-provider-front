@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.userService.getLoggedInUser();
+
+    this.userService.userChanged.subscribe((response)=>{
+      this.user = response;
+    })
   }
 
   onDevelopers() {
@@ -31,6 +35,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onSwitch() {
-    this.user = this.userService.getOtherUser(this.user.permissions);
+    this.userService.getOtherUser(this.user.permissions);
   }
 }
