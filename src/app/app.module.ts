@@ -34,6 +34,8 @@ import { PaymentServiceManagerComponent } from './payment-service-manger/payment
 import {UserService} from "./auth/service/user.service";
 import { UserManagerComponent } from './user-manager/user-manager/user-manager.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { FooterComponent } from './utils/footer/footer.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -48,29 +50,31 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     ProfileComponent,
     PaymentComponent,
     PaymentServiceManagerComponent,
-    UserManagerComponent
+    UserManagerComponent,
+    FooterComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    HttpClientModule,
-    MatGridListModule,
-    MatTooltipModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatAutocompleteModule,
+        MatListModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        HttpClientModule,
+        MatGridListModule,
+        MatTooltipModule,
+        MatCardModule,
+    ],
   providers: [GeoService, PaymentServicesService, UserService],
   bootstrap: [AppComponent]
 })

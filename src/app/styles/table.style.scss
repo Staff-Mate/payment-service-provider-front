@@ -8,7 +8,7 @@ table {
 
 table {
   border-collapse: collapse;
-  border-radius: 28px;
+  border-radius: 28px 28px 0 0;
   overflow: hidden;
 }
 
@@ -66,4 +66,9 @@ form {
 
 ::ng-deep .filter .mat-form-field-wrapper{
   padding: 0;
+}
+
+::ng-deep .mat-paginator-container{
+  background-color: #f2f2f2!important;
+  border-radius: 0 0 28px 28px!important;
 }
