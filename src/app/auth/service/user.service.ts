@@ -1,21 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Subject} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {User} from "../dto/user.model";
+import {RegisterDto} from "../dto/register.dto";
 
-export class User{
-  email: string;
-  displayName: string;
-  password: string;
-  permissions: string[];
 
-  constructor(email: string, displayName: string, password: string) {
-    this.email = email;
-    this.displayName = displayName;
-    this.password = password;
-    this.permissions = ['admin']
-  }
-}
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
 
   active: User;
@@ -23,7 +15,7 @@ export class UserService {
   user: User = new User('user@gmail.com','User','password');
   userChanged: Subject<User> = new Subject<User>();
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.user.permissions = ['user']
     this.active = this.admin
   }
@@ -41,4 +33,5 @@ export class UserService {
       this.userChanged.next(this.admin)
     }
   }
+
 }

@@ -156,7 +156,7 @@
                     *ngIf="checkRequired('confirmPassword')" class="required-star">*</span></p></div>
                 <mat-form-field appearance="outline">
                   <input [formControl]="confirmPassword"
-                         [type]="confirmPassword ? 'password' : 'text'"
+                         [type]="hideConfirmPassword ? 'password' : 'text'"
                          aria-label="Confirm Password"
                          matInput
                          placeholder="Confirm Password">
@@ -172,7 +172,7 @@
         </form>
       </div>
       <div class="submit-container">
-        <button class="blue-green-btn">Let’s Connect<span id="loader"></span></button>
+        <button class="blue-green-btn" (click)="signUp()">Let’s Connect<span id="loader"></span></button>
       </div>
     </div>
   </div>

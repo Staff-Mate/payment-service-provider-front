@@ -3,16 +3,19 @@ import {GeoService} from "../service/geo.service";
 import {ICity, ICountry, IState} from 'country-state-city';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
-import {Client} from "../dto/client.model";
+import {RegisterDto} from "../dto/register.dto";
+import ConfirmPasswordValidator from "../validators/confirmPassword.validator";
+import {UserService} from "../service/user.service";
+import {AuthService} from "../service/auth.service";
 
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['../../styles/signform.component.scss']
+  styleUrls: ['../../styles/signform.component.scss', './signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  client: Client;
+  registerUser: RegisterDto;
   form: FormGroup
   addressForm: FormGroup;
   stateIsoCode: string = "";
@@ -20,7 +23,6 @@ export class SignupComponent implements OnInit {
 
   firstName: FormControl;
   lastName: FormControl;
-  phone: FormControl;
   email: FormControl;
   company: FormControl;
 
@@ -39,11 +41,10 @@ export class SignupComponent implements OnInit {
   hideConfirmPassword: boolean = true;
   hidePassword: boolean = true;
 
-  constructor(private geoService: GeoService) {
+  constructor(private geoService: GeoService, private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    this.initAddressForm()
     this.initForm()
     this.countries = this.geoService.getCountries();
     this.filteredCountries = this.country.valueChanges.pipe(
@@ -57,34 +58,29 @@ export class SignupComponent implements OnInit {
 
     this.firstName = new FormControl('', Validators.required);
     this.lastName = new FormControl('', Validators.required);
-    this.phone = new FormControl();
-    this.password = new FormControl();
-    this.confirmPassword = new FormControl();
+    this.password = new FormControl('', Validators.required);
+    this.confirmPassword = new FormControl('', Validators.required);
     this.email = new FormControl('', [Validators.required, Validators.email]);
     this.company = new FormControl('', Validators.required);
 
-    this.form = new FormGroup({
-      address: this.addressForm,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      phone: this.phone,
-      email: this.email,
-      company: this.company,
-      password: this.password,
-      confirmPassword: this.confirmPassword
-    })
-  }
-
-  initAddressForm() {
     this.country = new FormControl();
     this.state = new FormControl();
     this.city = new FormControl();
 
-    this.addressForm = new FormGroup({
-      country: this.country,
-      state: this.state,
-      city: this.city
-    })
+    this.form = new FormGroup({
+        country: this.country,
+        state: this.state,
+        city: this.city,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        companyName: this.company,
+        password: this.password,
+        confirmPassword: this.confirmPassword
+      },
+      {
+        validators: [ConfirmPasswordValidator.match('password', 'confirmPassword')]
+      })
   }
 
   onCountryChange(isoCode: string) {
@@ -128,5 +124,11 @@ export class SignupComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.cities.filter(option => option.name.toLowerCase().includes(filterValue));
+  }
+
+  signUp() {
+    this.authService.signUpUser(this.form.value).subscribe((response)=>{
+      console.log(response)
+    })
   }
 }

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {User, UserService} from "../../auth/service/user.service";
+import {UserService} from "../../auth/service/user.service";
+import {User} from "../../auth/dto/user.model";
 
 @Component({
   selector: 'app-header',

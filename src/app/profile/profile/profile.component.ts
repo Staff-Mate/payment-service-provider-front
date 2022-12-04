@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Client} from "../../auth/dto/client.model";
-import {User, UserService} from "../../auth/service/user.service";
+import {UserService} from "../../auth/service/user.service";
+import {User} from "../../auth/dto/user.model";
 
 @Component({
   selector: 'app-profile',
