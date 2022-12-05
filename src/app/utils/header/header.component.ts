@@ -11,11 +11,14 @@ import {AuthService} from "../../auth/service/auth.service";
 })
 export class HeaderComponent implements OnInit {
   isHome: boolean = true;
+  isPaymentOrEmpty: boolean = true;
   user: User;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthService) {
-    let res = this.route.routeConfig?.component?.name.includes("Homepage") || this.route.routeConfig?.component?.name.includes("PaymentComponent") ;
+    let res = this.route.routeConfig?.component?.name.includes("Homepage") ;
     this.isHome = res == undefined ? false : res;
+    res = this.route.routeConfig?.component?.name.includes("Empty") || this.route.routeConfig?.component?.name.includes("PaymentComponent") ;
+    this.isPaymentOrEmpty = res == undefined ? false : res;
   }
 
   ngOnInit(): void {

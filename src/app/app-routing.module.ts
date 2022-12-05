@@ -12,6 +12,8 @@ import {
   PaymentServiceManagerComponent
 } from "./payment-service-manger/payment-service-manager/payment-service-manager.component";
 import {UserManagerComponent} from "./user-manager/user-manager/user-manager.component";
+import {PaymentResultComponent} from "./payment-result/payment-result/payment-result.component";
+import {EmptyComponent} from "./payment-result/empty-component/empty.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -23,7 +25,14 @@ const routes: Routes = [
   {path: 'payment-service-manager', component: PaymentServiceManagerComponent},
   {path: 'history', component: HistoryComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'payment/:id', component: PaymentComponent},
+  {path: 'payment',
+    component:EmptyComponent,
+  children:[
+    {path:'success', component: PaymentResultComponent},
+    {path:'fail', component: PaymentResultComponent},
+    {path:'error', component: PaymentResultComponent},
+    {path:':id', component: PaymentComponent},
+  ]},
   {path: '**', redirectTo: ''}
 ];
 

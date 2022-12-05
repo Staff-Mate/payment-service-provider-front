@@ -17,7 +17,7 @@ export class PaymentComponent implements OnInit {
   enabledPaymentService: Array<EnabledPaymentMethodDto>
   companyApiKey: string;
 
-  constructor(private paymentMethodsService: PaymentMethodsService, private route: ActivatedRoute, private paymentService: PaymentService) { }
+  constructor(private paymentMethodsService: PaymentMethodsService, private route: ActivatedRoute, private router: Router, private paymentService: PaymentService) { }
 
   ngOnInit(): void {
     this.companyApiKey = this.route.snapshot.params['id']
@@ -29,6 +29,7 @@ export class PaymentComponent implements OnInit {
   onChooseMethod(paymentMethodId: string) {
     this.paymentService.createPayment(new NewPaymentDto(this.companyApiKey,10000,paymentMethodId)).subscribe((response)=>{
       console.log(response)
+      window.location.href = response;
     });
 
   }

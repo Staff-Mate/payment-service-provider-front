@@ -39,6 +39,8 @@ import {MatCardModule} from "@angular/material/card";
 import {AuthInterceptor} from "./auth/auth.interceptor";
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS} from "@angular/material/snack-bar";
 import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
+import { PaymentResultComponent } from './payment-result/payment-result/payment-result.component';
+import { EmptyComponent } from './payment-result/empty-component/empty.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
     PaymentComponent,
     PaymentServiceManagerComponent,
     UserManagerComponent,
-    FooterComponent
+    FooterComponent,
+    PaymentResultComponent,
+    EmptyComponent
   ],
   imports: [
     BrowserModule,

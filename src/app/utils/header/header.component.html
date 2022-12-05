@@ -8,7 +8,7 @@
         </li>
       </ul>
     </div>
-    <div *ngIf="!isHome" class="right">
+    <div *ngIf="!isHome && !isPaymentOrEmpty" class="right">
       <ul *ngIf="user.permissions.includes('user')">
         <li>
           <button mat-button routerLink="/history">History</button>
