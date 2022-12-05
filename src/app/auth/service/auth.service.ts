@@ -23,16 +23,15 @@ export class AuthService {
   }
 
   logInUser(loginUserDto: LoginDto) {
-    const params = new HttpParams()
-      .set('email', loginUserDto.email)
-      .set('password', loginUserDto.password);
-    this._http.post<TokenDto>(environment.apiUrl + "/login", loginUserDto, {params}).subscribe(
+    console.log(loginUserDto)
+    this._http.post<TokenDto>(environment.apiUrl + "/auth-service/auth/login", loginUserDto).subscribe(
       {
         next: (response) => {
           this.errorResponse.next(null);
-          this._tokenService.saveToken(response.access_token);
-          this._tokenService.saveRefreshToken(response.refresh_token)
+          this._tokenService.saveToken(response.accessToken);
+          // this._tokenService.saveRefreshToken(response.refresh_token)
           this.logInUserChanged.next(response);
+          this.router.navigate(['/user']).then()
         },
         error: (error: HttpErrorResponse) => {
           if (error.error.status == 400) {

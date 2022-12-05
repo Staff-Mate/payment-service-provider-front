@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../auth/service/user.service";
 import {User} from "../../auth/dto/user.model";
+import {AuthService} from "../../auth/service/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
   isHome: boolean = true;
   user: User;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthService) {
     let res = this.route.routeConfig?.component?.name.includes("Homepage") || this.route.routeConfig?.component?.name.includes("PaymentComponent") ;
     this.isHome = res == undefined ? false : res;
   }
@@ -35,7 +36,7 @@ export class HeaderComponent implements OnInit {
     link.remove();
   }
 
-  onSwitch() {
-    this.userService.getOtherUser(this.user.permissions);
+  onLogOut() {
+    this.authService.logout()
   }
 }

@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'payment-service-manager', component: PaymentServiceManagerComponent},
   {path: 'history', component: HistoryComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'payment', component: PaymentComponent},
+  {path: 'payment/:id', component: PaymentComponent},
   {path: '**', redirectTo: ''}
 ];
 

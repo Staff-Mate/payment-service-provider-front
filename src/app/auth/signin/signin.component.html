@@ -23,7 +23,7 @@
       <div class="signup-header"><img alt="logo" class="discash-logo" src="assets/logo.png">
         <h1>Help us out with some details, and we’ll reach out to you!</h1></div>
       <div class="input-section">
-        <form autocomplete="off">
+        <form autocomplete="off" [formGroup]="form">
           <div class="inputs">
             <div class="company-inputs input-row">
               <div class="company-name-input input-block">
@@ -60,7 +60,7 @@
         </form>
       </div>
       <div class="submit-container">
-        <button class="blue-green-btn">Let’s Connect<span id="loader"></span></button>
+        <button class="blue-green-btn" (click)="onSignIn()">Sign in<span id="loader"></span></button>
       </div>
     </div>
   </div>

@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {PaymentService} from "../dto/payment-service.model";
-import {PaymentServicesService} from "../services/payment-services.service";
+import {PaymentMethod} from "../dto/payment-method.model";
+import {PaymentMethodsService} from "../services/payment-methods.service";
+import {ActivatedRoute} from "@angular/router";
+import {EnabledPaymentMethodDto} from "../dto/enabledPaymentMethodDto";
 
 
 @Component({
@@ -9,18 +11,24 @@ import {PaymentServicesService} from "../services/payment-services.service";
   styleUrls: ['../../styles/sections.style.scss']
 })
 export class PaymentServicesComponent implements OnInit {
-  activeServices: Array<PaymentService> = new Array<PaymentService>();
-  allPaymentServices: Array<PaymentService> = new Array<PaymentService>();
+  activeServices: Array<EnabledPaymentMethodDto> = new Array<EnabledPaymentMethodDto>();
+  allPaymentServices: Array<PaymentMethod> = new Array<PaymentMethod>();
 
-  constructor(private paymentService: PaymentServicesService) {
+  constructor(private paymentService: PaymentMethodsService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.activeServices = this.paymentService.getActiveServices();
-    this.allPaymentServices = this.paymentService.getAllPaymentServices()
+    this.paymentService.getEnabledPaymentServices().subscribe((response)=>{
+      console.log(response)
+      this.activeServices = response;
+    });
+    this.paymentService.getAllPaymentServices().subscribe((response)=>{
+      this.allPaymentServices = response;
+      console.log(this.allPaymentServices)
+    })
   }
 
-  checkIfActivated(service: PaymentService) {
-    return this.activeServices.map(value => value.code).includes(service.code);
+  checkIfActivated(service: PaymentMethod) {
+    return this.activeServices.map(value => value.paymentMethod.serviceName).includes(service.serviceName);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PaymentService} from "../../payment-services/dto/payment-service.model";
-import {PaymentServicesService} from "../../payment-services/services/payment-services.service";
+import {PaymentMethod} from "../../payment-services/dto/payment-method.model";
+import {PaymentMethodsService} from "../../payment-services/services/payment-methods.service";
 
 @Component({
   selector: 'app-payment-service-manager',
@@ -8,12 +8,14 @@ import {PaymentServicesService} from "../../payment-services/services/payment-se
   styleUrls: ['./payment-service-manager.component.scss', '../../styles/sections.style.scss']
 })
 export class PaymentServiceManagerComponent implements OnInit {
-  allPaymentServices: Array<PaymentService>;
+  allPaymentServices: Array<PaymentMethod>;
 
-  constructor(private paymentService: PaymentServicesService) { }
+  constructor(private paymentService: PaymentMethodsService) { }
 
   ngOnInit(): void {
-    this.allPaymentServices = this.paymentService.getAllPaymentServices()
+    this.paymentService.getAllPaymentServices().subscribe((response)=>{
+      this.allPaymentServices = response;
+    })
   }
 
 }

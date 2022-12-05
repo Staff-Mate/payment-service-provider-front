@@ -1,6 +1,8 @@
-export class PaymentService {
+export class PaymentMethod {
+  id: string;
   imagePath: string = "";
-  fullName: string = "";
+  name: string = "";
+  serviceName: string = "";
   description: string = "";
   code: string = "";
   api: string = "";
@@ -9,7 +11,7 @@ export class PaymentService {
 
   constructor(imagePath: string, fullName: string, description: string, code: string, api: string, dateAdded: Date) {
     this.imagePath = imagePath;
-    this.fullName = fullName;
+    this.name = fullName;
     this.description = description;
     this.code = code;
     this.api = api;

@@ -20,7 +20,7 @@ import {PaymentServicesComponent} from './payment-services/payment-services/paym
 import {HistoryComponent} from './history/history/history.component';
 import {ProfileComponent} from './profile/profile/profile.component';
 import {MatListModule} from "@angular/material/list";
-import {PaymentServicesService} from "./payment-services/services/payment-services.service";
+import {PaymentMethodsService} from "./payment-services/services/payment-methods.service";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
@@ -82,7 +82,7 @@ import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true,
-  }, PaymentServicesService,
+  },
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {duration: 2500}

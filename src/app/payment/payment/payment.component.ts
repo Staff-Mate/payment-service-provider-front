@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {PaymentServicesService} from "../../payment-services/services/payment-services.service";
+import {PaymentMethodsService} from "../../payment-services/services/payment-methods.service";
 import {Payment} from "../../history/history/history.component";
-import {PaymentService} from "../../payment-services/dto/payment-service.model";
+import {PaymentMethod} from "../../payment-services/dto/payment-method.model";
+import {ActivatedRoute, Router} from "@angular/router";
+import {EnabledPaymentMethodDto} from "../../payment-services/dto/enabledPaymentMethodDto";
+import {PaymentService} from "../../payment-services/services/payment.service";
+import {NewPaymentDto} from "../../payment-services/dto/newPayment.dto";
 
 @Component({
   selector: 'app-payment',
@@ -10,12 +14,22 @@ import {PaymentService} from "../../payment-services/dto/payment-service.model";
 })
 export class PaymentComponent implements OnInit {
 
-  allPaymentService: Array<PaymentService>
+  enabledPaymentService: Array<EnabledPaymentMethodDto>
+  companyApiKey: string;
 
-  constructor(private paymentService: PaymentServicesService) { }
+  constructor(private paymentMethodsService: PaymentMethodsService, private route: ActivatedRoute, private paymentService: PaymentService) { }
 
   ngOnInit(): void {
-    this.allPaymentService = this.paymentService.getAllPaymentServices()
+    this.companyApiKey = this.route.snapshot.params['id']
+    this.paymentMethodsService.getEnabledPaymentServicesByApiKey(this.companyApiKey).subscribe((response)=>{
+      this.enabledPaymentService = response;
+    })
   }
 
+  onChooseMethod(paymentMethodId: string) {
+    this.paymentService.createPayment(new NewPaymentDto(this.companyApiKey,10000,paymentMethodId)).subscribe((response)=>{
+      console.log(response)
+    });
+
+  }
 }

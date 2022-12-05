@@ -25,7 +25,7 @@
           [src]="service.imagePath" alt="Payment Service Provider">
       </div>
       <div class="left-container">
-        <h1>{{service.fullName}}</h1>
+        <h1>{{service.name}}</h1>
         <p>{{service.description}}</p>
         <div class="submit-container">
           <button class="light-blue-green-btn">Edit</button>
@@ -35,7 +35,7 @@
     </div>
     <div *ngIf="i%2 != 0" class="banner">
       <div class="left-container">
-        <h3>{{service.fullName}}</h3>
+        <h3>{{service.name}}</h3>
         <p>{{service.description}}</p>
         <div class="submit-container">
           <button class="light-blue-green-btn">Edit</button>
