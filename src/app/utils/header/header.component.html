@@ -4,7 +4,7 @@
     <div *ngIf="isHome" class="right">
       <ul >
         <li>
-          <button mat-button (click)="onLogOut()">Log out</button>
+          <button mat-button (click)="onLogOut()" *ngIf="getToken()">Log out</button>
         </li>
       </ul>
     </div>

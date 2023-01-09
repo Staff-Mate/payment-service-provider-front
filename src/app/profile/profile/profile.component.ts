@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Client} from "../../auth/dto/client.model";
-import {UserService} from "../../auth/service/user.service";
 import {User} from "../../auth/dto/user.model";
+import {AuthService} from "../../auth/service/auth.service";
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +11,7 @@ import {User} from "../../auth/dto/user.model";
 })
 export class ProfileComponent implements OnInit {
   user: User | Client;
-  client: Client = new Client('gp.recruit.hr@gmail.com','G-P Recruit','password','Erika', 'Waramunt',  'USA', 'Pennsylvania', 'Harrisburg');
+  client: Client = new Client('gp.recruit.hr@gmail.com','G-P Recruit','Erika', 'Waramunt',  'USA', 'Pennsylvania', 'Harrisburg');
   firstName: FormControl;
   lastName: FormControl;
   email: FormControl;
@@ -22,16 +22,19 @@ export class ProfileComponent implements OnInit {
   infoForm: FormGroup;
   activeView: string = "home"
 
-  constructor(private userService: UserService) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
     this.initInfoForm()
-    this.user = this.userService.getLoggedInUser();
-    this.userService.userChanged.subscribe((response)=>{
+    this.authService.getLoggedInUser().subscribe(response=>{
       this.user = response;
-      if(this.user.permissions.includes('user')){
-        this.user = this.client
+    });
+    this.authService.logInUserChanged.subscribe(response =>{
+      if(response != true){
+        this.authService.getLoggedInUser().subscribe(response=>{
+          this.user = response;
+        });
       }
     })
   }

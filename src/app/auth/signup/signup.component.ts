@@ -5,7 +5,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
 import {RegisterDto} from "../dto/register.dto";
 import ConfirmPasswordValidator from "../validators/confirmPassword.validator";
-import {UserService} from "../service/user.service";
 import {AuthService} from "../service/auth.service";
 
 

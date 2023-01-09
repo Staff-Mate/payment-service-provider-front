@@ -7,6 +7,7 @@ import {TokenStorageService} from "./tokenStorage.service";
 import {LoginDto} from "../dto/login.dto";
 import {TokenDto} from "../dto/token.dto";
 import {RegisterDto} from "../dto/register.dto";
+import {User} from "../dto/user.model";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -23,10 +24,10 @@ export class AuthService {
   }
 
   logInUser(loginUserDto: LoginDto) {
-    console.log(loginUserDto)
     this._http.post<TokenDto>(environment.apiUrl + "/auth-service/auth/login", loginUserDto).subscribe(
       {
         next: (response) => {
+          console.log("AUTH SERVICE: " + response)
           this.errorResponse.next(null);
           this._tokenService.saveToken(response.accessToken);
           // this._tokenService.saveRefreshToken(response.refresh_token)
@@ -36,6 +37,8 @@ export class AuthService {
         error: (error: HttpErrorResponse) => {
           if (error.error.status == 400) {
             this.errorResponse.next(error.error.message);
+          }else{
+            this.errorResponse.next("Something went wrong. Pleas try again.");
           }
           console.log(error)
         }
@@ -63,5 +66,9 @@ export class AuthService {
   signUpUser(user: RegisterDto){
     console.log(user)
     return this._http.post(environment.apiUrl + "/auth-service/auth/register",user);
+  }
+
+  getLoggedInUser(){
+    return this._http.get<User>(environment.apiUrl + "/auth-service/auth/");
   }
 }

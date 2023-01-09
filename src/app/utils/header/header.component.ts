@@ -1,20 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {UserService} from "../../auth/service/user.service";
 import {User} from "../../auth/dto/user.model";
 import {AuthService} from "../../auth/service/auth.service";
+import {TokenStorageService} from "../../auth/service/tokenStorage.service";
+import {Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   isHome: boolean = true;
   isPaymentOrEmpty: boolean = true;
   user: User;
+  private ngUnsubscribe = new Subject<void>();
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthService) {
+  constructor(private route: ActivatedRoute, private authService: AuthService, private tokenStorage: TokenStorageService) {
     let res = this.route.routeConfig?.component?.name.includes("Homepage") ;
     this.isHome = res == undefined ? false : res;
     res = this.route.routeConfig?.component?.name.includes("Empty") || this.route.routeConfig?.component?.name.includes("PaymentComponent") ;
@@ -22,13 +24,27 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = this.userService.getLoggedInUser();
-
-    this.userService.userChanged.subscribe((response)=>{
-      this.user = response;
+    if(this.tokenStorage.getToken()){
+      this.authService.getLoggedInUser().subscribe(response=>{
+        this.user = response;
+        console.log(this.user)
+      });
+    }
+    this.authService.logInUserChanged.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response =>{
+      console.log("TU SAM: " + response)
+      if(response != true){
+        this.authService.getLoggedInUser().subscribe(response=>{
+          this.user = response;
+          console.log(this.user)
+        });
+      }
     })
   }
 
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
   onDevelopers() {
     const link = document.createElement('a');
     link.setAttribute('target', '_blank');
@@ -41,5 +57,9 @@ export class HeaderComponent implements OnInit {
 
   onLogOut() {
     this.authService.logout()
+  }
+
+  getToken() {
+    return this.tokenStorage.getToken();
   }
 }

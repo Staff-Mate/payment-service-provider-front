@@ -12,12 +12,17 @@ export class SigninComponent implements OnInit {
   password: FormControl = new FormControl();
   email: FormControl = new FormControl();
   hide: boolean = true;
+  error: any;
 
   constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
     this.initForm()
+    this.authService.errorResponse.subscribe(response =>{
+      this.error = response;
+      setTimeout(error=>{this.error = ""},5000)
+    })
   }
 
   initForm() {

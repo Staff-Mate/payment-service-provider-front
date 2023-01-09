@@ -9,8 +9,8 @@ export class Client extends User{
   paymentService: string[] = ['qr','card'];
 
 
-  constructor(email: string, displayName: string, password: string, firstName: string, lastName: string, country: string, state: string, city: string) {
-    super(email, displayName, password);
+  constructor(email: string, displayName: string, firstName: string, lastName: string, country: string, state: string, city: string) {
+    super(email, displayName);
     this.firstName = firstName;
     this.lastName = lastName;
     this.country = country;
