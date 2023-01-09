@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../service/auth.service";
+import {Subject, takeUntil} from "rxjs";
+import {LoadingService} from "../service/loading.service";
 
 @Component({
   selector: 'app-signin',
@@ -13,12 +15,18 @@ export class SigninComponent implements OnInit {
   email: FormControl = new FormControl();
   hide: boolean = true;
   error: any;
+  isLoading: boolean;
+  private ngUnsubscribe = new Subject<void>();
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private loadingService: LoadingService) {
+    this.isLoading = false;
   }
 
   ngOnInit(): void {
     this.initForm()
+    this.loadingService.loading.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response=>{
+      this.isLoading = !this.isLoading;
+    })
     this.authService.errorResponse.subscribe(response =>{
       this.error = response;
       setTimeout(error=>{this.error = ""},5000)
@@ -37,5 +45,10 @@ export class SigninComponent implements OnInit {
 
   onSignIn() {
     this.authService.logInUser(this.form.value);
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }

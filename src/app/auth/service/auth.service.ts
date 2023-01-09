@@ -4,9 +4,9 @@ import {environment} from "../../../environments/environment";
 import {Subject} from "rxjs";
 import {Router} from "@angular/router";
 import {TokenStorageService} from "./tokenStorage.service";
-import {LoginDto} from "../dto/login.dto";
+import {LoginDto} from "../signin/dto/login.dto";
 import {TokenDto} from "../dto/token.dto";
-import {RegisterDto} from "../dto/register.dto";
+import {RegisterDto} from "../signup/dto/register.dto";
 import {User} from "../dto/user.model";
 
 const httpOptions = {
@@ -27,18 +27,17 @@ export class AuthService {
     this._http.post<TokenDto>(environment.apiUrl + "/auth-service/auth/login", loginUserDto).subscribe(
       {
         next: (response) => {
-          console.log("AUTH SERVICE: " + response)
           this.errorResponse.next(null);
           this._tokenService.saveToken(response.accessToken);
-          // this._tokenService.saveRefreshToken(response.refresh_token)
           this.logInUserChanged.next(response);
           this.router.navigate(['/user']).then()
         },
         error: (error: HttpErrorResponse) => {
-          if (error.error.status == 400) {
+          console.log(error)
+          if (error.status == 400) {
             this.errorResponse.next(error.error.message);
           }else{
-            this.errorResponse.next("Something went wrong. Pleas try again.");
+            this.errorResponse.next("Something went wrong. Please try again.");
           }
           console.log(error)
         }

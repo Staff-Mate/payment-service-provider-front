@@ -3,8 +3,8 @@ import {GeoService} from "../service/geo.service";
 import {ICity, ICountry, IState} from 'country-state-city';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
-import {RegisterDto} from "../dto/register.dto";
-import ConfirmPasswordValidator from "../validators/confirmPassword.validator";
+import {RegisterDto} from "./dto/register.dto";
+import ConfirmPasswordValidator from "../validators/confirm-password.validator";
 import {AuthService} from "../service/auth.service";
 
 

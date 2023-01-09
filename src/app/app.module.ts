@@ -16,31 +16,32 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {SigninComponent} from './auth/signin/signin.component';
 import {UserHomepageComponent} from './utils/user-homepage/user-homepage.component';
-import {PaymentServicesComponent} from './payment-services/payment-services/payment-services.component';
+import {PaymentServicesComponent} from './user-payment-services/payment-services/payment-services.component';
 import {HistoryComponent} from './history/history/history.component';
-import {ProfileComponent} from './profile/profile/profile.component';
+import {ProfileComponent} from './profile/profile.component';
 import {MatListModule} from "@angular/material/list";
-import {PaymentMethodsService} from "./payment-services/services/payment-methods.service";
+import {PaymentMethodsService} from "./user-payment-services/services/payment-methods.service";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {PaymentComponent} from './payment/payment/payment.component';
+import {PaymentComponent} from './choose-payment/payment/payment.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {
   PaymentServiceManagerComponent
-} from './payment-service-manger/payment-service-manager/payment-service-manager.component';
-import {UserManagerComponent} from './user-manager/user-manager/user-manager.component';
+} from './admin/payment-service-manager/payment-service-manager.component';
+import {UserManagerComponent} from './admin/user-manager/user-manager.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {FooterComponent} from './utils/footer/footer.component';
 import {MatCardModule} from "@angular/material/card";
 import {AuthInterceptor} from "./auth/auth.interceptor";
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS} from "@angular/material/snack-bar";
 import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
-import { PaymentResultComponent } from './payment-result/payment-result/payment-result.component';
-import { EmptyComponent } from './payment-result/empty-component/empty.component';
+import { PaymentResultComponent } from './choose-payment/payment-result/payment-result/payment-result.component';
+import { PaymentResultEmptyComponent } from './choose-payment/payment-result/payment-result-empty/payment-result-empty.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
@@ -58,30 +59,31 @@ import { EmptyComponent } from './payment-result/empty-component/empty.component
     UserManagerComponent,
     FooterComponent,
     PaymentResultComponent,
-    EmptyComponent
+    PaymentResultEmptyComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    HttpClientModule,
-    MatGridListModule,
-    MatTooltipModule,
-    MatCardModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatAutocompleteModule,
+        MatListModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        HttpClientModule,
+        MatGridListModule,
+        MatTooltipModule,
+        MatCardModule,
+        MatProgressBarModule,
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

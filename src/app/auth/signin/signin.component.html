@@ -59,12 +59,17 @@
           </div>
         </form>
       </div>
-      <div class="submit-container">
-        <button class="blue-green-btn" (click)="onSignIn()">Sign in<span id="loader"></span></button>
+      <div class="error-placeholder">
+        <div class="error-container" *ngIf="error">
+          <p>{{error}}</p>
+        </div>
       </div>
-      <div class="error-container">
-        <p>{{error}}</p>
+
+      <div class="submit-container" *ngIf="!isLoading">
+        <button class="blue-green-btn" style="margin-top: 10px" (click)="onSignIn()">Sign in<span id="loader"></span></button>
+
       </div>
+      <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
     </div>
   </div>
 </div>

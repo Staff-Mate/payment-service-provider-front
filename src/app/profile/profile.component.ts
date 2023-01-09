@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {Client} from "../../auth/dto/client.model";
-import {User} from "../../auth/dto/user.model";
-import {AuthService} from "../../auth/service/auth.service";
+import {Client} from "../auth/dto/client.model";
+import {User} from "../auth/dto/user.model";
+import {AuthService} from "../auth/service/auth.service";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss', '../../styles/sections.style.scss', '../../styles/signform.component.scss']
+  styleUrls: ['./profile.component.scss', '../styles/sections.style.scss', '../../styles/signform.component.scss']
 })
 export class ProfileComponent implements OnInit {
   user: User | Client;

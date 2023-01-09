@@ -60,14 +60,15 @@ export class AuthInterceptor implements HttpInterceptor {
     }
     return next.handle(authReq).pipe(
       tap((event: HttpEvent<any>) => {
+        clearTimeout(timeout);
         if (event instanceof HttpResponse) {
-          clearTimeout(timeout);
           if (delayExpired) {
             this._loadingService.loading.next(req);
           }
         }
       }),
       catchError(error => {
+        clearTimeout(timeout);
         if (error instanceof HttpErrorResponse && error.status === 401) {
           return this.handle401Error(authReq, next);
         }

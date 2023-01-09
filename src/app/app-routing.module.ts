@@ -4,16 +4,16 @@ import {SignupComponent} from "./auth/signup/signup.component";
 import {HomepageComponent} from "./utils/homepage/homepage.component";
 import {SigninComponent} from "./auth/signin/signin.component";
 import {UserHomepageComponent} from "./utils/user-homepage/user-homepage.component";
-import {ProfileComponent} from "./profile/profile/profile.component";
+import {ProfileComponent} from "./profile/profile.component";
 import {HistoryComponent} from "./history/history/history.component";
-import {PaymentServicesComponent} from "./payment-services/payment-services/payment-services.component";
-import {PaymentComponent} from "./payment/payment/payment.component";
+import {PaymentServicesComponent} from "./user-payment-services/payment-services/payment-services.component";
+import {PaymentComponent} from "./choose-payment/payment/payment.component";
 import {
   PaymentServiceManagerComponent
-} from "./payment-service-manger/payment-service-manager/payment-service-manager.component";
-import {UserManagerComponent} from "./user-manager/user-manager/user-manager.component";
-import {PaymentResultComponent} from "./payment-result/payment-result/payment-result.component";
-import {EmptyComponent} from "./payment-result/empty-component/empty.component";
+} from "./admin/payment-service-manager/payment-service-manager.component";
+import {UserManagerComponent} from "./admin/user-manager/user-manager.component";
+import {PaymentResultComponent} from "./choose-payment/payment-result/payment-result/payment-result.component";
+import {PaymentResultEmptyComponent} from "./choose-payment/payment-result/payment-result-empty/payment-result-empty.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'history', component: HistoryComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'payment',
-    component:EmptyComponent,
+    component:PaymentResultEmptyComponent,
   children:[
     {path:'success', component: PaymentResultComponent},
     {path:'fail', component: PaymentResultComponent},

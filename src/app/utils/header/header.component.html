@@ -9,41 +9,44 @@
       </ul>
     </div>
     <div *ngIf="!isHome && !isPaymentOrEmpty" class="right">
-      <ul *ngIf="user.permissions.includes('user')">
-        <li>
-          <button mat-button routerLink="/history">History</button>
-        </li>
-        <li>
-          <button mat-button routerLink="/payment-services">Services</button>
-        </li>
-        <li>
-          <button mat-button routerLink="/profile">Profile</button>
-        </li>
-        <li>
-          <button mat-button (click)="onDevelopers()">Developers</button>
-        </li>
-        <li>
-          <button mat-button (click)="onLogOut()">Log out</button>
-        </li>
-      </ul>
+      <div *ngIf="show">
 
-      <ul *ngIf="user.permissions.includes('admin')" >
-        <li>
-          <button mat-button routerLink="/user-manager">Users</button>
-        </li>
-        <li>
-          <button mat-button routerLink="/payment-service-manager">Services</button>
-        </li>
-        <li>
-          <button mat-button routerLink="/profile">Profile</button>
-        </li>
-        <li>
-          <button mat-button (click)="onDevelopers()">Developers</button>
-        </li>
-        <li>
-          <button mat-button (click)="onLogOut()">Log out</button>
-        </li>
-      </ul>
+        <ul *ngIf="user.permissions.includes('ROLE_USER')">
+          <li>
+            <button mat-button routerLink="/history">History</button>
+          </li>
+          <li>
+            <button mat-button routerLink="/payment-services">Services</button>
+          </li>
+          <li>
+            <button mat-button routerLink="/profile">Profile</button>
+          </li>
+          <li>
+            <button mat-button (click)="onDevelopers()">Developers</button>
+          </li>
+          <li>
+            <button mat-button (click)="onLogOut()">Log out</button>
+          </li>
+        </ul>
+        <ul *ngIf="user.permissions.includes('ROLE_ADMIN')" >
+
+          <li>
+            <button mat-button routerLink="/user-manager">Users</button>
+          </li>
+          <li>
+            <button mat-button routerLink="/payment-service-manager">Services</button>
+          </li>
+          <li>
+            <button mat-button routerLink="/profile">Profile</button>
+          </li>
+          <li>
+            <button mat-button (click)="onDevelopers()">Developers</button>
+          </li>
+          <li>
+            <button mat-button (click)="onLogOut()">Log out</button>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </header>

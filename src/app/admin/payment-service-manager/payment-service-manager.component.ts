@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PaymentMethod} from "../../payment-services/dto/payment-method.model";
-import {PaymentMethodsService} from "../../payment-services/services/payment-methods.service";
+import {PaymentMethod} from "../../user-payment-services/dto/payment-method.model";
+import {PaymentMethodsService} from "../../user-payment-services/services/payment-methods.service";
 
 @Component({
   selector: 'app-payment-service-manager',

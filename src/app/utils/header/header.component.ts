@@ -1,9 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {User} from "../../auth/dto/user.model";
 import {AuthService} from "../../auth/service/auth.service";
 import {TokenStorageService} from "../../auth/service/tokenStorage.service";
 import {Subject, takeUntil} from "rxjs";
+import {LoadingService} from "../../auth/service/loading.service";
 
 @Component({
   selector: 'app-header',
@@ -15,27 +16,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isPaymentOrEmpty: boolean = true;
   user: User;
   private ngUnsubscribe = new Subject<void>();
+  show: any;
+
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private tokenStorage: TokenStorageService) {
     let res = this.route.routeConfig?.component?.name.includes("Homepage") ;
     this.isHome = res == undefined ? false : res;
     res = this.route.routeConfig?.component?.name.includes("Empty") || this.route.routeConfig?.component?.name.includes("PaymentComponent") ;
     this.isPaymentOrEmpty = res == undefined ? false : res;
+    this.show = false;
   }
 
   ngOnInit(): void {
     if(this.tokenStorage.getToken()){
       this.authService.getLoggedInUser().subscribe(response=>{
         this.user = response;
-        console.log(this.user)
+        this.show = true;
       });
     }
+
     this.authService.logInUserChanged.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response =>{
-      console.log("TU SAM: " + response)
       if(response != true){
         this.authService.getLoggedInUser().subscribe(response=>{
           this.user = response;
-          console.log(this.user)
         });
       }
     })
