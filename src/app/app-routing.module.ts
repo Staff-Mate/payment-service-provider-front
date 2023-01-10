@@ -8,12 +8,12 @@ import {ProfileComponent} from "./profile/profile.component";
 import {HistoryComponent} from "./history/history/history.component";
 import {PaymentServicesComponent} from "./user-payment-services/payment-services/payment-services.component";
 import {PaymentComponent} from "./choose-payment/payment/payment.component";
-import {
-  PaymentServiceManagerComponent
-} from "./admin/payment-service-manager/payment-service-manager.component";
+import {PaymentServiceManagerComponent} from "./admin/payment-service-manager/payment-service-manager.component";
 import {UserManagerComponent} from "./admin/user-manager/user-manager.component";
 import {PaymentResultComponent} from "./choose-payment/payment-result/payment-result/payment-result.component";
-import {PaymentResultEmptyComponent} from "./choose-payment/payment-result/payment-result-empty/payment-result-empty.component";
+import {
+  PaymentResultEmptyComponent
+} from "./choose-payment/payment-result/payment-result-empty/payment-result-empty.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},

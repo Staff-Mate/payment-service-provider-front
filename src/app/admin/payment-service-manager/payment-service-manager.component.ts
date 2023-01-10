@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PaymentMethod} from "../../user-payment-services/dto/payment-method.model";
 import {PaymentMethodsService} from "../../user-payment-services/services/payment-methods.service";
 

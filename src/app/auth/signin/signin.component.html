@@ -32,20 +32,20 @@
                     Email</p>
                 </div>
 
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" >
                   <input [formControl]="email" autocomplete="username" class="email" data-field="email"
                          data-label="emailLabel" data-required="emailRequired" matInput
-                         name="email" placeholder="" type="text">
+                         name="email" placeholder="" type="text" (keyup.enter)="passwordInput.focus()">
                 </mat-form-field>
               </div>
               <div class="password-input input-block">
                 <div class="required-field-container"><p class="input-label" id="passwordLabel">Password</p></div>
                 <mat-form-field appearance="outline">
-                  <input [formControl]="password"
+                  <input [formControl]="password" #passwordInput
                          [type]="hide ? 'password' : 'text'"
                          aria-label="Password"
                          autocomplete="current-password"
-                         matInput placeholder="Password">
+                         matInput placeholder="Password" (keyup.enter)="onSignIn()">
 
                   <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" mat-icon-button
                           matSuffix type="button">

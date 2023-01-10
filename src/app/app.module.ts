@@ -20,7 +20,6 @@ import {PaymentServicesComponent} from './user-payment-services/payment-services
 import {HistoryComponent} from './history/history/history.component';
 import {ProfileComponent} from './profile/profile.component';
 import {MatListModule} from "@angular/material/list";
-import {PaymentMethodsService} from "./user-payment-services/services/payment-methods.service";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
@@ -29,19 +28,20 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {PaymentComponent} from './choose-payment/payment/payment.component';
 import {MatGridListModule} from "@angular/material/grid-list";
-import {
-  PaymentServiceManagerComponent
-} from './admin/payment-service-manager/payment-service-manager.component';
+import {PaymentServiceManagerComponent} from './admin/payment-service-manager/payment-service-manager.component';
 import {UserManagerComponent} from './admin/user-manager/user-manager.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {FooterComponent} from './utils/footer/footer.component';
 import {MatCardModule} from "@angular/material/card";
 import {AuthInterceptor} from "./auth/auth.interceptor";
-import {MAT_SNACK_BAR_DEFAULT_OPTIONS} from "@angular/material/snack-bar";
-import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
-import { PaymentResultComponent } from './choose-payment/payment-result/payment-result/payment-result.component';
-import { PaymentResultEmptyComponent } from './choose-payment/payment-result/payment-result-empty/payment-result-empty.component';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {PaymentResultComponent} from './choose-payment/payment-result/payment-result/payment-result.component';
+import {
+  PaymentResultEmptyComponent
+} from './choose-payment/payment-result/payment-result-empty/payment-result-empty.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { NewPaymentMethodDialogComponent } from './user-payment-services/new-paymeny-method-dialog/new-payment-method-dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,8 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     UserManagerComponent,
     FooterComponent,
     PaymentResultComponent,
-    PaymentResultEmptyComponent
+    PaymentResultEmptyComponent,
+    NewPaymentMethodDialogComponent
   ],
     imports: [
         BrowserModule,
@@ -83,17 +84,24 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
         MatTooltipModule,
         MatCardModule,
         MatProgressBarModule,
+      MatDialogModule,
+      MatSnackBarModule
     ],
-  providers: [{
+  providers: [
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useValue: {hasBackdrop: true}
+    },
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true,
-  },
+    },
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {duration: 2500}
     },
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

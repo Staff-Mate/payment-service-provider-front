@@ -21,7 +21,7 @@ const ELEMENT_DATA: Payment[] = [
     status: "finished"
   },
   {
-    service: 'card',
+    service: 'bank-card-service',
     description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
     amount: 12345,
     date: new Date(2022, 4, 1, 14, 24),
@@ -63,7 +63,7 @@ const ELEMENT_DATA: Payment[] = [
     status: 'finished'
   },
   {
-    service: 'card',
+    service: 'bank-card-service',
     description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
     amount: 6848,
     date: new Date(2022, 11, 26, 17, 9),

@@ -1,8 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {NewPaymentDto} from "../dto/newPayment.dto";
-import {HttpResponseDto} from "../dto/HttpResponse.dto";
+import {NewPaymentDto} from "../dto/new-payment.dto";
 
 @Injectable({providedIn: 'root'})
 export class PaymentService{

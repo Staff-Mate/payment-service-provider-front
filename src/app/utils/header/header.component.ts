@@ -1,10 +1,9 @@
-import {ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {User} from "../../auth/dto/user.model";
 import {AuthService} from "../../auth/service/auth.service";
 import {TokenStorageService} from "../../auth/service/tokenStorage.service";
 import {Subject, takeUntil} from "rxjs";
-import {LoadingService} from "../../auth/service/loading.service";
 
 @Component({
   selector: 'app-header',

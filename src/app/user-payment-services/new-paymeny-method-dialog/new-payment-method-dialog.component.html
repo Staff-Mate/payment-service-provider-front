@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Enable {{data.paymentService.name}} service</h1>
+<div class="new-payment-dialog-content" mat-dialog-content>
+  <p>Please fill out your credentials for payment service you want to enable. These credentials will be used to connect to your account on selected payment service.</p>
+  <div class="form-section ">
+    <div class="input-section">
+      <form [formGroup]="form">
+        <div class="inputs">
+          <div class="company-inputs input-row">
+          <div class="company-name-input input-block">
+            <div class="required-field-container">
+              <p class="input-label company-name-label" id="idLabel">
+                Identifier</p>
+            </div>
+            <mat-form-field appearance="outline" >
+              <input [formControl]="id" autocomplete="id" class="email" data-field="id"
+                     data-label="idLabel" data-required="idRequired" matInput cdkFocusInitial
+                     name="id" placeholder="" type="text" (keyup.enter)="secretInput.focus()">
+            </mat-form-field>
+          </div>
+          <div class="password-input input-block">
+            <div class="required-field-container"><p class="input-label" id="secretLabel">Secret</p></div>
+            <mat-form-field appearance="outline">
+              <input [formControl]="secret" #secretInput
+                     [type]="hide ? 'password' : 'text'"
+                     aria-label="Secret"
+                     autocomplete="current-password"
+                     matInput placeholder="" (keyup.enter)="saveBtn.focus()">
+
+              <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" mat-icon-button
+                      matSuffix type="button">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+
+            </mat-form-field>
+          </div>
+        </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-dialog-close class="simple-red-btn">Cancel</button>
+  <button mat-dialog-close #saveBtn class="simple-blue-btn" (click)="enablePaymentService()">Save</button>
+</div>

@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PaymentMethodsService} from "../../user-payment-services/services/payment-methods.service";
-import {Payment} from "../../history/history/history.component";
-import {PaymentMethod} from "../../user-payment-services/dto/payment-method.model";
 import {ActivatedRoute, Router} from "@angular/router";
-import {EnabledPaymentMethodDto} from "../../user-payment-services/dto/enabledPaymentMethodDto";
-import {PaymentService} from "../../user-payment-services/services/payment.service";
-import {NewPaymentDto} from "../../user-payment-services/dto/newPayment.dto";
+import {EnabledPaymentMethodDto} from "../../user-payment-services/dto/enabled-payment-method.dto";
+import {PaymentService} from "../service/payment.service";
+import {NewPaymentDto} from "../dto/new-payment.dto";
 
 @Component({
   selector: 'app-payment',

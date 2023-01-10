@@ -75,38 +75,38 @@ svg:not(:root) {
   height: 100%;
 }
 
-.signup .signup-section .form-section, .signup .signup-section .form-section .signup-header {
+.form-section, .form-section .signup-header {
   display: flex;
   align-items: center;
   flex-flow: column;
   justify-content: center;
 }
 
-.signup .signup-section .form-section {
+.form-section {
   width: 100%;
   padding: 70px;
   box-sizing: border-box;
 }
 
-.signup .signup-section .form-section, .signup .signup-section .form-section .signup-header {
+.form-section, form-section .signup-header {
   display: flex;
   align-items: center;
   flex-flow: column;
   justify-content: center;
 }
 
-.signup .signup-section .form-section .signup-header img.discash-logo {
+.form-section .signup-header img.discash-logo {
   width: 280px;
 }
 
-.signup .signup-section .form-section h1 {
+.form-section h1 {
   font-size: 17px;
   color: #4d4f5c;
   font-weight: 400;
   margin-top: 40px;
 }
 
-.signup .signup-section .form-section .input-section {
+.form-section .input-section {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -114,7 +114,7 @@ svg:not(:root) {
   margin-top: 30px;
 }
 
-.signup .signup-section .form-section .input-section form .inputs {
+.form-section .input-section form .inputs {
   display: flex;
   flex-flow: column;
   width: 100%;
@@ -122,16 +122,16 @@ svg:not(:root) {
   box-sizing: border-box;
 }
 
-.signup .signup-section .form-section .input-section form .inputs .company-inputs {
+.form-section .input-section form .inputs .company-inputs {
   flex-flow: column;
   margin: 0;
 }
 
-.signup .signup-section .form-section .input-section form .inputs .products-inputs, .signup .signup-section .form-section .input-section form .inputs .products-inputs .input-block {
+.form-section .input-section form .inputs .products-inputs, .form-section .input-section form .inputs .products-inputs .input-block {
   width: 100%;
 }
 
-.signup .signup-section .form-section .input-section form .inputs .input-row {
+.form-section .input-section form .inputs .input-row {
   display: flex;
   flex-flow: row;
   align-items: flex-start;
@@ -139,7 +139,7 @@ svg:not(:root) {
   margin: 20px 0 0;
 }
 
-.signup .signup-section .form-section .input-section form .inputs .input-column {
+.form-section .input-section form .inputs .input-column {
   display: flex;
   flex-flow: column;
   margin: 20px 0;
@@ -152,16 +152,16 @@ svg:not(:root) {
   position: relative;
 }
 
-.signup .signup-section .form-section .input-section form {
+.form-section .input-section form {
   width: 100%;
 }
 
-.signup .signup-section .form-section .input-section form .inputs .company-inputs {
+ .form-section .input-section form .inputs .company-inputs {
   flex-flow: column;
   margin: 0;
 }
 
-.signup .signup-section .form-section .input-section form .inputs .input-row .input-block .input-label {
+ .form-section .input-section form .inputs .input-row .input-block .input-label {
   font-size: 18px;
   line-height: 24px;
   text-align: left;
@@ -178,12 +178,12 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color:hover {
   cursor: pointer !important;
 }
 
-.signup .signup-section .form-section .input-section form .inputs .input-row .input-block {
+.form-section .input-section form .inputs .input-row .input-block {
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   justify-content: center;
-  width: 47%;
+  width: 100%;
   position: relative;
 }
 
@@ -209,7 +209,7 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color:hover {
     left: auto;
     margin: auto;
   }
-  .signup .signup-section .form-section .input-section form .inputs .company-inputs .input-block {
+   .form-section .input-section form .inputs .company-inputs .input-block {
     margin: 20px 0;
     width: 100%;
   }

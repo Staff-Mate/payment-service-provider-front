@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Client} from "../../auth/dto/client.model";
 
@@ -27,7 +27,7 @@ let ELEMENT_DATA: Client[] = [
   },
   {
     permissions:[],
-    paymentService: ['qr','card','bitcoin','paypal'],
+    paymentService: ['qr','bank-card-service','bitcoin','paypal'],
     email:'ajeets.hr@gmail.com',
     displayName: 'Ajeets',
     firstName: 'Malika',
