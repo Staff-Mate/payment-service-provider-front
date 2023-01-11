@@ -1,14 +1,14 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
 import {PaymentMethod} from "../dto/payment-method.model";
 import {FormControl, FormGroup} from "@angular/forms";
 import {PaymentMethodsService} from "../services/payment-methods.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatLegacySnackBar as MatSnackBar} from "@angular/material/legacy-snack-bar";
 
 @Component({
   selector: 'app-new-payment-method-dialog',
   templateUrl: './new-payment-method-dialog.component.html',
-  styleUrls: ['./new-payment-method-dialog.component.scss', './../../styles/signform.component.scss']
+  styleUrls: ['./new-payment-method-dialog.component.scss', '../../styles/signform.component.scss']
 })
 export class NewPaymentMethodDialogComponent implements OnInit {
   hide: boolean;

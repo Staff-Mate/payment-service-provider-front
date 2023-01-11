@@ -3,8 +3,8 @@ import {PaymentMethod} from "../dto/payment-method.model";
 import {PaymentMethodsService} from "../services/payment-methods.service";
 import {EnabledPaymentMethodDto} from "../dto/enabled-payment-method.dto";
 import {NewPaymentMethodDialogComponent} from "../new-paymeny-method-dialog/new-payment-method-dialog.component";
-import {MatDialog} from "@angular/material/dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
+import {MatLegacySnackBar as MatSnackBar} from "@angular/material/legacy-snack-bar";
 
 
 @Component({

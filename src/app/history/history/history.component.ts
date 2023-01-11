@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from "@angular/material/paginator";
+import {MatLegacyPaginator as MatPaginator} from "@angular/material/legacy-paginator";
 import {MatSort} from "@angular/material/sort";
 import {FormControl, FormGroup} from "@angular/forms";
 
