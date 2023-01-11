@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 
 export interface Payment {
   service: string;
@@ -80,11 +80,11 @@ export class HistoryComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  filterForm: FormGroup;
-  startDate: FormControl;
-  endDate: FormControl;
-  status: FormControl;
-  service: FormControl;
+  filterForm: UntypedFormGroup;
+  startDate: UntypedFormControl;
+  endDate: UntypedFormControl;
+  status: UntypedFormControl;
+  service: UntypedFormControl;
   activeServices: Array<String> = new Array<String>();
 
 
@@ -100,12 +100,12 @@ export class HistoryComponent implements OnInit {
 
 
   private initForm() {
-    this.startDate = new FormControl()
-    this.endDate = new FormControl()
-    this.status = new FormControl()
-    this.service = new FormControl()
+    this.startDate = new UntypedFormControl()
+    this.endDate = new UntypedFormControl()
+    this.status = new UntypedFormControl()
+    this.service = new UntypedFormControl()
 
-    this.filterForm = new FormGroup({
+    this.filterForm = new UntypedFormGroup({
       'startDate': this.startDate,
       'endDate': this.endDate,
       'status': this.status,

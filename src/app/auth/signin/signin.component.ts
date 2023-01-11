@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../service/auth.service";
 import {Subject, takeUntil} from "rxjs";
 import {LoadingService} from "../service/loading.service";
@@ -10,9 +10,9 @@ import {LoadingService} from "../service/loading.service";
   styleUrls: ['../../styles/signform.component.scss']
 })
 export class SigninComponent implements OnInit {
-  form: FormGroup = new FormGroup({})
-  password: FormControl = new FormControl();
-  email: FormControl = new FormControl();
+  form: UntypedFormGroup = new UntypedFormGroup({})
+  password: UntypedFormControl = new UntypedFormControl();
+  email: UntypedFormControl = new UntypedFormControl();
   hide: boolean = true;
   error: any;
   isLoading: boolean;
@@ -34,10 +34,10 @@ export class SigninComponent implements OnInit {
   }
 
   initForm() {
-    this.password = new FormControl();
-    this.email = new FormControl('', Validators.email)
+    this.password = new UntypedFormControl();
+    this.email = new UntypedFormControl('', Validators.email)
 
-    this.form = new FormGroup({
+    this.form = new UntypedFormGroup({
       password: this.password,
       email: this.email
     })

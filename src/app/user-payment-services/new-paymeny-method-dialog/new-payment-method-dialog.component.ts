@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {PaymentMethod} from "../dto/payment-method.model";
-import {FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 import {PaymentMethodsService} from "../services/payment-methods.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -12,10 +12,10 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class NewPaymentMethodDialogComponent implements OnInit {
   hide: boolean;
-  form: FormGroup;
-  secret: FormControl;
-  id: FormControl;
-  paymentMethod: FormControl;
+  form: UntypedFormGroup;
+  secret: UntypedFormControl;
+  id: UntypedFormControl;
+  paymentMethod: UntypedFormControl;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { paymentService: PaymentMethod }, private paymentMethodService: PaymentMethodsService, private dialogRef: MatDialogRef<NewPaymentMethodDialogComponent>, private _snackBar: MatSnackBar) {
     this.hide = true;
@@ -27,11 +27,11 @@ export class NewPaymentMethodDialogComponent implements OnInit {
 
   initForm() {
 
-    this.id = new FormControl('');
-    this.secret = new FormControl('')
-    this.paymentMethod = new FormControl(this.data.paymentService)
+    this.id = new UntypedFormControl('');
+    this.secret = new UntypedFormControl('')
+    this.paymentMethod = new UntypedFormControl(this.data.paymentService)
 
-    this.form = new FormGroup({
+    this.form = new UntypedFormGroup({
       userId: this.id,
       userSecret: this.secret,
       paymentMethod: this.paymentMethod

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 import {Client} from "../../auth/dto/client.model";
 
 let ELEMENT_DATA: Client[] = [
@@ -46,11 +46,11 @@ let ELEMENT_DATA: Client[] = [
 export class UserManagerComponent implements OnInit {
   displayedColumns = ['company-name','owner','contact','services'];
   dataSource = ELEMENT_DATA;
-  filterForm: FormGroup;
-  startDate: FormControl;
-  endDate: FormControl;
-  service: FormControl;
-  dateForm: FormGroup;
+  filterForm: UntypedFormGroup;
+  startDate: UntypedFormControl;
+  endDate: UntypedFormControl;
+  service: UntypedFormControl;
+  dateForm: UntypedFormGroup;
 
   constructor() { }
 
@@ -60,15 +60,15 @@ export class UserManagerComponent implements OnInit {
 
   initForm(){
 
-    this.startDate = new FormControl()
-    this.endDate = new FormControl()
-    this.service = new FormControl()
-    this.dateForm = new FormGroup({
+    this.startDate = new UntypedFormControl()
+    this.endDate = new UntypedFormControl()
+    this.service = new UntypedFormControl()
+    this.dateForm = new UntypedFormGroup({
       'startDate': this.startDate,
       'endDate': this.endDate
     })
 
-    this.filterForm = new FormGroup({
+    this.filterForm = new UntypedFormGroup({
       'dates': this.dateForm,
       'service': this.service
     })
