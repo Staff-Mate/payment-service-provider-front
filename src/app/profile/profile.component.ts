@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {Client} from "../auth/dto/client.model";
 import {User} from "../auth/dto/user.model";
 import {AuthService} from "../auth/service/auth.service";
@@ -12,14 +12,14 @@ import {AuthService} from "../auth/service/auth.service";
 export class ProfileComponent implements OnInit {
   user: User | Client;
   client: Client = new Client('gp.recruit.hr@gmail.com','G-P Recruit','Erika', 'Waramunt',  'USA', 'Pennsylvania', 'Harrisburg');
-  firstName: UntypedFormControl;
-  lastName: UntypedFormControl;
-  email: UntypedFormControl;
+  firstName: FormControl;
+  lastName: FormControl;
+  email: FormControl;
   hidePassword: boolean = true;
-  password: UntypedFormControl;
-  confirmPassword: UntypedFormControl;
+  password: FormControl;
+  confirmPassword: FormControl;
   hideConfirmPassword: boolean = true;
-  infoForm: UntypedFormGroup;
+  infoForm: FormGroup;
   activeView: string = "home"
 
   constructor(private authService: AuthService) {
@@ -40,13 +40,13 @@ export class ProfileComponent implements OnInit {
   }
 
   initInfoForm() {
-    this.firstName = new UntypedFormControl(this.client.firstName)
-    this.lastName = new UntypedFormControl(this.client.lastName)
-    this.email = new UntypedFormControl(this.client.email)
-    this.password = new UntypedFormControl()
-    this.confirmPassword = new UntypedFormControl()
+    this.firstName = new FormControl(this.client.firstName)
+    this.lastName = new FormControl(this.client.lastName)
+    this.email = new FormControl(this.client.email)
+    this.password = new FormControl()
+    this.confirmPassword = new FormControl()
 
-    this.infoForm = new UntypedFormGroup({
+    this.infoForm = new FormGroup({
       'firstName': this.firstName,
       'lastName': this.lastName,
       'email': this.email,
