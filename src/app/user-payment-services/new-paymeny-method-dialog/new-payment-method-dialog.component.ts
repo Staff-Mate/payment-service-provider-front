@@ -6,7 +6,7 @@ import {PaymentMethodsService} from "../services/payment-methods.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
-  selector: 'app-new-paymeny-method-dialog',
+  selector: 'app-new-payment-method-dialog',
   templateUrl: './new-payment-method-dialog.component.html',
   styleUrls: ['./new-payment-method-dialog.component.scss', './../../styles/signform.component.scss']
 })

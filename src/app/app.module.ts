@@ -42,6 +42,9 @@ import {
 } from './choose-payment/payment-result/payment-result-empty/payment-result-empty.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { NewPaymentMethodDialogComponent } from './user-payment-services/new-paymeny-method-dialog/new-payment-method-dialog.component';
+import {MAT_CHIPS_DEFAULT_OPTIONS, MatChip, MatChipsModule} from "@angular/material/chips";
+import {COMMA, SPACE} from "@angular/cdk/keycodes";
+import {MatChipListboxHarness} from "@angular/material/chips/testing";
 
 @NgModule({
   declarations: [
@@ -85,7 +88,8 @@ import { NewPaymentMethodDialogComponent } from './user-payment-services/new-pay
         MatCardModule,
         MatProgressBarModule,
       MatDialogModule,
-      MatSnackBarModule
+      MatSnackBarModule,
+      MatChipsModule,
     ],
   providers: [
     {
@@ -101,6 +105,12 @@ import { NewPaymentMethodDialogComponent } from './user-payment-services/new-pay
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: {duration: 2500}
     },
+    {
+      provide: MAT_CHIPS_DEFAULT_OPTIONS,
+      useValue: {
+        separatorKeyCodes: [COMMA, SPACE]
+      }
+    }
   ],
   bootstrap: [AppComponent]
 })

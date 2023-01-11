@@ -16,72 +16,83 @@
 <div class="section">
   <div class="banner">
     <div class="filter">
-      <form>
-        <mat-form-field appearance="outline">
-          <mat-select placeholder="Service">
-            <mat-option>None</mat-option>
-            <mat-option value="Bitcoin">
-              <div class="option">
+      <form class="filter-form">
+        <div class="service-container">
+          <p>Service</p>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Service" >
+              <mat-option>None</mat-option>
+              <mat-option value="Bitcoin" >
+                <div class="option">
 
-                <img alt="Bitcoin image" src="assets/bitcoin.png">
-                <p>Bitcoin</p>
-              </div>
-            </mat-option>
-            <mat-option value="Card">
-              <div class="option">
-                <img alt="Card image" src="assets/bank-card-service.png">
-                <p>Card</p>
-              </div>
-            </mat-option>
-            <mat-option value="PayPal">
-              <div class="option">
-                <img alt="PayPal image" src="assets/paypal.png">
-                <p>PayPal</p>
-              </div>
-            </mat-option>
-            <mat-option value="QR code">
-              <div class="option">
-                <img alt="QR code image" src="assets/qr.png">
-                <p>QR code</p>
-              </div>
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-select placeholder="Status">
-            <mat-option>None</mat-option>
-            <mat-option value="Finished">
-              <div class="option">
-                <div>
-                  <mat-icon class="finished-icon" svgIcon="finished"></mat-icon>
+                  <img alt="Bitcoin image" src="../../../assets/bitcoin-service.png">
+                  <p>Bitcoin</p>
                 </div>
-                <p>Finished</p>
-              </div>
-            </mat-option>
-            <mat-option value="Active">
-              <div class="option">
-                <mat-icon class="active-icon" svgIcon="active"></mat-icon>
-                <p>Active</p>
-              </div>
-            </mat-option>
-            <mat-option [value]="'Canceled'">
-              <div class="option">
-                <mat-icon class="canceled-icon" svgIcon="canceled"></mat-icon>
-                <p>Canceled</p>
-              </div>
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-date-range-input
-            [formGroup]="filterForm"
-            [rangePicker]="datePicker">
-            <input [formControl]="startDate" matStartDate placeholder="Start">
-            <input [formControl]="endDate" matEndDate placeholder="End">
-          </mat-date-range-input>
-          <mat-datepicker-toggle [for]="datePicker" matSuffix></mat-datepicker-toggle>
-          <mat-date-range-picker #datePicker></mat-date-range-picker>
-        </mat-form-field>
+              </mat-option>
+              <mat-option value="Bank Card">
+                <div class="option">
+                  <img alt="Bank Card image" src="assets/bank-card-service.png">
+                  <p>Card</p>
+                </div>
+              </mat-option>
+              <mat-option value="PayPal">
+                <div class="option">
+                  <img alt="PayPal image" src="../../../assets/paypal-service.png">
+                  <p>PayPal</p>
+                </div>
+              </mat-option>
+              <mat-option value="QR code">
+                <div class="option">
+                  <img alt="QR code image" src="../../../assets/qr-code-service.png">
+                  <p>QR code</p>
+                </div>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="status-container">
+          <p>Status</p>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Status">
+              <mat-option>None</mat-option>
+              <mat-option value="SUCCESS">
+                <div class="option">
+                  <div>
+                    <mat-icon class="finished-icon" svgIcon="finished"></mat-icon>
+                  </div>
+                  <p>Successful</p>
+                </div>
+              </mat-option>
+              <mat-option value="FAILED">
+                <div class="option">
+                  <mat-icon class="canceled-icon" svgIcon="failed"></mat-icon>
+                  <p>Failed</p>
+                </div>
+              </mat-option>
+              <mat-option value="ERROR">
+                <div class="option">
+                  <mat-icon class="canceled-icon" svgIcon="error"></mat-icon>
+                  <p>Error</p>
+                </div>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+<!--        <div class="active-container">-->
+<!--        </div>-->
+        <div class="date-container">
+          <p>Date</p>
+          <mat-form-field appearance="outline">
+            <mat-date-range-input
+              [formGroup]="filterForm"
+              [rangePicker]="datePicker">
+              <input [formControl]="startDate" matStartDate placeholder="Start">
+              <input [formControl]="endDate" matEndDate placeholder="End">
+            </mat-date-range-input>
+            <mat-datepicker-toggle [for]="datePicker" matSuffix></mat-datepicker-toggle>
+            <mat-date-range-picker #datePicker></mat-date-range-picker>
+          </mat-form-field>
+        </div>
       </form>
     </div>
   </div>
@@ -118,9 +129,10 @@
       <ng-container matColumnDef="status">
         <th *matHeaderCellDef mat-header-cell> Status</th>
         <td *matCellDef="let element" class="cell-amount" mat-cell>
-          <mat-icon *ngIf="element.status == 'finished'" class="finished-icon">check_circle_outline</mat-icon>
-          <mat-icon *ngIf="element.status == 'canceled'" class="canceled-icon">cancel</mat-icon>
-          <mat-icon *ngIf="element.status == 'active'" class="active-icon">cached</mat-icon>
+          <mat-icon *ngIf="element.status == 'finished'" class="finished-icon ">check_circle_outline</mat-icon>
+          <mat-icon *ngIf="element.status == 'failed'" class="canceled-icon ">error_outline</mat-icon>
+          <mat-icon *ngIf="element.status == 'error'" class="canceled-icon ">highlight_off</mat-icon>
+          <mat-icon *ngIf="element.status == 'active'" class="active-icon ">cached</mat-icon>
         </td>
       </ng-container>
 
