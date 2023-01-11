@@ -18,19 +18,16 @@
 .mat-column-service {
   width: 100px !important;
   text-align: center;
-  color: gray;
 }
 
 .mat-column-amount {
   width: 120px !important;
   text-align: left;
-  color: gray;
 }
 
 .mat-column-date {
   width: 200px !important;
   text-align: left;
-  color: gray;
 }
 
 .mat-column-status {
@@ -40,31 +37,38 @@
 
 .mat-column-description {
   width: 100% !important;
-  color: gray;
 }
 
 
 .filter-form {
   display: grid;
-  align-items: baseline !important;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4,1fr);
   grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  min-width: fit-content;
 }
 
 .status-container,
 .service-container,
-.date-container {
+.date-container,
+.active-container{
   grid-row: 1;
   display: flex;
   flex-direction: row;
-  align-items: baseline;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
 
   p {
     padding-right: 1rem;
+    padding-left: 1rem;
 
+      font-size: 18px!important;
+      margin: 0!important;
   }
 
-  .mat-form-field {
+  .mat-mdc-form-field {
     flex: 1;
     padding-right: 1rem;
   }
@@ -82,33 +86,47 @@
   grid-column: 3;
 }
 
-@media screen and (max-width: 1200px) {
+.active-container {
+  grid-column: 4;
+}
+
+.mat-mdc-chip{
+  word-break: break-word;
+}
+
+@media screen and (max-width: 1450px) {
   .filter-form {
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 1rem;
 
     .service-container {
       grid-column-start: 1;
-      grid-column-end: 3;
+      grid-column-end: 1;
     }
 
     .status-container {
+      grid-column-start: 2;
+      grid-column-end: 2;
+    }
+
+    .active-container {
       grid-column-start: 3;
-      grid-column-end: 5;
+      grid-column-end: 3;
     }
 
     .date-container {
       grid-row: 2;
-      grid-column-start: 2;
+      grid-column-start: 1;
       grid-column-end: 4;
     }
 
   }
 }
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 1090px) {
   .filter-form {
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     grid-template-columns: 1fr;
 
     .service-container {
@@ -123,6 +141,11 @@
 
     .date-container {
       grid-row: 3;
+      grid-column: 1;
+    }
+
+    .active-container {
+      grid-row: 4;
       grid-column: 1;
     }
 

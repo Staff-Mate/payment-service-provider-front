@@ -2,16 +2,10 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatLegacyPaginator as MatPaginator} from "@angular/material/legacy-paginator";
 import {MatSort} from "@angular/material/sort";
 import {FormControl, FormGroup} from "@angular/forms";
+import {TransactionDto} from "../dto/transaction.dto";
 
-export interface Payment {
-  service: string;
-  description: string;
-  amount: number;
-  date: Date;
-  status: string;
-}
 
-const ELEMENT_DATA: Payment[] = [
+const ELEMENT_DATA: TransactionDto[] = [
   {
     service: 'paypal-service',
     description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',

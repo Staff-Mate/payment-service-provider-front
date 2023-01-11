@@ -5,7 +5,7 @@ import {Client} from "../../auth/dto/client.model";
 let ELEMENT_DATA: Client[] = [
   {
     permissions: [],
-    paymentService: ['paypal'],
+    paymentService: ['paypal-service'],
     email: 'gp.recruit.hr@gmail.com',
     displayName: 'G-P Recruit',
     firstName: 'Erika',
@@ -16,7 +16,7 @@ let ELEMENT_DATA: Client[] = [
   },
   {
     permissions: [],
-    paymentService: ['bitcoin'],
+    paymentService: ['bitcoin-service'],
     email: 'lano.hr@gmail.com',
     displayName: 'Lano',
     firstName: 'Jac',
@@ -27,7 +27,7 @@ let ELEMENT_DATA: Client[] = [
   },
   {
     permissions: [],
-    paymentService: ['qr', 'bank-card-service', 'bitcoin', 'paypal'],
+    paymentService: ['qr-code-service', 'bank-card-service', 'bitcoin-service', 'paypal-service'],
     email: 'ajeets.hr@gmail.com',
     displayName: 'Ajeets',
     firstName: 'Malika',
