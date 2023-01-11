@@ -155,12 +155,12 @@ svg:not(:root) {
   width: 100%;
 }
 
- .form-section .input-section form .inputs .company-inputs {
+.form-section .input-section form .inputs .company-inputs {
   flex-flow: column;
   margin: 0;
 }
 
- .form-section .input-section form .inputs .input-row .input-block .input-label {
+.form-section .input-section form .inputs .input-row .input-block .input-label {
   font-size: 18px;
   line-height: 24px;
   text-align: left;
@@ -187,13 +187,14 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color:hover {
 }
 
 
-.mat-form-field {
+.mat-mdc-form-field {
   width: 100%;
 }
 
 .required-star {
   color: red;
 }
+
 
 @media screen and (max-width: 1280px) {
   .discash-banner {
@@ -208,13 +209,13 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color:hover {
     left: auto;
     margin: auto;
   }
-   .form-section .input-section form .inputs .company-inputs .input-block {
+  .form-section .input-section form .inputs .company-inputs .input-block {
     margin: 20px 0;
     width: 100%;
   }
 }
 
-.error-container{
+.error-container {
   min-height: 30px;
   width: 100%;
   text-align: center;
@@ -226,7 +227,7 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color:hover {
   display: flex;
 }
 
-.error-placeholder{
+.error-placeholder {
   min-height: 40px;
   width: 100%;
 }

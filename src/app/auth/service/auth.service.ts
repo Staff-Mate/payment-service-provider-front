@@ -36,7 +36,7 @@ export class AuthService {
           console.log(error)
           if (error.status == 400) {
             this.errorResponse.next(error.error.message);
-          }else{
+          } else {
             this.errorResponse.next("Something went wrong. Please try again.");
           }
           console.log(error)
@@ -62,12 +62,12 @@ export class AuthService {
     return this._http.get<string>(environment.apiUrl + "/auth/verify", {params: {token: token}});
   }
 
-  signUpUser(user: RegisterDto){
+  signUpUser(user: RegisterDto) {
     console.log(user)
-    return this._http.post(environment.apiUrl + "/auth-service/auth/register",user);
+    return this._http.post(environment.apiUrl + "/auth-service/auth/register", user);
   }
 
-  getLoggedInUser(){
+  getLoggedInUser() {
     return this._http.get<User>(environment.apiUrl + "/auth-service/auth/");
   }
 }

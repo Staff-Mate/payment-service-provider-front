@@ -3,34 +3,38 @@
   width: fit-content;
   text-align: center;
 }
+
 .mat-column-owner {
   width: fit-content;
   text-align: center;
 }
+
 .mat-column-contact {
   width: fit-content;
   text-align: center;
 }
+
 .mat-column-services {
   width: fit-content;
   text-align: center;
-  img{
+
+  img {
     width: 20px;
   }
 }
 
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before{
-  bottom: -20px!important;
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before {
+  bottom: -20px !important;
 }
 
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-ripple{
-  bottom: -20px!important;
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-ripple {
+  bottom: -20px !important;
 }
 
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex{
-  background-color: transparent!important;
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: transparent !important;
 }
 
-.search-field{
+.search-field {
   flex: 0.9;
 }

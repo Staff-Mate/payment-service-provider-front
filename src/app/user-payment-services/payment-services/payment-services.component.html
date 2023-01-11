@@ -7,10 +7,11 @@
         customers to use.</h2>
       <mat-list>
         <mat-list-item *ngFor="let service of activeServices">
-          <h5 mat-line>{{service.paymentMethod.name}}</h5>
-          <span mat-line>{{service.dateAdded | date}}</span>
-          <img [alt]="service.paymentMethod.serviceName + 'image'" [src]="'/assets/' + service.paymentMethod.serviceName + '.png'" mat-list-avatar>
-          <button color="accent" mat-stroked-button (click)="removePaymentService(service)">Remove</button>
+          <h5 matListItemTitle>{{service.paymentMethod.name}}</h5>
+          <span matListItemLine>{{service.dateAdded | date}}</span>
+          <img [alt]="service.paymentMethod.serviceName + 'image'" matListItemAvatar
+               [src]="'/assets/' + service.paymentMethod.serviceName + '.png'" >
+          <button (click)="removePaymentService(service)" color="accent" mat-stroked-button matListItemMeta>Remove</button>
         </mat-list-item>
 
       </mat-list>
@@ -36,8 +37,9 @@
         <h1>{{service.name}}</h1>
         <p>{{service.description}}</p>
         <div class="submit-container">
-          <button class="light-blue-green-btn" *ngIf="!checkIfActivated(service)" (click)="openDialog(service)">Add</button>
-          <button class="disabled-blue-green-btn" disabled *ngIf="checkIfActivated(service)">Added</button>
+          <button (click)="openDialog(service)" *ngIf="!checkIfActivated(service)" class="light-blue-green-btn">Add
+          </button>
+          <button *ngIf="checkIfActivated(service)" class="disabled-blue-green-btn" disabled>Added</button>
         </div>
       </div>
     </div>
@@ -46,8 +48,8 @@
         <h3>{{service.name}}</h3>
         <p>{{service.description}}</p>
         <div class="submit-container">
-          <button class="light-blue-green-btn" *ngIf="!checkIfActivated(service)">Add</button>
-          <button class="disabled-blue-green-btn" disabled *ngIf="checkIfActivated(service)">Added</button>
+          <button *ngIf="!checkIfActivated(service)" class="light-blue-green-btn">Add</button>
+          <button *ngIf="checkIfActivated(service)" class="disabled-blue-green-btn" disabled>Added</button>
         </div>
       </div>
       <div class="right-container">

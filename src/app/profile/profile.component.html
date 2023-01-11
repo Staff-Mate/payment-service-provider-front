@@ -15,7 +15,8 @@
                        id="firstNameLabel">First Name</p>
                   </div>
                   <mat-form-field appearance="outline">
-                    <input [formControl]="firstName" class="first-name-input" data-field="first_name" data-label="firstNameLabel"
+                    <input [formControl]="firstName" class="first-name-input" data-field="first_name"
+                           data-label="firstNameLabel"
                            data-required="firstNameRequired" matInput name="first-name"
                            placeholder="" type="text">
                   </mat-form-field>
@@ -27,7 +28,8 @@
                   </div>
 
                   <mat-form-field appearance="outline">
-                    <input [formControl]="lastName" class="last-name-input" data-field="last_name" data-label="lastNameLabel"
+                    <input [formControl]="lastName" class="last-name-input" data-field="last_name"
+                           data-label="lastNameLabel"
                            data-required="lastNameRequired" matInput name="last-name"
                            placeholder="" type="text">
                   </mat-form-field>
@@ -57,7 +59,8 @@
                          aria-label="Password"
                          matInput
                          placeholder="Password">
-                  <button (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword"
+                  <button (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+                          [attr.aria-pressed]="hidePassword"
                           mat-icon-button
                           matSuffix type="button">
                     <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -71,7 +74,8 @@
                          aria-label="Confirm Password"
                          matInput
                          placeholder="Confirm Password">
-                  <button (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword"
+                  <button (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'"
+                          [attr.aria-pressed]="hideConfirmPassword"
                           mat-icon-button
                           matSuffix type="button">
                     <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -99,7 +103,8 @@
           </div>
         </div>
         <div class="submit-container">
-          <button *ngIf="user.permissions.includes('user')" (click)="activeView = 'infoChange'" class="light-blue-green-btn">Change owner<span
+          <button (click)="activeView = 'infoChange'" *ngIf="user.permissions.includes('user')"
+                  class="light-blue-green-btn">Change owner<span
             id="loaderr1"></span></button>
           <button (click)="activeView = 'passwordChange'" class="light-blue-green-btn">Change password<span
             id="loaderr2"></span></button>
@@ -109,7 +114,8 @@
     <div class="right-container">
       <img
         alt="CV image"
-        src="https://d18fuqpnk61mcc.cloudfront.net/build/images/crypto-exchanges-nft-platforms/track-transactions.svg"></div>
+        src="https://d18fuqpnk61mcc.cloudfront.net/build/images/crypto-exchanges-nft-platforms/track-transactions.svg">
+    </div>
   </div>
 </div>
 

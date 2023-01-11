@@ -11,7 +11,7 @@ import {AuthService} from "../auth/service/auth.service";
 })
 export class ProfileComponent implements OnInit {
   user: User | Client;
-  client: Client = new Client('gp.recruit.hr@gmail.com','G-P Recruit','Erika', 'Waramunt',  'USA', 'Pennsylvania', 'Harrisburg');
+  client: Client = new Client('gp.recruit.hr@gmail.com', 'G-P Recruit', 'Erika', 'Waramunt', 'USA', 'Pennsylvania', 'Harrisburg');
   firstName: FormControl;
   lastName: FormControl;
   email: FormControl;
@@ -27,12 +27,12 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.initInfoForm()
-    this.authService.getLoggedInUser().subscribe(response=>{
+    this.authService.getLoggedInUser().subscribe(response => {
       this.user = response;
     });
-    this.authService.logInUserChanged.subscribe(response =>{
-      if(response != true){
-        this.authService.getLoggedInUser().subscribe(response=>{
+    this.authService.logInUserChanged.subscribe(response => {
+      if (response != true) {
+        this.authService.getLoggedInUser().subscribe(response => {
           this.user = response;
         });
       }

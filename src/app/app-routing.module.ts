@@ -25,14 +25,16 @@ const routes: Routes = [
   {path: 'payment-service-manager', component: PaymentServiceManagerComponent},
   {path: 'history', component: HistoryComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'payment',
-    component:PaymentResultEmptyComponent,
-  children:[
-    {path:'success', component: PaymentResultComponent},
-    {path:'fail', component: PaymentResultComponent},
-    {path:'error', component: PaymentResultComponent},
-    {path:':id', component: PaymentComponent},
-  ]},
+  {
+    path: 'payment',
+    component: PaymentResultEmptyComponent,
+    children: [
+      {path: 'success', component: PaymentResultComponent},
+      {path: 'fail', component: PaymentResultComponent},
+      {path: 'error', component: PaymentResultComponent},
+      {path: ':id', component: PaymentComponent},
+    ]
+  },
   {path: '**', redirectTo: ''}
 ];
 

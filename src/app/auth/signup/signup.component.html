@@ -34,7 +34,8 @@
                 </div>
 
                 <mat-form-field appearance="outline">
-                  <input [formControl]="firstName" class="first-name-input" data-field="first_name" data-label="firstNameLabel"
+                  <input [formControl]="firstName" class="first-name-input" data-field="first_name"
+                         data-label="firstNameLabel"
                          data-required="firstNameRequired" matInput name="first-name"
                          placeholder="" type="text">
                 </mat-form-field>
@@ -46,7 +47,8 @@
                 </div>
 
                 <mat-form-field appearance="outline">
-                  <input [formControl]="lastName" class="last-name-input" data-field="last_name" data-label="lastNameLabel"
+                  <input [formControl]="lastName" class="last-name-input" data-field="last_name"
+                         data-label="lastNameLabel"
                          data-required="lastNameRequired" matInput name="last-name"
                          placeholder="" type="text">
                 </mat-form-field>
@@ -91,7 +93,8 @@
                          type="text">
 
                   <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option (onSelectionChange)="onCountryChange(option.isoCode)" *ngFor="let option of filteredCountries | async"
+                    <mat-option (onSelectionChange)="onCountryChange(option.isoCode)"
+                                *ngFor="let option of filteredCountries | async"
                                 [value]="option.name">
                       {{ option.name }}
                     </mat-option>
@@ -110,7 +113,8 @@
                          type="text">
 
                   <mat-autocomplete #autoState="matAutocomplete">
-                    <mat-option (onSelectionChange)="onStateChange(option.isoCode)" *ngFor="let option of filteredStates | async"
+                    <mat-option (onSelectionChange)="onStateChange(option.isoCode)"
+                                *ngFor="let option of filteredStates | async"
                                 [value]="option.name">
                       {{ option.name }}
                     </mat-option>
@@ -145,7 +149,8 @@
                          aria-label="Password"
                          matInput
                          placeholder="Password">
-                  <button (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword"
+                  <button (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+                          [attr.aria-pressed]="hidePassword"
                           mat-icon-button
                           matSuffix type="button">
                     <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -160,7 +165,8 @@
                          aria-label="Confirm Password"
                          matInput
                          placeholder="Confirm Password">
-                  <button (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword"
+                  <button (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'"
+                          [attr.aria-pressed]="hideConfirmPassword"
                           mat-icon-button
                           matSuffix type="button">
                     <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -172,7 +178,7 @@
         </form>
       </div>
       <div class="submit-container">
-        <button class="blue-green-btn" (click)="signUp()">Let’s Connect<span id="loader"></span></button>
+        <button (click)="signUp()" class="blue-green-btn">Let’s Connect<span id="loader"></span></button>
       </div>
     </div>
   </div>

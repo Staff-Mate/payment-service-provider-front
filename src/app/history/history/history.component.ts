@@ -93,7 +93,7 @@ export class HistoryComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.filterForm.valueChanges.subscribe(()=>{
+    this.filterForm.valueChanges.subscribe(() => {
 
     })
   }

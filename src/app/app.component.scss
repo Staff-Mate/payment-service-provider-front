@@ -13,16 +13,16 @@ h1, h2, h3, h4, h5, h6, label, li, p, ul {
   font-family: "Montserrat", sans-serif;
 }
 
-::ng-deep .mat-form-field-outline-start {
+::ng-deep .mdc-notched-outline__leading {
   border-radius: 28px 0 0 28px !important;
   min-width: 28px !important;
 }
 
-::ng-deep .mat-form-field-outline-end {
+::ng-deep .mdc-notched-outline__trailing {
   border-radius: 0 28px 28px 0 !important;
 }
 
-::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+::ng-deep .mat-form-field-appearance-outline .mat-mdc-form-field-infix {
   padding: 1em 0 1em 1em !important;
 }
 
@@ -55,24 +55,29 @@ h1, h2, h3, h4, h5, h6, label, li, p, ul {
   border: 4px solid rgba(0, 0, 0, 0) !important;
 }
 
-::ng-deep .mat-button {
+::ng-deep .mdc-button {
   font-family: "Montserrat", sans-serif !important;
   font-size: 18px !important;
 }
 
-::ng-deep .mat-list-avatar {
+::ng-deep .mat-mdc-list-item-avatar {
   border-radius: 0 !important;
   height: auto !important;
 }
 
+::ng-deep .mdc-list-item--with-leading-avatar.mdc-list-item--with-two-lines.mdc-list-item--with-trailing-meta .mdc-list-item__end{
+  align-self: center!important;
+  display: flex!important;
+}
 
-::ng-deep .mat-table, ::ng-deep .mat-table .mat-cell, ::ng-deep .mat-header-cell {
+
+::ng-deep .mat-mdc-table, ::ng-deep .mat-mdc-table .mat-mdc-cell, ::ng-deep .mat-mdc-header-cell {
   font-family: "Montserrat", sans-serif !important;
   font-size: 20px !important;
 
 }
 
-::ng-deep .mat-select-panel {
+::ng-deep .mat-mdc-select-panel {
   border-radius: 28px !important;
 }
 
@@ -90,7 +95,7 @@ h1, h2, h3, h4, h5, h6, label, li, p, ul {
 
 
 @media screen and (max-width: 1280px) and (min-width: 1024px) {
-  ::ng-deep .mat-table .mat-cell, ::ng-deep .mat-header-cell {
+  ::ng-deep .mat-mdc-table .mat-mdc-cell, ::ng-deep .mat-mdc-header-cell {
     font-size: 18px !important;
   }
 }

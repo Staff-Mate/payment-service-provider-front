@@ -107,6 +107,12 @@ export class SignupComponent implements OnInit {
     return this.form.get(control)?.hasValidator(Validators.required)
   }
 
+  signUp() {
+    this.authService.signUpUser(this.form.value).subscribe((response) => {
+      console.log(response)
+    })
+  }
+
   private _filterCountry(value: string): ICountry[] {
     const filterValue = value.toLowerCase();
 
@@ -123,11 +129,5 @@ export class SignupComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.cities.filter(option => option.name.toLowerCase().includes(filterValue));
-  }
-
-  signUp() {
-    this.authService.signUpUser(this.form.value).subscribe((response)=>{
-      console.log(response)
-    })
   }
 }

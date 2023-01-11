@@ -1,10 +1,10 @@
-.content{
+.content {
   flex: 1;
   padding: 0 100px;
   text-align: center;
 }
 
-.payment-methods{
+.payment-methods {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -12,22 +12,22 @@
   margin: 2em 0;
 }
 
-.payment-methods > *{
+.payment-methods > * {
   flex-grow: 1;
   flex-basis: 20%;
 }
 
 
-.page{
+.page {
   height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.payment-methods .payment-card{
+.payment-methods .payment-card {
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   height: 200px;
   width: 100%;
@@ -35,15 +35,17 @@
   padding: 10px;
   opacity: 1;
   transition: 0.5s ease-in;
-  img{
+
+  img {
     height: 70%;
   }
 }
-.payment-methods:hover .payment-card{
+
+.payment-methods:hover .payment-card {
   opacity: 0.5;
 }
 
-.payment-methods .payment-card:hover{
+.payment-methods .payment-card:hover {
   cursor: pointer;
   opacity: 1;
 

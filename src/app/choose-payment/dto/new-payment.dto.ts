@@ -1,8 +1,8 @@
-export class NewPaymentDto{
+export class NewPaymentDto {
 
   private apiKey: string;
   private amount: number;
-  private paymentMethodId:string;
+  private paymentMethodId: string;
 
 
   constructor(apiKey: string, amount: number, paymentMethodId: string) {

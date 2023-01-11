@@ -1,4 +1,4 @@
-export class FilterDto{
+export class FilterDto {
 
   private merchantId: string;
   private service: string;

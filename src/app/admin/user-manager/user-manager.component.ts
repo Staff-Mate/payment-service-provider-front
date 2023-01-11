@@ -4,7 +4,7 @@ import {Client} from "../../auth/dto/client.model";
 
 let ELEMENT_DATA: Client[] = [
   {
-    permissions:[],
+    permissions: [],
     paymentService: ['paypal'],
     email: 'gp.recruit.hr@gmail.com',
     displayName: 'G-P Recruit',
@@ -15,36 +15,37 @@ let ELEMENT_DATA: Client[] = [
     city: 'Harrisburg'
   },
   {
-    permissions:[],
+    permissions: [],
     paymentService: ['bitcoin'],
-    email:'lano.hr@gmail.com',
+    email: 'lano.hr@gmail.com',
     displayName: 'Lano',
     firstName: 'Jac',
     lastName: 'Decker',
     country: 'USA',
-    state:'California',
-    city:'San Francisco'
+    state: 'California',
+    city: 'San Francisco'
   },
   {
-    permissions:[],
-    paymentService: ['qr','bank-card-service','bitcoin','paypal'],
-    email:'ajeets.hr@gmail.com',
+    permissions: [],
+    paymentService: ['qr', 'bank-card-service', 'bitcoin', 'paypal'],
+    email: 'ajeets.hr@gmail.com',
     displayName: 'Ajeets',
     firstName: 'Malika',
     lastName: 'Tran',
     country: 'USA',
-    state:'Tennessee',
-    city:'Memphis'
+    state: 'Tennessee',
+    city: 'Memphis'
   },
 
 ];
+
 @Component({
   selector: 'app-user-manager',
   templateUrl: './user-manager.component.html',
   styleUrls: ['./user-manager.component.scss', '../../styles/sections.style.scss', '../../styles/table.style.scss']
 })
 export class UserManagerComponent implements OnInit {
-  displayedColumns = ['company-name','owner','contact','services'];
+  displayedColumns = ['company-name', 'owner', 'contact', 'services'];
   dataSource = ELEMENT_DATA;
   filterForm: FormGroup;
   startDate: FormControl;
@@ -52,13 +53,14 @@ export class UserManagerComponent implements OnInit {
   service: FormControl;
   dateForm: FormGroup;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.initForm();
   }
 
-  initForm(){
+  initForm() {
 
     this.startDate = new FormControl()
     this.endDate = new FormControl()

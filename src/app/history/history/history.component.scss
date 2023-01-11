@@ -1,4 +1,4 @@
-.section .mat-cell > img {
+.section .mat-mdc-cell > img {
   width: 30px;
 }
 
@@ -15,7 +15,6 @@
 }
 
 
-
 .mat-column-service {
   width: 100px !important;
   text-align: center;
@@ -23,7 +22,7 @@
 }
 
 .mat-column-amount {
-  width: 150px !important;
+  width: 120px !important;
   text-align: left;
   color: gray;
 }
@@ -35,7 +34,7 @@
 }
 
 .mat-column-status {
-  width: 50px !important;
+  width: 120px !important;
   text-align: center;
 }
 
@@ -45,52 +44,60 @@
 }
 
 
-.filter-form{
+.filter-form {
   display: grid;
-  align-items: baseline!important;
+  align-items: baseline !important;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
 }
 
 .status-container,
 .service-container,
-.date-container{
+.date-container {
   grid-row: 1;
   display: flex;
   flex-direction: row;
   align-items: baseline;
-  p{
+
+  p {
     padding-right: 1rem;
 
   }
-  .mat-form-field{
+
+  .mat-form-field {
     flex: 1;
     padding-right: 1rem;
   }
 }
-.status-container{
+
+.status-container {
   grid-column: 2;
 }
-.service-container{
+
+.service-container {
   grid-column: 1;
 }
-.date-container{
+
+.date-container {
   grid-column: 3;
 }
 
 @media screen and (max-width: 1200px) {
-  .filter-form{
+  .filter-form {
     grid-template-rows: 1fr 1fr;
     grid-template-columns: repeat(4, 1fr);
-    .service-container{
+
+    .service-container {
       grid-column-start: 1;
       grid-column-end: 3;
     }
-    .status-container{
+
+    .status-container {
       grid-column-start: 3;
       grid-column-end: 5;
     }
-    .date-container{
+
+    .date-container {
       grid-row: 2;
       grid-column-start: 2;
       grid-column-end: 4;
@@ -98,19 +105,23 @@
 
   }
 }
+
 @media screen and (max-width: 870px) {
-  .filter-form{
+  .filter-form {
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: 1fr;
-    .service-container{
+
+    .service-container {
       grid-row: 1;
       grid-column: 1;
     }
-    .status-container{
+
+    .status-container {
       grid-row: 2;
       grid-column-start: 1;
     }
-    .date-container{
+
+    .date-container {
       grid-row: 3;
       grid-column: 1;
     }

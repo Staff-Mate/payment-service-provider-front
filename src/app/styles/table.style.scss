@@ -24,6 +24,7 @@ th, td {
 .mat-header-cell, .mat-sort-header-arrow {
   color: black !important;
 }
+
 .filter {
   background-color: var(--light-gray);
   width: 100%;
@@ -35,6 +36,7 @@ th, td {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 1rem;
 
   img {
     width: 30px;
@@ -56,19 +58,20 @@ form {
   justify-content: space-evenly;
 }
 
-.mat-paginator {
+.mat-mdc-paginator {
   width: 100%;
 }
+
 .column-banner {
   flex-direction: column !important;
   margin-top: 10px !important;
 }
 
-::ng-deep .filter .mat-form-field-wrapper{
+::ng-deep .filter .mat-form-field-wrapper {
   padding: 0;
 }
 
-::ng-deep .mat-paginator-container{
-  background-color: #f2f2f2!important;
-  border-radius: 0 0 28px 28px!important;
+::ng-deep .mat-mdc-paginator-container {
+  background-color: #f2f2f2 !important;
+  border-radius: 0 0 28px 28px !important;
 }

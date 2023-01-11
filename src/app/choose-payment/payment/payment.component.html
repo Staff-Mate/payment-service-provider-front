@@ -5,7 +5,8 @@
       <h1><span>Choose payment method</span></h1>
       <h2>After you choose one of the payment methods, you will have to fill out additional payment information.</h2>
       <div class="payment-methods">
-        <div class="payment-card" *ngFor="let service of enabledPaymentService" (click)="onChooseMethod(service.paymentMethod.id)">
+        <div (click)="onChooseMethod(service.paymentMethod.id)" *ngFor="let service of enabledPaymentService"
+             class="payment-card">
           <img
             [alt]="service.paymentMethod.name"
             [src]="service.paymentMethod.imagePath">

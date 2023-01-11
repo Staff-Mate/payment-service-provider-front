@@ -1,12 +1,12 @@
 import {User} from "./user.model";
 
-export class Client extends User{
+export class Client extends User {
   firstName: string = "";
   lastName: string = "";
   country: string = "";
   state: string = "";
   city: string = "";
-  paymentService: string[] = ['qr','bank-card-service'];
+  paymentService: string[] = ['qr', 'bank-card-service'];
 
 
   constructor(email: string, displayName: string, firstName: string, lastName: string, country: string, state: string, city: string) {

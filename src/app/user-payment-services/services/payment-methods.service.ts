@@ -22,8 +22,8 @@ export class PaymentMethodsService {
     return this._http.get<Array<EnabledPaymentMethodDto>>(environment.apiUrl + "/auth-service/users/payment-method/" + apiKey);
   }
 
-  enablePaymentService(enablePaymentMethod: EnabledPaymentMethodDto){
-    return this._http.post<Array<EnabledPaymentMethodDto>>(environment.apiUrl + "/auth-service/users/payment-method",enablePaymentMethod);
+  enablePaymentService(enablePaymentMethod: EnabledPaymentMethodDto) {
+    return this._http.post<Array<EnabledPaymentMethodDto>>(environment.apiUrl + "/auth-service/users/payment-method", enablePaymentMethod);
   }
 
   disablePaymentService(service: EnabledPaymentMethodDto) {

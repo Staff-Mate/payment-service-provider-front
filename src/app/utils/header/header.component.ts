@@ -14,29 +14,28 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isHome: boolean = true;
   isPaymentOrEmpty: boolean = true;
   user: User;
-  private ngUnsubscribe = new Subject<void>();
   show: any;
-
+  private ngUnsubscribe = new Subject<void>();
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private tokenStorage: TokenStorageService) {
-    let res = this.route.routeConfig?.component?.name.includes("Homepage") ;
+    let res = this.route.routeConfig?.component?.name.includes("Homepage");
     this.isHome = res == undefined ? false : res;
-    res = this.route.routeConfig?.component?.name.includes("Empty") || this.route.routeConfig?.component?.name.includes("PaymentComponent") ;
+    res = this.route.routeConfig?.component?.name.includes("Empty") || this.route.routeConfig?.component?.name.includes("PaymentComponent");
     this.isPaymentOrEmpty = res == undefined ? false : res;
     this.show = false;
   }
 
   ngOnInit(): void {
-    if(this.tokenStorage.getToken()){
-      this.authService.getLoggedInUser().subscribe(response=>{
+    if (this.tokenStorage.getToken()) {
+      this.authService.getLoggedInUser().subscribe(response => {
         this.user = response;
         this.show = true;
       });
     }
 
-    this.authService.logInUserChanged.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response =>{
-      if(response != true){
-        this.authService.getLoggedInUser().subscribe(response=>{
+    this.authService.logInUserChanged.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
+      if (response != true) {
+        this.authService.getLoggedInUser().subscribe(response => {
           this.user = response;
         });
       }
@@ -47,6 +46,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
+
   onDevelopers() {
     const link = document.createElement('a');
     link.setAttribute('target', '_blank');

@@ -10,10 +10,11 @@ import {PaymentMethodsService} from "../../user-payment-services/services/paymen
 export class PaymentServiceManagerComponent implements OnInit {
   allPaymentServices: Array<PaymentMethod>;
 
-  constructor(private paymentService: PaymentMethodsService) { }
+  constructor(private paymentService: PaymentMethodsService) {
+  }
 
   ngOnInit(): void {
-    this.paymentService.getAllPaymentServices().subscribe((response)=>{
+    this.paymentService.getAllPaymentServices().subscribe((response) => {
       this.allPaymentServices = response;
     })
   }

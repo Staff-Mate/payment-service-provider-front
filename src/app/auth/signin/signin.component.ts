@@ -24,12 +24,14 @@ export class SigninComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm()
-    this.loadingService.loading.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response=>{
+    this.loadingService.loading.pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
       this.isLoading = !this.isLoading;
     })
-    this.authService.errorResponse.subscribe(response =>{
+    this.authService.errorResponse.subscribe(response => {
       this.error = response;
-      setTimeout(error=>{this.error = ""},5000)
+      setTimeout(error => {
+        this.error = ""
+      }, 5000)
     })
   }
 

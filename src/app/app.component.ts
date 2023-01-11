@@ -17,7 +17,7 @@ export class AppComponent {
     this.matIconRegistry.addSvgIcon('failed', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/failed.svg'))
     this.matIconRegistry.addSvgIcon('active', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/active.svg'))
     this.matIconRegistry.addSvgIcon('finished', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/finished.svg'))
-    let res = this.route.routeConfig?.component?.name.includes("SignUpComponent") || this.route.routeConfig?.component?.name.includes("SingInComponent") ;
+    let res = this.route.routeConfig?.component?.name.includes("SignUpComponent") || this.route.routeConfig?.component?.name.includes("SingInComponent");
     this.isFooterShowing = res == undefined ? false : res;
   }
 }

@@ -3,7 +3,8 @@
   <div class="banner main-banner">
     <div class="left-container">
       <h1><span>User Manger</span></h1>
-      <h2>Learn more about your customers and manage their accounts. Use search and filter tools to find specific group of customers and learn more about them.</h2>
+      <h2>Learn more about your customers and manage their accounts. Use search and filter tools to find specific group
+        of customers and learn more about them.</h2>
 
     </div>
     <div class="right-container">
@@ -17,11 +18,11 @@
     <div class="filter">
       <form [formGroup]="filterForm">
         <mat-form-field appearance="fill" class="search-field">
-          <input matInput type="text" placeholder="Search">
+          <input matInput placeholder="Search" type="text">
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
-        <mat-form-field appearance="outline" >
-          <mat-select placeholder="Service" [formControl]="service">
+        <mat-form-field appearance="outline">
+          <mat-select [formControl]="service" placeholder="Service">
             <mat-option>None</mat-option>
             <mat-option value="Bitcoin">
               <div class="option">
@@ -55,12 +56,12 @@
     </div>
   </div>
   <div class="banner column-banner">
-    <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table >
+    <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
 
 
       <!-- Company Name Column -->
       <ng-container matColumnDef="company-name">
-        <th *matHeaderCellDef  mat-header-cell > Company Name</th>
+        <th *matHeaderCellDef mat-header-cell> Company Name</th>
         <td *matCellDef="let element" class="cell-company-name" mat-cell> {{element.displayName}} </td>
       </ng-container>
 
@@ -81,7 +82,7 @@
         <th *matHeaderCellDef mat-header-cell> Service</th>
         <td *matCellDef="let element" class="cell-payment-type" mat-cell>
           <img *ngFor="let service of element.paymentService"
-          [alt]="service + 'payment service' " [src]="'assets/' + service + '.png'" [matTooltip]="service">
+               [alt]="service + 'payment service' " [matTooltip]="service" [src]="'assets/' + service + '.png'">
           <p *ngIf="element.paymentService.length == 0">/</p>
         </td>
       </ng-container>

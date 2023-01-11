@@ -23,7 +23,7 @@
       <div class="signup-header"><img alt="logo" class="discash-logo" src="assets/logo.png">
         <h1>Help us out with some details, and we’ll reach out to you!</h1></div>
       <div class="input-section">
-        <form autocomplete="off" [formGroup]="form">
+        <form [formGroup]="form" autocomplete="off">
           <div class="inputs">
             <div class="company-inputs input-row">
               <div class="company-name-input input-block">
@@ -32,22 +32,23 @@
                     Email</p>
                 </div>
 
-                <mat-form-field appearance="outline" >
-                  <input [formControl]="email" autocomplete="username" class="email" data-field="email"
-                         data-label="emailLabel" data-required="emailRequired" matInput
-                         name="email" placeholder="" type="text" (keyup.enter)="passwordInput.focus()">
+                <mat-form-field appearance="outline">
+                  <input (keyup.enter)="passwordInput.focus()" [formControl]="email" autocomplete="username" class="email"
+                         data-field="email" data-label="emailLabel" data-required="emailRequired"
+                         matInput name="email" placeholder="" type="text">
                 </mat-form-field>
               </div>
               <div class="password-input input-block">
                 <div class="required-field-container"><p class="input-label" id="passwordLabel">Password</p></div>
                 <mat-form-field appearance="outline">
-                  <input [formControl]="password" #passwordInput
+                  <input #passwordInput (keyup.enter)="onSignIn()"
+                         [formControl]="password"
                          [type]="hide ? 'password' : 'text'"
                          aria-label="Password"
-                         autocomplete="current-password"
-                         matInput placeholder="Password" (keyup.enter)="onSignIn()">
+                         autocomplete="current-password" matInput placeholder="Password">
 
-                  <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" mat-icon-button
+                  <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
+                          mat-icon-button
                           matSuffix type="button">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
@@ -60,16 +61,17 @@
         </form>
       </div>
       <div class="error-placeholder">
-        <div class="error-container" *ngIf="error">
+        <div *ngIf="error" class="error-container">
           <p>{{error}}</p>
         </div>
       </div>
 
-      <div class="submit-container" *ngIf="!isLoading">
-        <button class="blue-green-btn" style="margin-top: 10px" (click)="onSignIn()">Sign in<span id="loader"></span></button>
+      <div *ngIf="!isLoading" class="submit-container">
+        <button (click)="onSignIn()" class="blue-green-btn" style="margin-top: 10px">Sign in<span id="loader"></span>
+        </button>
 
       </div>
-      <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+      <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
     </div>
   </div>
 </div>
