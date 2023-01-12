@@ -1,66 +1,64 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatLegacyPaginator as MatPaginator} from "@angular/material/legacy-paginator";
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatSort} from "@angular/material/sort";
 import {FormControl, FormGroup} from "@angular/forms";
 import {TransactionDto} from "../dto/transaction.dto";
+import {PaymentMethodsService} from "../../user-payment-services/services/payment-methods.service";
+import {PaymentMethod} from "../../user-payment-services/dto/payment-method.model";
+import {Subject, takeUntil} from "rxjs";
+import {MatPaginator, PageEvent} from "@angular/material/paginator";
+import {MatChipSelectionChange} from "@angular/material/chips";
+import {HistoryService} from "../service/history.service";
+import {Page} from "../../utils/page/page";
 
 
 const ELEMENT_DATA: TransactionDto[] = [
   {
-    service: 'paypal-service',
-    description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
+    serviceName: 'paypal-service',
     amount: 1200,
-    date: new Date(),
-    status: "finished"
+    timestamp: new Date(),
+    status: "SUCCESS"
   },
   {
-    service: 'bank-card-service',
-    description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
+    serviceName: 'bank-card-service',
     amount: 12345,
-    date: new Date(2022, 4, 1, 14, 24),
-    status: 'finished'
+    timestamp: new Date(2022, 4, 1, 14, 24),
+    status: 'SUCCESS'
   },
   {
-    service: 'paypal-service',
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+    serviceName: 'paypal-service',
     amount: 548,
-    date: new Date(2022, 3, 1, 9, 11),
-    status: 'failed'
+    timestamp: new Date(2022, 3, 1, 9, 11),
+    status: 'FAILED'
   },
   {
-    service: 'qr-code-service',
-    description: 'Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
+    serviceName: 'qr-code-service',
     amount: 813,
-    date: new Date(2022, 10, 1, 22, 38),
-    status: 'active'
+    timestamp: new Date(2022, 10, 1, 22, 38),
+    status: 'ACTIVE'
   },
   {
-    service: 'bitcoin-service',
-    description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
+    serviceName: 'bitcoin-service',
     amount: 254,
-    date: new Date(2022, 11, 15, 21, 59),
-    status: 'finished'
+    timestamp: new Date(2022, 11, 15, 21, 59),
+    status: 'SUCCESS'
   },
   {
-    service: 'bitcoin-service',
-    description: 'Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
+    serviceName: 'bitcoin-service',
     amount: 7485,
-    date: new Date(2022, 11, 23, 11, 47),
-    status: 'finished'
+    timestamp: new Date(2022, 11, 23, 11, 47),
+    status: 'SUCCESS'
   },
   {
-    service: 'qr-code-service',
-    description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+    serviceName: 'qr-code-service',
     amount: 654,
-    date: new Date(2022, 11, 25, 4, 11),
-    status: 'error'
+    timestamp: new Date(2022, 11, 25, 4, 11),
+    status: 'ERROR'
   },
   {
-    service: 'bank-card-service',
-    description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
+    serviceName: 'bank-card-service',
     amount: 6848,
-    date: new Date(2022, 11, 26, 17, 9),
-    status: 'finished'
+    timestamp: new Date(2022, 11, 26, 17, 9),
+    status: 'SUCCESS'
   },
 ];
 
@@ -69,9 +67,8 @@ const ELEMENT_DATA: TransactionDto[] = [
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss', '../../styles/sections.style.scss', '../../styles/table.style.scss']
 })
-export class HistoryComponent implements OnInit {
-  displayedColumns: string[] = ['service', 'date', 'description', 'amount', 'status'];
-  dataSource = ELEMENT_DATA;
+export class HistoryComponent implements OnInit, OnDestroy {
+  displayedColumns: string[] = ['serviceName', 'timestamp', 'amount', 'status'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   filterForm: FormGroup;
@@ -79,31 +76,73 @@ export class HistoryComponent implements OnInit {
   endDate: FormControl;
   status: FormControl;
   service: FormControl;
-  activeServices: Array<String> = new Array<String>();
+  activeServices: Array<String>;
+  allPaymentServices: Array<PaymentMethod>;
+  ngUnsubscribe = new Subject<void>();
+  page: FormControl;
+  pageSize: FormControl;
+  transactions: Page<TransactionDto>;
 
 
-  constructor() {
+  constructor(private paymentService: PaymentMethodsService, private historyService: HistoryService) {
+    this.activeServices = new Array<String>();
+    this.allPaymentServices = new Array<PaymentMethod>();
+    this.transactions = new Page<TransactionDto>();
   }
 
   ngOnInit() {
     this.initForm();
-    this.filterForm.valueChanges.subscribe(() => {
 
+    this.historyService.getFilteredHistory(this.filterForm.value).subscribe(response =>{
+      console.log(response)
+      this.transactions = response;
+    });
+
+    this.filterForm.valueChanges.pipe(takeUntil(this.ngUnsubscribe)).subscribe(() => {
+      if(this.status.value == 'ACTIVE'){
+        this.historyService.getFilteredActiveTransactions(this.filterForm.value).subscribe(response =>{
+          this.transactions = response;
+        });
+      }else{
+        this.historyService.getFilteredHistory(this.filterForm.value).subscribe(response =>{
+          this.transactions = response;
+        });
+      }
     })
+    this.paymentService.getAllPaymentServices().subscribe(response =>{
+      this.allPaymentServices = response;
+    })
+
   }
 
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
 
   private initForm() {
     this.startDate = new FormControl()
     this.endDate = new FormControl()
     this.status = new FormControl()
     this.service = new FormControl()
+    this.page = new FormControl(0)
+    this.pageSize = new FormControl(20)
 
     this.filterForm = new FormGroup({
       'startDate': this.startDate,
       'endDate': this.endDate,
-      'status': this.status,
-      'service': this.service
+      'statusId': this.status,
+      'service': this.service,
+      'page': this.page,
+      'pageSize': this.pageSize
     })
+  }
+
+  onActiveTransactionSelectionChanged($event: MatChipSelectionChange) {
+    this.status.setValue($event.selected ? "ACTIVE" : null);
+  }
+
+  onPaginatorChange($event: PageEvent) {
+    console.log($event)
   }
 }

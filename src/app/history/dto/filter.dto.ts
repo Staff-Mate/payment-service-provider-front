@@ -1,17 +1,18 @@
 export class FilterDto {
-
-  private merchantId: string;
-  private service: string;
+  private serviceId: string;
   private status: string;
   private startDate: Date;
   private endDate: Date;
+  private page: number;
+  private pageSize: number;
 
 
-  constructor(merchantId: string, service: string, status: string, startDate: Date, endDate: Date) {
-    this.merchantId = merchantId;
-    this.service = service;
+  constructor(serviceId: string, status: string, startDate: Date, endDate: Date, page: number, pageSize: number) {
+    this.serviceId = serviceId;
     this.status = status;
     this.startDate = startDate;
     this.endDate = endDate;
+    this.page = page;
+    this.pageSize = pageSize;
   }
 }

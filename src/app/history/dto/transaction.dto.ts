@@ -1,16 +1,14 @@
 export class TransactionDto{
-  service: string;
-  description: string;
+  serviceName: string;
   amount: number;
-  date: Date;
+  timestamp: Date;
   status: string;
 
 
-  constructor(service: string, description: string, amount: number, date: Date, status: string) {
-    this.service = service;
-    this.description = description;
+  constructor(service: string, amount: number, date: Date, status: string) {
+    this.serviceName = service;
     this.amount = amount;
-    this.date = date;
+    this.timestamp = date;
     this.status = status;
   }
 }
