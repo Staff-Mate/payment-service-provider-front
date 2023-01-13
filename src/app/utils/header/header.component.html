@@ -1,6 +1,6 @@
 <header>
   <div class="menu-full">
-    <div class="left"><a><img alt="Discash logo" routerLink="/" src="assets/logo.png"></a></div>
+    <div class="left"><a><img alt="Discash logo" [routerLink]="tokenStorage.getToken() ? '/home' : '/'" src="assets/logo.png"></a></div>
     <div *ngIf="isHome" class="right">
       <ul>
         <li>

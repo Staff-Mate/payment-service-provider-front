@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   show: any;
   private ngUnsubscribe = new Subject<void>();
 
-  constructor(private route: ActivatedRoute, private authService: AuthService, private tokenStorage: TokenStorageService) {
+  constructor(private route: ActivatedRoute, private authService: AuthService, public tokenStorage: TokenStorageService) {
     let res = this.route.routeConfig?.component?.name.includes("Homepage");
     this.isHome = res == undefined ? false : res;
     res = this.route.routeConfig?.component?.name.includes("Empty") || this.route.routeConfig?.component?.name.includes("PaymentComponent");

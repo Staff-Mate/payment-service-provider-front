@@ -1,29 +1,51 @@
 <app-header></app-header>
 <div class="homepage">
+  <div class="banner" *ngIf="user">
+    <img alt="" class="banner-bg" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/home-banner-bg.svg">
 
-  <div class="navigation-section right-coming" routerLink="/payment-services" style="margin-top: 0;">
-    <h1>Services</h1>
-    <img
-      alt="Payment Service Provider"
-      src="https://d18fuqpnk61mcc.cloudfront.net/build/images/payment-service-providers/api-banking-solution-payment-service-providers.svg">
-  </div>
-  <div class="navigation-section left-coming" routerLink="/history">
-    <img
-      alt="Payment Service Provider" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/resources/banner.svg">
-    <h1>History</h1>
+    <div class="navigation-section right-coming" routerLink="/payment-services" style="margin-top: 0;" *ngIf="user.permissions.includes('ROLE_USER')">
+      <h1>Services</h1>
+      <img
+        alt="Payment Service Provider"
+        src="https://d18fuqpnk61mcc.cloudfront.net/build/images/payment-service-providers/api-banking-solution-payment-service-providers.svg">
+    </div>
+    <div class="navigation-section left-coming" routerLink="/history" *ngIf="user.permissions.includes('ROLE_USER')">
+      <img
+        alt="Payment Service Provider" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/resources/banner.svg">
+      <h1>History</h1>
 
-  </div>
-  <div class="navigation-section right-coming" routerLink="/profile">
-    <h1>Profile</h1>
+    </div>
+    <div class="navigation-section right-coming" routerLink="/payment-service-manager" style="margin-top: 0;" *ngIf="user.permissions.includes('ROLE_ADMIN')">
+      <h1>Services</h1>
+      <img
+        alt="Payment Service Provider"
+        src="https://d18fuqpnk61mcc.cloudfront.net/build/images/payment-service-providers/api-banking-solution-payment-service-providers.svg">
+    </div>
+    <div class="navigation-section left-coming" routerLink="/user-manager" *ngIf="user.permissions.includes('ROLE_ADMIN')">
+      <img
+        alt="Payment Service Provider" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/careers/talent-and-expertise.svg">
+      <h1>Users</h1>
 
-    <img
-      alt="Payment Service Provider"
-      src="https://d18fuqpnk61mcc.cloudfront.net/build/images/careers/talent-and-expertise.svg">
-  </div>
-  <div class="navigation-section left-coming" routerLink="/developers">
-    <img
-      alt="Payment Service Provider" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/careers/banner.svg">
-    <h1>Developers</h1>
+    </div>
+    <div class="navigation-section right-coming" routerLink="/profile" *ngIf="user.permissions.includes('ROLE_ADMIN')">
+      <h1>Profile</h1>
 
+      <img
+        alt="Payment Service Provider"
+        src="https://d18fuqpnk61mcc.cloudfront.net/build/images/digilocker/app1.svg">
+    </div>
+    <div class="navigation-section right-coming" routerLink="/profile" *ngIf="user.permissions.includes('ROLE_USER')">
+      <h1>Profile</h1>
+
+      <img
+        alt="Payment Service Provider"
+        src="../../../assets/profile.svg">
+    </div>
+    <div class="navigation-section left-coming" routerLink="/developers">
+      <img
+        alt="Payment Service Provider" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/careers/banner.svg">
+      <h1>Developers</h1>
+
+    </div>
   </div>
 </div>

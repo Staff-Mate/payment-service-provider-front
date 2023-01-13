@@ -31,7 +31,7 @@ export class AuthService {
           this.errorResponse.next(null);
           this._tokenService.saveToken(response.accessToken);
           this.logInUserChanged.next(response);
-          this.router.navigate(['/user']).then()
+          this.router.navigate(['/home']).then()
         },
         error: (error: HttpErrorResponse) => {
           if (error.status == 400) {

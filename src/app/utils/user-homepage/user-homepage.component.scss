@@ -1,3 +1,15 @@
+.homepage .banner{
+  display: flex;
+  align-items: stretch!important;
+  flex-direction: column!important;
+  padding: 0!important;
+  margin: 3rem 0 0!important;
+
+  img{
+    opacity: 0.8!important;
+  }
+}
+
 .homepage .navigation-section {
   display: flex;
   flex-flow: row;
@@ -22,18 +34,19 @@
 .homepage .left-coming {
   padding: 20px 10% 20px 10%;
   border-radius: 0 133px 133px 0;
-  margin-right: 30%;
-  background: rgba(211, 211, 211, 0.3);
+  width: 50%;
+  background-image: linear-gradient(45deg, #7bc5bd, #5579c0);
   text-align: right;
 }
 
 .homepage .right-coming {
   padding: 20px 10% 20px 10%;
   border-radius: 133px 0 0 133px;
-  margin-left: 30%;
-  background: rgba(211, 211, 211, 0.30);
+  width: 50%;
+  background-image: linear-gradient(45deg, #5579c0, #7bc5bd);
   text-align: left;
   z-index: 2;
+  align-self: end;
 }
 
 .navigation-section h1 {
@@ -41,11 +54,18 @@
 }
 
 .homepage:hover .navigation-section {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .homepage .navigation-section:hover {
   opacity: 1;
+  .left-coming{
+    background-image: linear-gradient(45deg, #65c8ad, #4357c0);
+  }
+
+  .right-coming{
+    background-image: linear-gradient(45deg, #4357c0, #65c8ad);
+  }
 }
 
 @media screen and (min-height: 800px) {

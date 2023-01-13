@@ -134,10 +134,10 @@
 
 
     </div>
-    <div class="right-container">
+    <div class="right-container" *ngIf="user">
       <img
         alt="CV image"
-        src="https://d18fuqpnk61mcc.cloudfront.net/build/images/crypto-exchanges-nft-platforms/track-transactions.svg">
+        [src]="user.permissions.includes('ROLE_ADMIN') ? 'https://d18fuqpnk61mcc.cloudfront.net/build/images/digilocker/app1.svg' : 'http://localhost:4200/assets/profile.svg'">
     </div>
   </div>
 </div>
