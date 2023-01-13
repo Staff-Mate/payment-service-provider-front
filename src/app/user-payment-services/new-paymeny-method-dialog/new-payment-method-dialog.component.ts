@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 
 import {PaymentMethod} from "../dto/payment-method.model";
 import {FormControl, FormGroup} from "@angular/forms";
-import {PaymentMethodsService} from "../services/payment-methods.service";
+import {UserService} from "../services/user.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -18,7 +18,7 @@ export class NewPaymentMethodDialogComponent implements OnInit {
   id: FormControl;
   paymentMethod: FormControl;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { paymentService: PaymentMethod }, private paymentMethodService: PaymentMethodsService, private dialogRef: MatDialogRef<NewPaymentMethodDialogComponent>, private _snackBar: MatSnackBar) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { paymentService: PaymentMethod }, private userService: UserService, private dialogRef: MatDialogRef<NewPaymentMethodDialogComponent>, private _snackBar: MatSnackBar) {
     this.hide = true;
   }
 
@@ -40,7 +40,7 @@ export class NewPaymentMethodDialogComponent implements OnInit {
   }
 
   enablePaymentService() {
-    this.paymentMethodService.enablePaymentService(this.form.value).subscribe({
+    this.userService.enablePaymentService(this.form.value).subscribe({
       next: (response) => {
         console.log(response)
         this.dialogRef.close({activeServices: response})

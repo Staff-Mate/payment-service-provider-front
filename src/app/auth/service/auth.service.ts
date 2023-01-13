@@ -8,6 +8,8 @@ import {LoginDto} from "../signin/dto/login.dto";
 import {TokenDto} from "../dto/token.dto";
 import {RegisterDto} from "../signup/dto/register.dto";
 import {User} from "../dto/user.model";
+import {Client} from "../dto/client.model";
+import {PasswordDto} from "../dto/password.dto";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -68,6 +70,10 @@ export class AuthService {
   }
 
   getLoggedInUser() {
-    return this._http.get<User>(environment.apiUrl + "/auth-service/auth/");
+    return this._http.get<Client>(environment.apiUrl + "/auth-service/auth/");
+  }
+
+  changePassword(passwordDto: PasswordDto) {
+    return this._http.put(environment.apiUrl + "/auth-service/auth/password", passwordDto);
   }
 }

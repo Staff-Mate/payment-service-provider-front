@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PaymentMethod} from "../dto/payment-method.model";
-import {PaymentMethodsService} from "../services/payment-methods.service";
+import {UserService} from "../services/user.service";
 import {EnabledPaymentMethodDto} from "../dto/enabled-payment-method.dto";
 import {NewPaymentMethodDialogComponent} from "../new-paymeny-method-dialog/new-payment-method-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
@@ -16,15 +16,15 @@ export class PaymentServicesComponent implements OnInit {
   activeServices: Array<EnabledPaymentMethodDto> = new Array<EnabledPaymentMethodDto>();
   allPaymentServices: Array<PaymentMethod> = new Array<PaymentMethod>();
 
-  constructor(private paymentService: PaymentMethodsService, private dialog: MatDialog, private _snackBar: MatSnackBar) {
+  constructor(private userService: UserService, private dialog: MatDialog, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
-    this.paymentService.getEnabledPaymentServices().subscribe((response) => {
+    this.userService.getEnabledPaymentServices().subscribe((response) => {
       console.log(response)
       this.activeServices = response;
     });
-    this.paymentService.getAllPaymentServices().subscribe((response) => {
+    this.userService.getAllPaymentServices().subscribe((response) => {
       this.allPaymentServices = response;
       console.log(this.allPaymentServices)
     })
@@ -47,7 +47,7 @@ export class PaymentServicesComponent implements OnInit {
   }
 
   removePaymentService(service: EnabledPaymentMethodDto) {
-    this.paymentService.disablePaymentService(service).subscribe({
+    this.userService.disablePaymentService(service).subscribe({
       next: (response) => {
         this.activeServices = response;
       }, error: () => {

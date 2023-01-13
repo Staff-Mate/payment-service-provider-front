@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PaymentMethod} from "../../user-payment-services/dto/payment-method.model";
-import {PaymentMethodsService} from "../../user-payment-services/services/payment-methods.service";
+import {UserService} from "../../user-payment-services/services/user.service";
 
 @Component({
   selector: 'app-payment-service-manager',
@@ -10,11 +10,11 @@ import {PaymentMethodsService} from "../../user-payment-services/services/paymen
 export class PaymentServiceManagerComponent implements OnInit {
   allPaymentServices: Array<PaymentMethod>;
 
-  constructor(private paymentService: PaymentMethodsService) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
-    this.paymentService.getAllPaymentServices().subscribe((response) => {
+    this.userService.getAllPaymentServices().subscribe((response) => {
       this.allPaymentServices = response;
     })
   }

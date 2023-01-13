@@ -3,9 +3,10 @@ import {PaymentMethod} from "../dto/payment-method.model";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {EnabledPaymentMethodDto} from "../dto/enabled-payment-method.dto";
+import {OwnerDto} from "../dto/owner.dto";
 
 @Injectable({providedIn: 'root'})
-export class PaymentMethodsService {
+export class UserService {
 
   constructor(private _http: HttpClient) {
   }
@@ -28,5 +29,9 @@ export class PaymentMethodsService {
 
   disablePaymentService(service: EnabledPaymentMethodDto) {
     return this._http.delete<Array<EnabledPaymentMethodDto>>(environment.apiUrl + "/auth-service/users/payment-method/" + service.id);
+  }
+
+  changeOwner(ownerDto: OwnerDto) {
+    return this._http.put(environment.apiUrl + "/auth-service/users/", ownerDto);
   }
 }

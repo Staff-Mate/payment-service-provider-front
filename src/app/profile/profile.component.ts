@@ -3,6 +3,8 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {Client} from "../auth/dto/client.model";
 import {User} from "../auth/dto/user.model";
 import {AuthService} from "../auth/service/auth.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {UserService} from "../user-payment-services/services/user.service";
 
 @Component({
   selector: 'app-profile',
@@ -10,26 +12,28 @@ import {AuthService} from "../auth/service/auth.service";
   styleUrls: ['./profile.component.scss', '../styles/sections.style.scss', '../styles/signform.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  user: User | Client;
-  client: Client = new Client('gp.recruit.hr@gmail.com', 'G-P Recruit', 'Erika', 'Waramunt', 'USA', 'Pennsylvania', 'Harrisburg');
+  user: Client;
   firstName: FormControl;
   lastName: FormControl;
-  email: FormControl;
   hidePassword: boolean = true;
   password: FormControl;
   confirmPassword: FormControl;
+  oldPassword: FormControl;
   hideConfirmPassword: boolean = true;
   infoForm: FormGroup;
+  passwordForm: FormGroup;
   activeView: string = "home"
+  hideOldPassword: boolean = true;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private userService: UserService, private _snackBar: MatSnackBar) {
+    this.initPasswordForm();
+    this.authService.getLoggedInUser().subscribe(response => {
+      this.user = response;
+      this.initInfoForm()
+    });
   }
 
   ngOnInit(): void {
-    this.initInfoForm()
-    this.authService.getLoggedInUser().subscribe(response => {
-      this.user = response;
-    });
     this.authService.logInUserChanged.subscribe(response => {
       if (response != true) {
         this.authService.getLoggedInUser().subscribe(response => {
@@ -40,26 +44,79 @@ export class ProfileComponent implements OnInit {
   }
 
   initInfoForm() {
-    this.firstName = new FormControl(this.client.firstName)
-    this.lastName = new FormControl(this.client.lastName)
-    this.email = new FormControl(this.client.email)
-    this.password = new FormControl()
-    this.confirmPassword = new FormControl()
+    this.firstName = new FormControl(this.user.firstName)
+    this.lastName = new FormControl(this.user.lastName)
 
     this.infoForm = new FormGroup({
       'firstName': this.firstName,
       'lastName': this.lastName,
-      'email': this.email,
-      'password': this.password,
-      'confirmPassword': this.confirmPassword,
     })
   }
 
+  initPasswordForm() {
+    this.oldPassword = new FormControl()
+    this.password = new FormControl()
+    this.confirmPassword = new FormControl()
+
+    this.passwordForm = new FormGroup({
+      'oldPassword': this.oldPassword,
+      'newPassword': this.password,
+      'confirmPassword': this.confirmPassword,
+    })
+
+    this.password.disable();
+    this.confirmPassword.disable()
+  }
+
   onInfoSave() {
-    this.activeView = 'home'
+    this.userService.changeOwner(this.infoForm.value).subscribe({
+      next: () =>{
+        this.activeView = 'home'
+        this.user.firstName = this.firstName.value
+        this.user.lastName = this.lastName.value
+        this._snackBar.open("You have successfully changed owner!","",{
+          duration: 2000
+        })
+      },
+      error: () => {
+        this._snackBar.open("Something went wrong. Please try again!","",{
+          duration: 2000
+        })
+      }
+    })
   }
 
   onPasswordSave() {
-    this.activeView = 'home'
+    this.authService.changePassword(this.passwordForm.value).subscribe({
+      next: () =>{
+        this.activeView = 'home'
+        this._snackBar.open("You have successfully changed your password!","",{
+          duration: 2000
+        })
+      },
+      error: () => {
+        this._snackBar.open("Something went wrong. Please try again!","",{
+          duration: 2000
+        })
+      }
+    })
+  }
+
+  onOldPasswordChange() {
+    if(!this.oldPassword.value){
+      this.password.disable()
+      this.password.setValue('')
+    }else{
+      this.password.enable()
+    }
+  }
+
+  onPasswordChange() {
+    if(!this.password.value){
+      this.confirmPassword.disable()
+      this.confirmPassword.setValue('')
+    }else{
+      this.confirmPassword.enable()
+    }
   }
 }

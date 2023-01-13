@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatSort} from "@angular/material/sort";
 import {FormControl, FormGroup} from "@angular/forms";
 import {TransactionDto} from "../dto/transaction.dto";
-import {PaymentMethodsService} from "../../user-payment-services/services/payment-methods.service";
+import {UserService} from "../../user-payment-services/services/user.service";
 import {PaymentMethod} from "../../user-payment-services/dto/payment-method.model";
 import {Subject, takeUntil} from "rxjs";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
@@ -32,7 +32,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   transactions: Page<TransactionDto>;
 
 
-  constructor(private paymentService: PaymentMethodsService, private historyService: HistoryService) {
+  constructor(private userService: UserService, private historyService: HistoryService) {
     this.activeServices = new Array<String>();
     this.allPaymentServices = new Array<PaymentMethod>();
     this.transactions = new Page<TransactionDto>();
@@ -60,7 +60,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
         });
       }
     })
-    this.paymentService.getAllPaymentServices().subscribe(response => {
+    this.userService.getAllPaymentServices().subscribe(response => {
       this.allPaymentServices = response;
     })
 

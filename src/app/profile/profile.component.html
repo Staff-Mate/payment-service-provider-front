@@ -3,36 +3,58 @@
   <div class="banner main-banner">
     <div class="left-container">
 
+      <h1 *ngIf="user"><span>{{user.displayName}}</span></h1>
+      <div *ngIf="activeView=='home' && user != undefined" class="profile-home">
+        <div class="profile-info" >
+          <p *ngIf="user.permissions.includes('ROLE_USER')">{{user.city}}, {{user.state}}, {{user.country}}</p>
+          <h2 *ngIf="user.permissions.includes('ROLE_USER')">{{user.firstName}} {{user.lastName}}</h2>
+          <div class="profile-contact">
+            <h2>{{user.email}}</h2>
+          </div>
+        </div>
+        <div class="submit-container">
+          <button (click)="activeView = 'infoChange'" *ngIf="user.permissions.includes('ROLE_USER')"
+                  class="light-blue-green-btn">Change owner<span
+            id="loaderr1"></span></button>
+          <button (click)="activeView = 'passwordChange'" class="light-blue-green-btn">Change password<span
+            id="loaderr2"></span></button>
+        </div>
+      </div>
+
       <div *ngIf="activeView == 'infoChange'" class="form-section">
         <div class="input-section">
           <form [formGroup]="infoForm" autocomplete="off">
             <div class="inputs">
-              <div class="name-inputs input-row">
-
-                <div class="input-block">
-                  <div class="required-field-container">
-                    <p class="input-label first-name-input-label"
-                       id="firstNameLabel">First Name</p>
+              <div class="name-inputs ">
+                <div class="input-row">
+                  <div class="input-block">
+                    <div class="required-field-container">
+                      <p class="input-label first-name-input-label"
+                         id="firstNameLabel">First Name</p>
+                    </div>
+                    <mat-form-field appearance="outline">
+                      <input [formControl]="firstName" class="first-name-input" data-field="first_name"
+                             data-label="firstNameLabel"
+                             data-required="firstNameRequired" matInput name="first-name"
+                             placeholder="" type="text">
+                    </mat-form-field>
                   </div>
-                  <mat-form-field appearance="outline">
-                    <input [formControl]="firstName" class="first-name-input" data-field="first_name"
-                           data-label="firstNameLabel"
-                           data-required="firstNameRequired" matInput name="first-name"
-                           placeholder="" type="text">
-                  </mat-form-field>
                 </div>
 
-                <div class="input-block">
-                  <div class="required-field-container">
-                    <p class="input-label last-name-input-label" id="lastNameLabel">Last Name</p>
-                  </div>
+                <div class="input-row">
 
-                  <mat-form-field appearance="outline">
-                    <input [formControl]="lastName" class="last-name-input" data-field="last_name"
-                           data-label="lastNameLabel"
-                           data-required="lastNameRequired" matInput name="last-name"
-                           placeholder="" type="text">
-                  </mat-form-field>
+                  <div class="input-block">
+                    <div class="required-field-container">
+                      <p class="input-label last-name-input-label" id="lastNameLabel">Last Name</p>
+                    </div>
+
+                    <mat-form-field appearance="outline">
+                      <input [formControl]="lastName" class="last-name-input" data-field="last_name"
+                             data-label="lastNameLabel"
+                             data-required="lastNameRequired" matInput name="last-name"
+                             placeholder="" type="text">
+                    </mat-form-field>
+                  </div>
                 </div>
 
               </div>
@@ -48,13 +70,27 @@
       </div>
       <div *ngIf="activeView == 'passwordChange'" class="form-section">
         <div class="input-section">
-          <form [formGroup]="infoForm" autocomplete="off">
+          <form [formGroup]="passwordForm" autocomplete="off">
             <div class="inputs">
 
               <div class="password-input input-block">
-                <div class="required-field-container"><p class="input-label" id="passwordLabel">Password</p></div>
+                <div class="required-field-container"><p class="input-label" id="oldPasswordLabel">Old Password</p></div>
+                <mat-form-field appearance="outline" >
+                  <input [formControl]="oldPassword" (ngModelChange)="onOldPasswordChange()"
+                         [type]="hideOldPassword ? 'password' : 'text'"
+                         aria-label="Old Password"
+                         matInput
+                         placeholder="Old Password">
+                  <button (click)="hideOldPassword = !hideOldPassword" [attr.aria-label]="'Hide old password'"
+                          [attr.aria-pressed]="hideOldPassword"
+                          mat-icon-button
+                          matSuffix type="button">
+                    <mat-icon>{{hideOldPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+                <div class="required-field-container"><p class="input-label" id="passwordLabel">New Password</p></div>
                 <mat-form-field appearance="outline">
-                  <input [formControl]="password"
+                  <input [formControl]="password" (ngModelChange)="onPasswordChange()"
                          [type]="hidePassword ? 'password' : 'text'"
                          aria-label="Password"
                          matInput
@@ -87,29 +123,13 @@
           </form>
         </div>
         <div class="submit-container">
-          <button (click)="onPasswordSave()" class="blue-green-btn">Save<span id="savePassword"></span></button>
+          <button (click)="onPasswordSave()" [ngClass]="confirmPassword.value ? 'blue-green-btn' : 'disabled-blue-green-btn'" [disabled]="!confirmPassword.value">Save<span id="savePassword"></span></button>
           <button (click)="activeView = 'home'" class="light-blue-green-btn">Cancel<span id="cancelPassword"></span>
           </button>
         </div>
       </div>
 
-      <div *ngIf="activeView == 'home'" class="profile-home">
-        <div class="profile-info">
-          <h1><span>{{user.displayName}}</span></h1>
-          <p *ngIf="user.permissions.includes('user')">{{client.city}}, {{client.state}}, {{client.country}}</p>
-          <h2 *ngIf="user.permissions.includes('user')">{{client.firstName}} {{client.lastName}}</h2>
-          <div class="profile-contact">
-            <h2>{{user.email}}</h2>
-          </div>
-        </div>
-        <div class="submit-container">
-          <button (click)="activeView = 'infoChange'" *ngIf="user.permissions.includes('user')"
-                  class="light-blue-green-btn">Change owner<span
-            id="loaderr1"></span></button>
-          <button (click)="activeView = 'passwordChange'" class="light-blue-green-btn">Change password<span
-            id="loaderr2"></span></button>
-        </div>
-      </div>
+
     </div>
     <div class="right-container">
       <img
