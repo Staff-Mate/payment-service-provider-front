@@ -68,7 +68,7 @@ const ELEMENT_DATA: TransactionDto[] = [
   styleUrls: ['./history.component.scss', '../../styles/sections.style.scss', '../../styles/table.style.scss']
 })
 export class HistoryComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['serviceName', 'timestamp', 'amount', 'status'];
+  displayedColumns: string[] = ['service-name', 'timestamp', 'amount', 'status'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   filterForm: FormGroup;
@@ -99,12 +99,15 @@ export class HistoryComponent implements OnInit, OnDestroy {
     });
 
     this.filterForm.valueChanges.pipe(takeUntil(this.ngUnsubscribe)).subscribe(() => {
+      console.log("CHANGE")
       if(this.status.value == 'ACTIVE'){
         this.historyService.getFilteredActiveTransactions(this.filterForm.value).subscribe(response =>{
+          console.log(response)
           this.transactions = response;
         });
       }else{
         this.historyService.getFilteredHistory(this.filterForm.value).subscribe(response =>{
+          console.log(response)
           this.transactions = response;
         });
       }
@@ -131,8 +134,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.filterForm = new FormGroup({
       'startDate': this.startDate,
       'endDate': this.endDate,
-      'statusId': this.status,
-      'service': this.service,
+      'status': this.status,
+      'serviceId': this.service,
       'page': this.page,
       'pageSize': this.pageSize
     })

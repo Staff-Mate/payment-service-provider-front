@@ -7,15 +7,7 @@
   width: fit-content;
 }
 
-.cell-desc {
-  overflow: hidden;
-  width: auto;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-
-.mat-column-service {
+.mat-column-service-name {
   width: 100px !important;
   text-align: center;
 }
@@ -64,8 +56,9 @@
     padding-right: 1rem;
     padding-left: 1rem;
 
-      font-size: 18px!important;
-      margin: 0!important;
+    font-size: 18px!important;
+    margin: 0!important;
+    width: 4rem;
   }
 
   .mat-mdc-form-field {

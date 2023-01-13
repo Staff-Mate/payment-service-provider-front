@@ -13,10 +13,12 @@ export class HistoryService{
   }
 
   getFilteredHistory(filterDto: FilterDto) {
+    console.log(filterDto)
     return this._http.post<Page<TransactionDto>>(environment.apiUrl + "/auth-service/history/", filterDto);
   }
 
   getFilteredActiveTransactions(filterDto: FilterDto) {
+    console.log(filterDto)
     return this._http.post<Page<TransactionDto>>(environment.apiUrl + "/auth-service/history/active", filterDto);
   }
 }

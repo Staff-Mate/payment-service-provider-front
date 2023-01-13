@@ -1,7 +1,14 @@
-::ng-deep .enable-payment-method-panel > .mat-dialog-container {
-  border-radius: 20px !important;
+::ng-deep .enable-payment-method-panel > .mat-mdc-dialog-container {
   max-width: 45rem;
   text-align: center;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface{
+  border-radius: 20px !important;
+}
+
+.mat-mdc-dialog-title{
+  font-family: "Montserrat", sans-serif!important;
 }
 
 .form-section {
@@ -14,9 +21,9 @@
 
 .new-payment-dialog-content > p {
   margin-top: 30px;
-  font-size: 15px;
+  font-size: 17px;
 }
 
-.mat-dialog-actions {
+.mat-mdc-dialog-actions {
   justify-content: space-evenly;
 }

@@ -42,6 +42,7 @@ export class NewPaymentMethodDialogComponent implements OnInit {
   enablePaymentService() {
     this.paymentMethodService.enablePaymentService(this.form.value).subscribe({
       next: (response) => {
+        console.log(response)
         this.dialogRef.close({activeServices: response})
       }, error: () => {
         this._snackBar.open("Something went wrong. Please try again!", 'X', {
