@@ -9,7 +9,8 @@
         <mat-list-item *ngFor="let service of activeServices">
           <h5 matListItemTitle>{{service.paymentMethod.name}}</h5>
           <span matListItemLine>{{service.dateAdded | date}}</span>
-          <img [alt]="service.paymentMethod.serviceName + 'image'" [src]="'/assets/' + service.paymentMethod.serviceName + '.png'"
+          <img [alt]="service.paymentMethod.serviceName + 'image'"
+               [src]="'/assets/' + service.paymentMethod.serviceName + '.png'"
                matListItemAvatar>
           <button (click)="removePaymentService(service)" color="accent" mat-stroked-button matListItemMeta>Remove
           </button>

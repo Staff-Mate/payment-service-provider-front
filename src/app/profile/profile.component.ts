@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Client} from "../auth/dto/client.model";
-import {User} from "../auth/dto/user.model";
 import {AuthService} from "../auth/service/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserService} from "../user-payment-services/services/user.service";
@@ -70,16 +69,16 @@ export class ProfileComponent implements OnInit {
 
   onInfoSave() {
     this.userService.changeOwner(this.infoForm.value).subscribe({
-      next: () =>{
+      next: () => {
         this.activeView = 'home'
         this.user.firstName = this.firstName.value
         this.user.lastName = this.lastName.value
-        this._snackBar.open("You have successfully changed owner!","",{
+        this._snackBar.open("You have successfully changed owner!", "", {
           duration: 2000
         })
       },
       error: () => {
-        this._snackBar.open("Something went wrong. Please try again!","",{
+        this._snackBar.open("Something went wrong. Please try again!", "", {
           duration: 2000
         })
       }
@@ -88,14 +87,14 @@ export class ProfileComponent implements OnInit {
 
   onPasswordSave() {
     this.authService.changePassword(this.passwordForm.value).subscribe({
-      next: () =>{
+      next: () => {
         this.activeView = 'home'
-        this._snackBar.open("You have successfully changed your password!","",{
+        this._snackBar.open("You have successfully changed your password!", "", {
           duration: 2000
         })
       },
       error: () => {
-        this._snackBar.open("Something went wrong. Please try again!","",{
+        this._snackBar.open("Something went wrong. Please try again!", "", {
           duration: 2000
         })
       }
@@ -103,19 +102,19 @@ export class ProfileComponent implements OnInit {
   }
 
   onOldPasswordChange() {
-    if(!this.oldPassword.value){
+    if (!this.oldPassword.value) {
       this.password.disable()
       this.password.setValue('')
-    }else{
+    } else {
       this.password.enable()
     }
   }
 
   onPasswordChange() {
-    if(!this.password.value){
+    if (!this.password.value) {
       this.confirmPassword.disable()
       this.confirmPassword.setValue('')
-    }else{
+    } else {
       this.confirmPassword.enable()
     }
   }

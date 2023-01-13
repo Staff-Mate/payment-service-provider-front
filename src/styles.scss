@@ -45,6 +45,7 @@ $theme: mat.define-light-theme((
   border: none;
   background: transparent linear-gradient(90deg, #3a36c6, #66ceac) 0 0;
   text-decoration: none !important;
+  transition: 0.5s all ease-in;
 }
 
 .light-blue-green-btn {
@@ -64,6 +65,7 @@ $theme: mat.define-light-theme((
   border: none;
   background: transparent linear-gradient(90deg, rgba(58, 54, 198, 0.37), rgba(102, 206, 172, 0.58)) 0 0;
   text-decoration: none !important;
+  transition: 0.5s all ease-in;
 }
 
 .disabled-blue-green-btn {
@@ -82,6 +84,7 @@ $theme: mat.define-light-theme((
   border: none;
   background: transparent linear-gradient(90deg, #c1c1c1, rgb(120 120 120 / 58%)) 0 0;
   text-decoration: none !important;
+  transition: 0.5s all ease-in;
 }
 
 .light-red-btn {
@@ -100,6 +103,7 @@ $theme: mat.define-light-theme((
   border: none;
   background: transparent linear-gradient(90deg, #c53a3a, rgb(253, 66, 66)) 0 0;
   text-decoration: none !important;
+  transition: 0.5s all ease-in;
 }
 
 .light-red-btn {
@@ -118,6 +122,18 @@ $theme: mat.define-light-theme((
   border: none;
   background: transparent linear-gradient(90deg, #c77373, rgb(255 174 174)) 0 0;
   text-decoration: none !important;
+  transition: 0.5s all ease-in;
+}
+.disabled-simple-blue-btn {
+  font-weight: 600;
+  line-height: 20px;
+  border-radius: 100rem;
+  font-size: 1rem;
+  padding: 0.5rem 3rem;
+  color: darkgray;
+  border: solid 3px transparent;
+  background-color: #d3d3d3a6;
+  transition: 0.5s all ease-in;
 }
 
 .simple-blue-btn {

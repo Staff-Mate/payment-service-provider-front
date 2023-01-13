@@ -27,7 +27,6 @@ export class PaymentComponent implements OnInit {
 
   onChooseMethod(paymentMethodId: string) {
     this.paymentService.createPayment(new NewPaymentDto(this.companyApiKey, 10000, paymentMethodId)).subscribe((response) => {
-      console.log(response)
       window.location.href = response;
     });
 

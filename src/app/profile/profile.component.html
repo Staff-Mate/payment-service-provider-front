@@ -5,7 +5,7 @@
 
       <h1 *ngIf="user"><span>{{user.displayName}}</span></h1>
       <div *ngIf="activeView=='home' && user != undefined" class="profile-home">
-        <div class="profile-info" >
+        <div class="profile-info">
           <p *ngIf="user.permissions.includes('ROLE_USER')">{{user.city}}, {{user.state}}, {{user.country}}</p>
           <h2 *ngIf="user.permissions.includes('ROLE_USER')">{{user.firstName}} {{user.lastName}}</h2>
           <div class="profile-contact">
@@ -74,9 +74,10 @@
             <div class="inputs">
 
               <div class="password-input input-block">
-                <div class="required-field-container"><p class="input-label" id="oldPasswordLabel">Old Password</p></div>
-                <mat-form-field appearance="outline" >
-                  <input [formControl]="oldPassword" (ngModelChange)="onOldPasswordChange()"
+                <div class="required-field-container"><p class="input-label" id="oldPasswordLabel">Old Password</p>
+                </div>
+                <mat-form-field appearance="outline">
+                  <input (ngModelChange)="onOldPasswordChange()" [formControl]="oldPassword"
                          [type]="hideOldPassword ? 'password' : 'text'"
                          aria-label="Old Password"
                          matInput
@@ -90,7 +91,7 @@
                 </mat-form-field>
                 <div class="required-field-container"><p class="input-label" id="passwordLabel">New Password</p></div>
                 <mat-form-field appearance="outline">
-                  <input [formControl]="password" (ngModelChange)="onPasswordChange()"
+                  <input (ngModelChange)="onPasswordChange()" [formControl]="password"
                          [type]="hidePassword ? 'password' : 'text'"
                          aria-label="Password"
                          matInput
@@ -123,7 +124,9 @@
           </form>
         </div>
         <div class="submit-container">
-          <button (click)="onPasswordSave()" [ngClass]="confirmPassword.value ? 'blue-green-btn' : 'disabled-blue-green-btn'" [disabled]="!confirmPassword.value">Save<span id="savePassword"></span></button>
+          <button (click)="onPasswordSave()"
+                  [disabled]="!confirmPassword.value"
+                  [ngClass]="confirmPassword.value ? 'blue-green-btn' : 'disabled-blue-green-btn'">Save<span id="savePassword"></span></button>
           <button (click)="activeView = 'home'" class="light-blue-green-btn">Cancel<span id="cancelPassword"></span>
           </button>
         </div>

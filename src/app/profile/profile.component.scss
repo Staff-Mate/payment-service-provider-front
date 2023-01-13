@@ -11,15 +11,15 @@
   }
 }
 
-button.light-blue-green-btn, button.blue-green-btn, button.disabled-blue-green-btn{
-  margin-top: 0!important;
+button.light-blue-green-btn, button.blue-green-btn, button.disabled-blue-green-btn {
+  margin-top: 0 !important;
 }
 
-.profile-info{
+.profile-info {
   contain: content;
 }
 
-.submit-container{
+.submit-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -27,12 +27,14 @@ button.light-blue-green-btn, button.blue-green-btn, button.disabled-blue-green-b
   margin-top: 34px;
 }
 
-.form-section,.inputs{
-  padding: 0!important;
-  .input-section{
-    margin: 0!important;
+.form-section, .inputs {
+  padding: 0 !important;
+
+  .input-section {
+    margin: 0 !important;
   }
-  .name-inputs > :first-child{
-    margin: 0!important;
+
+  .name-inputs > :first-child {
+    margin: 0 !important;
   }
 }

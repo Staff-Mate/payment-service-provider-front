@@ -74,6 +74,5 @@ export class UserManagerComponent implements OnInit {
       'dates': this.dateForm,
       'service': this.service
     })
-    console.log(ELEMENT_DATA)
   }
 }

@@ -7,7 +7,6 @@ import {TokenStorageService} from "./tokenStorage.service";
 import {LoginDto} from "../signin/dto/login.dto";
 import {TokenDto} from "../dto/token.dto";
 import {RegisterDto} from "../signup/dto/register.dto";
-import {User} from "../dto/user.model";
 import {Client} from "../dto/client.model";
 import {PasswordDto} from "../dto/password.dto";
 
@@ -35,13 +34,11 @@ export class AuthService {
           this.router.navigate(['/user']).then()
         },
         error: (error: HttpErrorResponse) => {
-          console.log(error)
           if (error.status == 400) {
             this.errorResponse.next(error.error.message);
           } else {
             this.errorResponse.next("Something went wrong. Please try again.");
           }
-          console.log(error)
         }
       })
   }
@@ -65,7 +62,6 @@ export class AuthService {
   }
 
   signUpUser(user: RegisterDto) {
-    console.log(user)
     return this._http.post(environment.apiUrl + "/auth-service/auth/register", user);
   }
 

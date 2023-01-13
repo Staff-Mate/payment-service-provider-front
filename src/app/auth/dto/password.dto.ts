@@ -1,4 +1,4 @@
-export class PasswordDto{
+export class PasswordDto {
   private oldPassword: string;
   private newPassword: string;
   private confirmPassword: string;

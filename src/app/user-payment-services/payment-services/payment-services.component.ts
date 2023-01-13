@@ -21,12 +21,10 @@ export class PaymentServicesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getEnabledPaymentServices().subscribe((response) => {
-      console.log(response)
       this.activeServices = response;
     });
     this.userService.getAllPaymentServices().subscribe((response) => {
       this.allPaymentServices = response;
-      console.log(this.allPaymentServices)
     })
   }
 
@@ -39,7 +37,6 @@ export class PaymentServicesComponent implements OnInit {
       panelClass: 'enable-payment-method-panel',
       data: {paymentService: service}
     }).afterClosed().subscribe(response => {
-      console.log(response)
       if (response) {
         this.activeServices = response.activeServices;
       }

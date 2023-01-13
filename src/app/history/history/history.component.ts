@@ -42,20 +42,16 @@ export class HistoryComponent implements OnInit, OnDestroy {
     this.initForm();
 
     this.historyService.getFilteredHistory(this.filterForm.value).subscribe(response => {
-      console.log(response)
       this.transactions = response;
     });
 
     this.filterForm.valueChanges.pipe(takeUntil(this.ngUnsubscribe)).subscribe(() => {
-      console.log("CHANGE")
       if (this.status.value == 'ACTIVE') {
         this.historyService.getFilteredActiveTransactions(this.filterForm.value).subscribe(response => {
-          console.log(response)
           this.transactions = response;
         });
       } else {
         this.historyService.getFilteredHistory(this.filterForm.value).subscribe(response => {
-          console.log(response)
           this.transactions = response;
         });
       }
@@ -77,6 +73,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   onPaginatorChange($event: PageEvent) {
     console.log($event)
+    // TODO: implement
   }
 
   private initForm() {
