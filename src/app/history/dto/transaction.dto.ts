@@ -1,4 +1,4 @@
-export class TransactionDto{
+export class TransactionDto {
   serviceName: string;
   amount: number;
   timestamp: Date;

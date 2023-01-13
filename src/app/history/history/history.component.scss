@@ -34,7 +34,7 @@
 
 .filter-form {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
   justify-items: center;
   align-items: center;
@@ -44,7 +44,7 @@
 .status-container,
 .service-container,
 .date-container,
-.active-container{
+.active-container {
   grid-row: 1;
   display: flex;
   flex-direction: row;
@@ -56,8 +56,8 @@
     padding-right: 1rem;
     padding-left: 1rem;
 
-    font-size: 18px!important;
-    margin: 0!important;
+    font-size: 18px !important;
+    margin: 0 !important;
     width: 4rem;
   }
 
@@ -83,7 +83,7 @@
   grid-column: 4;
 }
 
-.mat-mdc-chip{
+.mat-mdc-chip {
   word-break: break-word;
 }
 

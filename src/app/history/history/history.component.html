@@ -16,13 +16,13 @@
 <div class="section">
   <div class="banner">
     <div class="filter">
-      <form class="filter-form" [formGroup]="filterForm">
+      <form [formGroup]="filterForm" class="filter-form">
         <div class="service-container">
           <p>Service</p>
-          <mat-form-field appearance="outline" >
-            <mat-select placeholder="Service" [formControl]="service">
+          <mat-form-field appearance="outline">
+            <mat-select [formControl]="service" placeholder="Service">
               <mat-option>None</mat-option>
-              <mat-option [value]="service.id" *ngFor="let service of allPaymentServices">
+              <mat-option *ngFor="let service of allPaymentServices" [value]="service.id">
                 <div class="option">
 
                   <img [alt]="service.name + ' image'" [src]="'../../../assets/' + service.serviceName + '.png'">
@@ -34,8 +34,8 @@
         </div>
         <div class="status-container">
           <p>Status</p>
-          <mat-form-field appearance="outline" >
-            <mat-select placeholder="Status" [formControl]="status">
+          <mat-form-field appearance="outline">
+            <mat-select [formControl]="status" placeholder="Status">
               <mat-option>None</mat-option>
               <mat-option value="SUCCESS">
                 <div class="option">
@@ -61,7 +61,8 @@
           </mat-form-field>
         </div>
         <div class="active-container">
-          <mat-chip-option (selectionChange)="onActiveTransactionSelectionChanged($event)">Active transactions</mat-chip-option>
+          <mat-chip-option (selectionChange)="onActiveTransactionSelectionChanged($event)">Active transactions
+          </mat-chip-option>
         </div>
         <div class="date-container">
           <p>Date</p>
@@ -92,7 +93,8 @@
       <!-- Date Column -->
       <ng-container matColumnDef="timestamp">
         <th *matHeaderCellDef disableClear mat-header-cell mat-sort-header=""> Date</th>
-        <td *matCellDef="let element" class="cell-amount" mat-cell> {{element.timestamp | date:"dd MMM yyyy HH:mm" }} </td>
+        <td *matCellDef="let element" class="cell-amount"
+            mat-cell> {{element.timestamp | date:"dd MMM yyyy HH:mm" }} </td>
       </ng-container>
 
       <!-- Amount Column -->
@@ -120,6 +122,8 @@
       <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
       <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
     </table>
-    <mat-paginator (page)="onPaginatorChange($event)" [pageSizeOptions]="[20,40,100]" [pageSize]="transactions.pageable.pageSize" [length]="transactions.numberOfElements"  aria-label="Select page of users"></mat-paginator>
+    <mat-paginator (page)="onPaginatorChange($event)" [length]="transactions.numberOfElements"
+                   [pageSizeOptions]="[20,40,100]" [pageSize]="transactions.pageable.pageSize"
+                   aria-label="Select page of users"></mat-paginator>
   </div>
 </div>

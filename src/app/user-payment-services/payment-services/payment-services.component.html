@@ -9,9 +9,10 @@
         <mat-list-item *ngFor="let service of activeServices">
           <h5 matListItemTitle>{{service.paymentMethod.name}}</h5>
           <span matListItemLine>{{service.dateAdded | date}}</span>
-          <img [alt]="service.paymentMethod.serviceName + 'image'" matListItemAvatar
-               [src]="'/assets/' + service.paymentMethod.serviceName + '.png'" >
-          <button (click)="removePaymentService(service)" color="accent" mat-stroked-button matListItemMeta>Remove</button>
+          <img [alt]="service.paymentMethod.serviceName + 'image'" [src]="'/assets/' + service.paymentMethod.serviceName + '.png'"
+               matListItemAvatar>
+          <button (click)="removePaymentService(service)" color="accent" mat-stroked-button matListItemMeta>Remove
+          </button>
         </mat-list-item>
 
       </mat-list>

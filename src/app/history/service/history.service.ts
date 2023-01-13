@@ -1,13 +1,12 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {PaymentMethod} from "../../user-payment-services/dto/payment-method.model";
 import {environment} from "../../../environments/environment";
 import {FilterDto} from "../dto/filter.dto";
 import {TransactionDto} from "../dto/transaction.dto";
 import {Page} from "../../utils/page/page";
 
 @Injectable({providedIn: 'root'})
-export class HistoryService{
+export class HistoryService {
 
   constructor(private _http: HttpClient) {
   }
