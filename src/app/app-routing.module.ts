@@ -1,4 +1,4 @@
-import {Component, NgModule, Type} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {SignupComponent} from "./auth/signup/signup.component";
 import {HomepageComponent} from "./utils/homepage/homepage.component";
@@ -17,8 +17,13 @@ import {
 import {AuthGuard} from "./auth.guard";
 
 const routes: Routes = [
-  {path: '',component: HomepageComponent,canActivate:[AuthGuard], data:{authorizedAccess:[]}},
-  {path: 'home',component: UserHomepageComponent,canActivate:[AuthGuard], data:{authorizedAccess:['ROEL_ADMIN','ROLE_USER']}},
+  {path: '', component: HomepageComponent, canActivate: [AuthGuard], data: {authorizedAccess: []}},
+  {
+    path: 'home',
+    component: UserHomepageComponent,
+    canActivate: [AuthGuard],
+    data: {authorizedAccess: ['ROEL_ADMIN', 'ROLE_USER']}
+  },
   {path: 'user-manager', component: UserManagerComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
@@ -40,7 +45,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{onSameUrlNavigation: 'reload'})],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {

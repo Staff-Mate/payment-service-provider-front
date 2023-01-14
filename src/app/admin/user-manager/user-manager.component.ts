@@ -26,7 +26,7 @@ export class UserManagerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initForm();
-    this.userService.getFilteredUsers(this.filterForm.value).subscribe(response =>{
+    this.userService.getFilteredUsers(this.filterForm.value).subscribe(response => {
       this.users = response;
     })
     this.userService.getAllPaymentServices().subscribe(response => {
@@ -34,9 +34,9 @@ export class UserManagerComponent implements OnInit, OnDestroy {
     })
 
     this.filterForm.valueChanges.pipe(takeUntil(this.ngUnsubscribe)).subscribe(() => {
-        this.userService.getFilteredUsers(this.filterForm.value).subscribe(response => {
-          this.users = response;
-        });
+      this.userService.getFilteredUsers(this.filterForm.value).subscribe(response => {
+        this.users = response;
+      });
     })
   }
 
@@ -44,6 +44,7 @@ export class UserManagerComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
+
   initForm() {
     this.service = new FormControl()
     this.search = new FormControl()

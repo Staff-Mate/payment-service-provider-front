@@ -1,12 +1,12 @@
-.homepage .banner{
+.homepage .banner {
   display: flex;
-  align-items: stretch!important;
-  flex-direction: column!important;
-  padding: 0!important;
-  margin: 3rem 0 0!important;
+  align-items: stretch !important;
+  flex-direction: column !important;
+  padding: 0 !important;
+  margin: 3rem 0 0 !important;
 
-  img{
-    opacity: 0.8!important;
+  img {
+    opacity: 0.8 !important;
   }
 }
 
@@ -59,11 +59,12 @@
 
 .homepage .navigation-section:hover {
   opacity: 1;
-  .left-coming{
+
+  .left-coming {
     background-image: linear-gradient(45deg, #65c8ad, #4357c0);
   }
 
-  .right-coming{
+  .right-coming {
     background-image: linear-gradient(45deg, #4357c0, #65c8ad);
   }
 }

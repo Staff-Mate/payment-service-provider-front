@@ -1,6 +1,6 @@
 import {PaymentMethodDto} from "../../user-payment-services/dto/payment-method.dto";
 
-export class UserFilterDto{
+export class UserFilterDto {
   private search: string;
   private service: PaymentMethodDto;
 

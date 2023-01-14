@@ -8,22 +8,23 @@ import {TokenStorageService} from "./auth/service/tokenStorage.service";
 })
 export class AuthGuard implements CanActivate {
 
-  constructor (private tokenService: TokenStorageService, private router: Router){}
+  constructor(private tokenService: TokenStorageService, private router: Router) {
+  }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const isLoggedIn = this.tokenService.getToken();
     let authorizedAccess = next.data["authorizedAccess"] as Array<string>;
-    if(authorizedAccess.length == 0){
-      if(isLoggedIn){
+    if (authorizedAccess.length == 0) {
+      if (isLoggedIn) {
         this.router.navigate(['/home']).then()
         return false;
       }
       return true;
     }
-    if(!isLoggedIn){
-        this.router.navigate(['/']).then()
+    if (!isLoggedIn) {
+      this.router.navigate(['/']).then()
     }
     return isLoggedIn != null;
   }

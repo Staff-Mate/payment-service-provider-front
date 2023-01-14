@@ -18,7 +18,7 @@
     <div class="filter">
       <form [formGroup]="filterForm">
         <mat-form-field appearance="outline" class="search-field">
-          <input matInput placeholder="Search" type="text" [formControl]="search">
+          <input [formControl]="search" matInput placeholder="Search" type="text">
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -64,7 +64,8 @@
         <th *matHeaderCellDef mat-header-cell> Service</th>
         <td *matCellDef="let element" class="cell-payment-type" mat-cell>
           <img *ngFor="let service of element.paymentMethods"
-               [alt]="service.name + 'payment service' " [matTooltip]="service.name" [src]="'assets/' + service.serviceName + '.png'">
+               [alt]="service.name + 'payment service' " [matTooltip]="service.name"
+               [src]="'assets/' + service.serviceName + '.png'">
           <p *ngIf="element.paymentMethods.length == 0">/</p>
         </td>
       </ng-container>

@@ -22,8 +22,8 @@
     width: 20px;
   }
 
-  p{
-    margin: 0!important;
+  p {
+    margin: 0 !important;
   }
 }
 
@@ -31,9 +31,9 @@
   flex: 0.9;
 }
 
-.filter form{
+.filter form {
   display: flex;
-  align-items: normal!important;
+  align-items: normal !important;
 }
 
 @media screen and (max-width: 870px) {
@@ -43,7 +43,7 @@
       gap: 1rem;
     }
 
-    form > *{
+    form > * {
       flex: 1;
     }
   }

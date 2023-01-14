@@ -38,6 +38,6 @@ export class UserService {
   }
 
   getFilteredUsers(userFilterDto: UserFilterDto) {
-    return this._http.post<Array<Client>>(environment.apiUrl + "/auth-service/users/",userFilterDto);
+    return this._http.post<Array<Client>>(environment.apiUrl + "/auth-service/users/", userFilterDto);
   }
 }
