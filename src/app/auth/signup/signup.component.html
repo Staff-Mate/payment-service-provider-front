@@ -62,7 +62,7 @@
                 </div>
                 <mat-form-field appearance="outline">
                   <input [formControl]="email" class="email-input" data-field="email_id" data-label="emailLabel"
-                         data-required="emailRequired" matInput
+                         data-required="emailRequired" matInput autocomplete="username"
                          name="email-input" placeholder="" required="" type="email">
                 </mat-form-field>
               </div>
@@ -71,7 +71,7 @@
               <div class="company-name-input input-block">
                 <div class="required-field-container"><p class="input-label company-name-label" id="companyNameLabel">
                   Company<span
-                  *ngIf="checkRequired('company')" class="required-star">*</span></p>
+                  *ngIf="checkRequired('companyName')" class="required-star">*</span></p>
                 </div>
 
                 <mat-form-field appearance="outline">
@@ -80,63 +80,43 @@
                          name="company-name" placeholder="" required="" type="text">
                 </mat-form-field>
               </div>
+                <div class="company-name-input input-block">
+                  <div class="required-field-container"><p class="input-label company-name-label" id="bankLabel">
+                    Bank<span
+                    *ngIf="checkRequired('bank')" class="required-star">*</span></p>
+                  </div>
+
+                  <mat-form-field appearance="outline">
+                    <mat-select [formControl]="bank">
+                      <mat-option *ngFor="let bankEl of allBanks" [value]="bankEl">{{bankEl.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
               <div class="city-name-input input-block">
-                <div class="required-field-container"><p class="input-label" id="cityLabel">Which city is your company
-                  based out of?<span
-                    *ngIf="checkRequired('address')" class="required-star">*</span></p></div>
+                <div class="required-field-container"><p class="input-label" id="cityLabel">What are you endpoints for transactions with different outcomes?<span
+                    *ngIf="checkRequired('successUrl')" class="required-star">*</span></p></div>
                 <mat-form-field appearance="outline">
-                  <input [formControl]="country"
-                         [matAutocomplete]="auto"
-                         aria-label="Country"
+                  <input [formControl]="successUrl"
+                         aria-label="Success URL"
                          matInput
-                         placeholder="Country"
+                         placeholder="Success URL"
                          type="text">
-
-                  <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option (onSelectionChange)="onCountryChange(option.isoCode)"
-                                *ngFor="let option of filteredCountries | async"
-                                [value]="option.name">
-                      {{ option.name }}
-                    </mat-option>
-                  </mat-autocomplete>
-                  <mat-icon (click)="addressForm.reset()" matSuffix>cancel</mat-icon>
 
                 </mat-form-field>
-                <p></p>
-
                 <mat-form-field appearance="outline">
-                  <input [formControl]="state"
-                         [matAutocomplete]="autoState"
-                         aria-label="State"
+                  <input [formControl]="failedUrl"
+                         aria-label="Failed URL"
                          matInput
-                         placeholder="State"
+                         placeholder="Failed URL"
                          type="text">
-
-                  <mat-autocomplete #autoState="matAutocomplete">
-                    <mat-option (onSelectionChange)="onStateChange(option.isoCode)"
-                                *ngFor="let option of filteredStates | async"
-                                [value]="option.name">
-                      {{ option.name }}
-                    </mat-option>
-                  </mat-autocomplete>
-                  <mat-icon (click)="city.reset();state.reset()" matSuffix>cancel</mat-icon>
 
                 </mat-form-field>
-                <p></p>
                 <mat-form-field appearance="outline">
-                  <input [formControl]="city"
-                         [matAutocomplete]="autoCity"
-                         aria-label="City"
+                  <input [formControl]="errorUrl"
+                         aria-label="Error URL"
                          matInput
-                         placeholder="City"
+                         placeholder="Error URL"
                          type="text">
-
-                  <mat-autocomplete #autoCity="matAutocomplete">
-                    <mat-option *ngFor="let option of filteredCities | async" [value]="option.name">
-                      {{ option.name }}
-                    </mat-option>
-                  </mat-autocomplete>
-                  <mat-icon (click)="city.reset()" matSuffix>cancel</mat-icon>
 
                 </mat-form-field>
               </div>

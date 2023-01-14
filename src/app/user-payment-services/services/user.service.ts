@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {EnabledPaymentMethodDto} from "../dto/enabled-payment-method.dto";
-import {OwnerDto} from "../dto/owner.dto";
+import {InfoDto} from "../dto/infoDto";
 import {Client} from "../../auth/dto/client.model";
 import {UserFilterDto} from "../../admin/dtos/user-filter.dto";
 
@@ -28,8 +28,8 @@ export class UserService {
     return this._http.delete<Array<EnabledPaymentMethodDto>>(environment.apiUrl + "/auth-service/users/payment-method/" + service.id);
   }
 
-  changeOwner(ownerDto: OwnerDto) {
-    return this._http.put(environment.apiUrl + "/auth-service/users/", ownerDto);
+  editProfile(infoDto: InfoDto) {
+    return this._http.put(environment.apiUrl + "/auth-service/users/", infoDto);
   }
 
   getFilteredUsers(userFilterDto: UserFilterDto) {

@@ -20,7 +20,6 @@ export class AppComponent {
     this.matIconRegistry.addSvgIcon('finished', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/finished.svg'))
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event) => {
       let navigationEvent = event as NavigationEnd;
-      console.log(navigationEvent.url)
       let res =
         navigationEvent.url.includes("signup") ||
         navigationEvent.url.includes("signin") ||

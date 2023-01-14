@@ -57,10 +57,6 @@ export class AuthService {
     return this._http.get(environment.apiUrl + '/auth/refresh', header);
   }
 
-  verifyUser(token: string) {
-    return this._http.get<string>(environment.apiUrl + "/auth/verify", {params: {token: token}});
-  }
-
   signUpUser(user: RegisterDto) {
     return this._http.post(environment.apiUrl + "/auth-service/auth/register", user);
   }

@@ -1,12 +1,17 @@
 import {User} from "./user.model";
 import {PaymentMethodDto} from "../../user-payment-services/dto/payment-method.dto";
+import {BankDto} from "./bank.dto";
 
 export class Client extends User {
-  firstName: string = "";
-  lastName: string = "";
-  country: string = "";
-  state: string = "";
-  city: string = "";
+  firstName: string;
+  lastName: string;
+  country: string;
+  state: string;
+  city: string;
+  errorUrl: string;
+  failedUrl: string;
+  successUrl: string;
+  bank: BankDto;
   paymentMethods: PaymentMethodDto[] = [];
 
 
