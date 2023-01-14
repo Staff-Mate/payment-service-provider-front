@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
-import {PaymentMethod} from "../dto/payment-method.model";
+import {PaymentMethodDto} from "../dto/payment-method.dto";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {EnabledPaymentMethodDto} from "../dto/enabled-payment-method.dto";
 import {OwnerDto} from "../dto/owner.dto";
+import {Client} from "../../auth/dto/client.model";
+import {UserFilterDto} from "../../admin/dtos/user-filter.dto";
 
 @Injectable({providedIn: 'root'})
 export class UserService {
@@ -12,7 +14,7 @@ export class UserService {
   }
 
   getAllPaymentServices() {
-    return this._http.get<Array<PaymentMethod>>(environment.apiUrl + "/auth-service/payment-methods/");
+    return this._http.get<Array<PaymentMethodDto>>(environment.apiUrl + "/auth-service/payment-methods/");
   }
 
   getEnabledPaymentServices() {
@@ -33,5 +35,9 @@ export class UserService {
 
   changeOwner(ownerDto: OwnerDto) {
     return this._http.put(environment.apiUrl + "/auth-service/users/", ownerDto);
+  }
+
+  getFilteredUsers(userFilterDto: UserFilterDto) {
+    return this._http.post<Array<Client>>(environment.apiUrl + "/auth-service/users/",userFilterDto);
   }
 }

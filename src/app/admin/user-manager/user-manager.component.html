@@ -17,36 +17,18 @@
   <div class="banner">
     <div class="filter">
       <form [formGroup]="filterForm">
-        <mat-form-field appearance="fill" class="search-field">
-          <input matInput placeholder="Search" type="text">
+        <mat-form-field appearance="outline" class="search-field">
+          <input matInput placeholder="Search" type="text" [formControl]="search">
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-select [formControl]="service" placeholder="Service">
             <mat-option>None</mat-option>
-            <mat-option value="Bitcoin">
+            <mat-option *ngFor="let service of allPaymentServices" [value]="service.id">
               <div class="option">
 
-                <img alt="Bitcoin image" src="../../../assets/bitcoin-service.png">
-                <p>Bitcoin</p>
-              </div>
-            </mat-option>
-            <mat-option value="Card">
-              <div class="option">
-                <img alt="Card image" src="../../../assets/bank-card-service.png">
-                <p>Card</p>
-              </div>
-            </mat-option>
-            <mat-option value="PayPal">
-              <div class="option">
-                <img alt="PayPal image" src="../../../assets/paypal-service.png">
-                <p>PayPal</p>
-              </div>
-            </mat-option>
-            <mat-option value="QR code">
-              <div class="option">
-                <img alt="QR code image" src="../../../assets/qr-code-service.png">
-                <p>QR code</p>
+                <img [alt]="service.name + ' image'" [src]="'../../../assets/' + service.serviceName + '.png'">
+                <p>{{service.name}}</p>
               </div>
             </mat-option>
           </mat-select>
@@ -56,13 +38,13 @@
     </div>
   </div>
   <div class="banner column-banner">
-    <table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+    <table [dataSource]="users" class="mat-elevation-z8" mat-table>
 
 
       <!-- Company Name Column -->
       <ng-container matColumnDef="company-name">
         <th *matHeaderCellDef mat-header-cell> Company Name</th>
-        <td *matCellDef="let element" class="cell-company-name" mat-cell> {{element.displayName}} </td>
+        <td *matCellDef="let element" class="cell-company-name" mat-cell> {{element.companyName}} </td>
       </ng-container>
 
       <!-- Owner Column -->
@@ -81,9 +63,9 @@
       <ng-container matColumnDef="services">
         <th *matHeaderCellDef mat-header-cell> Service</th>
         <td *matCellDef="let element" class="cell-payment-type" mat-cell>
-          <img *ngFor="let service of element.paymentService"
-               [alt]="service + 'payment service' " [matTooltip]="service" [src]="'assets/' + service + '.png'">
-          <p *ngIf="element.paymentService.length == 0">/</p>
+          <img *ngFor="let service of element.paymentMethods"
+               [alt]="service.name + 'payment service' " [matTooltip]="service.name" [src]="'assets/' + service.serviceName + '.png'">
+          <p *ngIf="element.paymentMethods.length == 0">/</p>
         </td>
       </ng-container>
 

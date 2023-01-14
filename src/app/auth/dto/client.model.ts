@@ -1,4 +1,5 @@
 import {User} from "./user.model";
+import {PaymentMethodDto} from "../../user-payment-services/dto/payment-method.dto";
 
 export class Client extends User {
   firstName: string = "";
@@ -6,7 +7,7 @@ export class Client extends User {
   country: string = "";
   state: string = "";
   city: string = "";
-  paymentService: string[] = ['qr', 'bank-card-service'];
+  paymentMethods: PaymentMethodDto[] = [];
 
 
   constructor(email: string, displayName: string, firstName: string, lastName: string, country: string, state: string, city: string) {

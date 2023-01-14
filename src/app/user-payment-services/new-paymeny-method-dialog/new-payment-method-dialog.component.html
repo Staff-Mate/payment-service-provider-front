@@ -44,7 +44,7 @@
 <div mat-dialog-actions>
   <button class="simple-red-btn" mat-dialog-close>Cancel</button>
   <button #saveBtn (click)="enablePaymentService()"
-          [disabled]="id.value && secret.value"
+          [disabled]="!id.value || !secret.value"
           [ngClass]="id.value && secret.value ? 'simple-blue-btn' : 'disabled-simple-blue-btn'">Save
   </button>
 </div>

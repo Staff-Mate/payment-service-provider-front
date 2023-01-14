@@ -3,7 +3,7 @@ import {MatSort} from "@angular/material/sort";
 import {FormControl, FormGroup} from "@angular/forms";
 import {TransactionDto} from "../dto/transaction.dto";
 import {UserService} from "../../user-payment-services/services/user.service";
-import {PaymentMethod} from "../../user-payment-services/dto/payment-method.model";
+import {PaymentMethodDto} from "../../user-payment-services/dto/payment-method.dto";
 import {Subject, takeUntil} from "rxjs";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatChipSelectionChange} from "@angular/material/chips";
@@ -25,7 +25,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   status: FormControl;
   service: FormControl;
   activeServices: Array<String>;
-  allPaymentServices: Array<PaymentMethod>;
+  allPaymentServices: Array<PaymentMethodDto>;
   ngUnsubscribe = new Subject<void>();
   page: FormControl;
   pageSize: FormControl;
@@ -34,7 +34,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
 
   constructor(private userService: UserService, private historyService: HistoryService) {
     this.activeServices = new Array<String>();
-    this.allPaymentServices = new Array<PaymentMethod>();
+    this.allPaymentServices = new Array<PaymentMethodDto>();
     this.transactions = new Page<TransactionDto>();
   }
 

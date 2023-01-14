@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PaymentMethod} from "../../user-payment-services/dto/payment-method.model";
+import {PaymentMethodDto} from "../../user-payment-services/dto/payment-method.dto";
 import {UserService} from "../../user-payment-services/services/user.service";
 
 @Component({
@@ -8,7 +8,7 @@ import {UserService} from "../../user-payment-services/services/user.service";
   styleUrls: ['./payment-service-manager.component.scss', '../../styles/sections.style.scss']
 })
 export class PaymentServiceManagerComponent implements OnInit {
-  allPaymentServices: Array<PaymentMethod>;
+  allPaymentServices: Array<PaymentMethodDto>;
 
   constructor(private userService: UserService) {
   }

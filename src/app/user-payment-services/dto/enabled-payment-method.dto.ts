@@ -1,8 +1,8 @@
-import {PaymentMethod} from "./payment-method.model";
+import {PaymentMethodDto} from "./payment-method.dto";
 
 export class EnabledPaymentMethodDto {
   id: string
-  paymentMethod: PaymentMethod
+  paymentMethod: PaymentMethodDto
   userId: string
   userSecret: string
   dateAdded: Date

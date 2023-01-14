@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 
-import {PaymentMethod} from "../dto/payment-method.model";
+import {PaymentMethodDto} from "../dto/payment-method.dto";
 import {FormControl, FormGroup} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
@@ -18,7 +18,7 @@ export class NewPaymentMethodDialogComponent implements OnInit {
   id: FormControl;
   paymentMethod: FormControl;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { paymentService: PaymentMethod }, private userService: UserService, private dialogRef: MatDialogRef<NewPaymentMethodDialogComponent>, private _snackBar: MatSnackBar) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { paymentService: PaymentMethodDto }, private userService: UserService, private dialogRef: MatDialogRef<NewPaymentMethodDialogComponent>, private _snackBar: MatSnackBar) {
     this.hide = true;
   }
 

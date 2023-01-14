@@ -21,20 +21,31 @@
   img {
     width: 20px;
   }
-}
 
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before {
-  bottom: -20px !important;
-}
-
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-ripple {
-  bottom: -20px !important;
-}
-
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-  background-color: transparent !important;
+  p{
+    margin: 0!important;
+  }
 }
 
 .search-field {
   flex: 0.9;
+}
+
+.filter form{
+  display: flex;
+  align-items: normal!important;
+}
+
+@media screen and (max-width: 870px) {
+  .filter {
+    form {
+      flex-direction: column-reverse;
+      gap: 1rem;
+    }
+
+    form > *{
+      flex: 1;
+    }
+  }
+
 }

@@ -1,78 +1,56 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Client} from "../../auth/dto/client.model";
-
-let ELEMENT_DATA: Client[] = [
-  {
-    permissions: [],
-    paymentService: ['paypal-service'],
-    email: 'gp.recruit.hr@gmail.com',
-    displayName: 'G-P Recruit',
-    firstName: 'Erika',
-    lastName: 'Waramunt',
-    country: 'USA',
-    state: 'Pennsylvania',
-    city: 'Harrisburg'
-  },
-  {
-    permissions: [],
-    paymentService: ['bitcoin-service'],
-    email: 'lano.hr@gmail.com',
-    displayName: 'Lano',
-    firstName: 'Jac',
-    lastName: 'Decker',
-    country: 'USA',
-    state: 'California',
-    city: 'San Francisco'
-  },
-  {
-    permissions: [],
-    paymentService: ['qr-code-service', 'bank-card-service', 'bitcoin-service', 'paypal-service'],
-    email: 'ajeets.hr@gmail.com',
-    displayName: 'Ajeets',
-    firstName: 'Malika',
-    lastName: 'Tran',
-    country: 'USA',
-    state: 'Tennessee',
-    city: 'Memphis'
-  },
-
-];
+import {UserService} from "../../user-payment-services/services/user.service";
+import {PaymentMethodDto} from "../../user-payment-services/dto/payment-method.dto";
+import {Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-user-manager',
   templateUrl: './user-manager.component.html',
   styleUrls: ['./user-manager.component.scss', '../../styles/sections.style.scss', '../../styles/table.style.scss']
 })
-export class UserManagerComponent implements OnInit {
+export class UserManagerComponent implements OnInit, OnDestroy {
   displayedColumns = ['company-name', 'owner', 'contact', 'services'];
-  dataSource = ELEMENT_DATA;
   filterForm: FormGroup;
-  startDate: FormControl;
-  endDate: FormControl;
   service: FormControl;
-  dateForm: FormGroup;
+  search: FormControl;
+  allPaymentServices: Array<PaymentMethodDto>;
 
-  constructor() {
+  users: Array<Client>
+  ngUnsubscribe = new Subject<void>();
+
+  constructor(private userService: UserService) {
+    this.allPaymentServices = new Array<PaymentMethodDto>();
   }
 
   ngOnInit(): void {
     this.initForm();
-  }
-
-  initForm() {
-
-    this.startDate = new FormControl()
-    this.endDate = new FormControl()
-    this.service = new FormControl()
-    this.dateForm = new FormGroup({
-      'startDate': this.startDate,
-      'endDate': this.endDate
+    this.userService.getFilteredUsers(this.filterForm.value).subscribe(response =>{
+      this.users = response;
+    })
+    this.userService.getAllPaymentServices().subscribe(response => {
+      this.allPaymentServices = response;
     })
 
+    this.filterForm.valueChanges.pipe(takeUntil(this.ngUnsubscribe)).subscribe(() => {
+        this.userService.getFilteredUsers(this.filterForm.value).subscribe(response => {
+          this.users = response;
+        });
+    })
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+  initForm() {
+    this.service = new FormControl()
+    this.search = new FormControl()
+
     this.filterForm = new FormGroup({
-      'dates': this.dateForm,
-      'service': this.service
+      'search': this.search,
+      'serviceId': this.service
     })
   }
 }
