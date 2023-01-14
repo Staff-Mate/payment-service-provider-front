@@ -50,7 +50,7 @@
         <h3>{{service.name}}</h3>
         <p>{{service.description}}</p>
         <div class="submit-container">
-          <button *ngIf="!checkIfActivated(service)" class="light-blue-green-btn">Add</button>
+          <button (click)="openDialog(service)" *ngIf="!checkIfActivated(service)" class="light-blue-green-btn" >Add</button>
           <button *ngIf="checkIfActivated(service)" class="disabled-blue-green-btn" disabled>Added</button>
         </div>
       </div>
