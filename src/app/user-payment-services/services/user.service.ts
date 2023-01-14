@@ -13,10 +13,6 @@ export class UserService {
   constructor(private _http: HttpClient) {
   }
 
-  getAllPaymentServices() {
-    return this._http.get<Array<PaymentMethodDto>>(environment.apiUrl + "/auth-service/payment-methods/");
-  }
-
   getEnabledPaymentServices() {
     return this._http.get<Array<EnabledPaymentMethodDto>>(environment.apiUrl + "/auth-service/users/payment-method");
   }
@@ -40,4 +36,5 @@ export class UserService {
   getFilteredUsers(userFilterDto: UserFilterDto) {
     return this._http.post<Array<Client>>(environment.apiUrl + "/auth-service/users/", userFilterDto);
   }
+
 }

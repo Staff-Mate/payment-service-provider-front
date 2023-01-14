@@ -32,8 +32,8 @@ import {
   PaymentResultEmptyComponent
 } from './choose-payment/payment-result/payment-result-empty/payment-result-empty.component';
 import {
-  NewPaymentMethodDialogComponent
-} from './user-payment-services/new-paymeny-method-dialog/new-payment-method-dialog.component';
+  EnablePaymentMethodDialogComponent
+} from './user-payment-services/enable-paymeny-method-dialog/enable-payment-method-dialog.component';
 import {COMMA, SPACE} from "@angular/cdk/keycodes";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -49,6 +49,7 @@ import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dia
 import {MatCardModule} from "@angular/material/card";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatButtonModule} from "@angular/material/button";
+import { NewPaymentServiceDialogComponent } from './admin/new-payment-service-dialog/new-payment-service-dialog.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import {MatButtonModule} from "@angular/material/button";
     FooterComponent,
     PaymentResultComponent,
     PaymentResultEmptyComponent,
-    NewPaymentMethodDialogComponent
+    EnablePaymentMethodDialogComponent,
+    NewPaymentServiceDialogComponent
   ],
   imports: [
     BrowserModule,

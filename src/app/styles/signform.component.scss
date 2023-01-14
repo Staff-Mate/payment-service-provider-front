@@ -195,6 +195,10 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color:hover {
   color: red;
 }
 
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__title{
+  font-size: 24px!important;
+  font-weight: 600!important;
+}
 
 @media screen and (max-width: 1280px) {
   .discash-banner {
@@ -213,6 +217,27 @@ mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color:hover {
     margin: 20px 0;
     width: 100%;
   }
+}
+
+@media screen and (max-width: 500px) {
+  ::ng-deep .new-payment-method-panel, .enable-payment-method-panel{
+    height: 100%!important;
+  }
+
+  ::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface{
+    border-radius: 0!important;
+  }
+
+  ::ng-deep .mat-mdc-dialog-content{
+    max-height: unset!important;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .form-section{
+    padding: 0!important;
+  }
+
 }
 
 .error-container {

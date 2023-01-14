@@ -9,6 +9,7 @@ import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatChipSelectionChange} from "@angular/material/chips";
 import {HistoryService} from "../service/history.service";
 import {Page} from "../../utils/page/page";
+import {PaymentMethodService} from "../../admin/services/payment-method.service";
 
 @Component({
   selector: 'app-history',
@@ -32,7 +33,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
   transactions: Page<TransactionDto>;
 
 
-  constructor(private userService: UserService, private historyService: HistoryService) {
+  constructor(private userService: UserService, private historyService: HistoryService, private paymentMethodService: PaymentMethodService) {
     this.activeServices = new Array<String>();
     this.allPaymentServices = new Array<PaymentMethodDto>();
     this.transactions = new Page<TransactionDto>();
@@ -56,7 +57,7 @@ export class HistoryComponent implements OnInit, OnDestroy {
         });
       }
     })
-    this.userService.getAllPaymentServices().subscribe(response => {
+    this.paymentMethodService.getAllPaymentServices().subscribe(response => {
       this.allPaymentServices = response;
     })
 

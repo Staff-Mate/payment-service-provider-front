@@ -4,6 +4,7 @@ import {Client} from "../../auth/dto/client.model";
 import {UserService} from "../../user-payment-services/services/user.service";
 import {PaymentMethodDto} from "../../user-payment-services/dto/payment-method.dto";
 import {Subject, takeUntil} from "rxjs";
+import {PaymentMethodService} from "../services/payment-method.service";
 
 @Component({
   selector: 'app-user-manager',
@@ -20,7 +21,7 @@ export class UserManagerComponent implements OnInit, OnDestroy {
   users: Array<Client>
   ngUnsubscribe = new Subject<void>();
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private paymentMethodService: PaymentMethodService) {
     this.allPaymentServices = new Array<PaymentMethodDto>();
   }
 
@@ -29,7 +30,7 @@ export class UserManagerComponent implements OnInit, OnDestroy {
     this.userService.getFilteredUsers(this.filterForm.value).subscribe(response => {
       this.users = response;
     })
-    this.userService.getAllPaymentServices().subscribe(response => {
+    this.paymentMethodService.getAllPaymentServices().subscribe(response => {
       this.allPaymentServices = response;
     })
 

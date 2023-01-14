@@ -1,0 +1,82 @@
+::ng-deep .new-payment-method-panel > .mat-mdc-dialog-container {
+  max-width: 45rem;
+  text-align: center;
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 20px !important;
+}
+
+.mat-mdc-dialog-title {
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.form-section {
+  padding: 10px 50px !important;
+}
+
+.form-section .input-section form .inputs .company-inputs .input-block {
+  margin: 0 !important;
+}
+
+.form-section .input-section {
+  margin: 0 !important;
+}
+
+.form-section .input-section form .inputs .input-row{
+  display: grid!important;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  gap: 1rem;
+  .image-fields{
+    grid-row-start: 1;
+    grid-row-end: 4;
+  }
+}
+
+.new-payment-dialog-content > p {
+  margin-top: 30px;
+  font-size: 17px;
+}
+
+.mat-mdc-dialog-actions {
+  justify-content: space-evenly;
+}
+
+.input-block img{
+  width: 70%;
+  margin: auto;
+}
+
+.image-fields{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 750px) {
+  .form-section .input-section form .inputs .input-row{
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(5, auto);
+    grid-auto-flow: row;
+    .image-fields{
+      grid-row-start: unset;
+      grid-row-end: unset;
+      flex-direction: row;
+    }
+  }
+
+  .input-block {
+    img {
+      width: 21%;
+      height: fit-content;
+      aspect-ratio: 1;
+      margin: auto;
+    }
+  }
+
+  .img-container{
+    display: contents!important;
+  }
+}

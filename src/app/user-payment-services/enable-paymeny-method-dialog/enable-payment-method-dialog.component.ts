@@ -7,18 +7,18 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
-  selector: 'app-new-payment-method-dialog',
-  templateUrl: './new-payment-method-dialog.component.html',
-  styleUrls: ['./new-payment-method-dialog.component.scss', '../../styles/signform.component.scss']
+  selector: 'app-enable-payment-method-dialog',
+  templateUrl: './enable-payment-method-dialog.component.html',
+  styleUrls: ['./enable-payment-method-dialog.component.scss', '../../styles/signform.component.scss']
 })
-export class NewPaymentMethodDialogComponent implements OnInit {
+export class EnablePaymentMethodDialogComponent implements OnInit {
   hide: boolean;
   form: FormGroup;
   secret: FormControl;
   id: FormControl;
   paymentMethod: FormControl;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { paymentService: PaymentMethodDto }, private userService: UserService, private dialogRef: MatDialogRef<NewPaymentMethodDialogComponent>, private _snackBar: MatSnackBar) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { paymentService: PaymentMethodDto }, private userService: UserService, private dialogRef: MatDialogRef<EnablePaymentMethodDialogComponent>, private _snackBar: MatSnackBar) {
     this.hide = true;
   }
 

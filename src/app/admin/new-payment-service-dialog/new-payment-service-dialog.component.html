@@ -1,0 +1,68 @@
+<h1 mat-dialog-title>New payment service</h1>
+<div class="new-payment-dialog-content" mat-dialog-content>
+  <p>Add new payment service and make it available to all of your users.</p>
+  <div class="form-section ">
+    <div class="input-section">
+      <form [formGroup]="form">
+        <div class="inputs">
+          <div class="company-inputs input-row">
+            <div class="company-name-input input-block">
+              <div class="required-field-container">
+                <p class="input-label company-name-label" id="nameLabel">
+                  Display name</p>
+              </div>
+              <mat-form-field appearance="outline">
+                <input (keyup.enter)="descriptionInput.focus()" [formControl]="name" autocomplete="name" cdkFocusInitial
+                       class="name" data-field="name" data-label="nameLabel" data-required="nameRequired"
+                       matInput name="name" placeholder="" type="text">
+              </mat-form-field>
+            </div>
+            <div class="company-name-input input-block">
+              <div class="required-field-container">
+                <p class="input-label company-name-label" id="serviceNameLabel">
+                  Service name</p>
+              </div>
+              <mat-form-field appearance="outline">
+                <input #serviceNameInput (keyup.enter)="imagePathInput.focus()" [formControl]="serviceName" autocomplete="serviceName" cdkFocusInitial
+                       class="serviceName" data-field="serviceName" data-label="serviceNameLabel" data-required="serviceNameRequired"
+                       matInput name="serviceName" placeholder="" type="text">
+              </mat-form-field>
+            </div>
+            <div class="description-input input-block">
+              <div class="required-field-container"><p class="input-label" id="descriptionLabel">Description</p></div>
+              <mat-form-field appearance="outline">
+                <textarea  #descriptionInput (keyup.enter)="serviceNameInput.focus()"
+                           [formControl]="description"
+                           aria-label="Description"
+                           autocomplete="description" matInput placeholder=""></textarea>
+              </mat-form-field>
+            </div>
+            <div class="image-fields">
+              <div class="company-name-input input-block">
+                <div class="required-field-container">
+                  <p class="input-label company-name-label" id="imagePathLabel">
+                    Image path</p>
+                </div>
+                <mat-form-field appearance="outline">
+                  <input #imagePathInput (keyup.enter)="descriptionInput.focus()" [formControl]="imagePath" autocomplete="imagePath" cdkFocusInitial
+                         class="imagePath" data-field="imagePath" data-label="imagePathLabel" data-required="imagePathRequired"
+                         matInput name="imagePath" placeholder="" type="text">
+                </mat-form-field>
+              </div>
+              <div class="company-name-input input-block img-container">
+                <img [src]="imagePath.value ? imagePath.value : 'https://cdn-icons-png.flaticon.com/512/40/40058.png'">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button class="simple-red-btn" mat-dialog-close>Cancel</button>
+  <button #saveBtn (click)="newEditPaymentService()"
+          [disabled]="!form.valid"
+          [ngClass]="form.valid ? 'simple-blue-btn' : 'disabled-simple-blue-btn'">Save
+  </button>
+</div>
