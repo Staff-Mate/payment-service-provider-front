@@ -1,15 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {PaymentMethodDto} from "../../user-payment-services/dto/payment-method.dto";
-import {UserService} from "../../user-payment-services/services/user.service";
-import {
-  EnablePaymentMethodDialogComponent
-} from "../../user-payment-services/enable-paymeny-method-dialog/enable-payment-method-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {PaymentMethodService} from "../services/payment-method.service";
 import {NewPaymentServiceDialogComponent} from "../new-payment-service-dialog/new-payment-service-dialog.component";
 import {ActivatedRoute, Router} from "@angular/router";
-import {delay} from "rxjs";
 
 @Component({
   selector: 'app-payment-service-manager',
@@ -36,13 +31,13 @@ export class PaymentServiceManagerComponent implements OnInit {
         this.allPaymentServices.push(response.newPaymentMethod);
         setTimeout(() => {
           let x = document.querySelector("#id" + response.newPaymentMethod.id);
-          if (x){
+          if (x) {
             x.scrollIntoView({behavior: 'smooth'});
             this._snackBar.open("You have successfully added new service with name \"" + response.newPaymentMethod.name + "\".", 'X', {
               duration: 2000
             });
           }
-        },100)
+        }, 100)
 
       }
     });
@@ -51,7 +46,7 @@ export class PaymentServiceManagerComponent implements OnInit {
   onEdit(service: PaymentMethodDto) {
     this.dialog.open(NewPaymentServiceDialogComponent, {
       panelClass: 'new-payment-method-panel',
-      data:{paymentService: service}
+      data: {paymentService: service}
     }).afterClosed().subscribe(response => {
       if (response) {
         let index = this.allPaymentServices.indexOf(service);
@@ -65,7 +60,7 @@ export class PaymentServiceManagerComponent implements OnInit {
 
   onDelete(service: PaymentMethodDto) {
     this.paymentMethodService.deletePaymentService(service).subscribe({
-      next: (response) =>{
+      next: (response) => {
         this.allPaymentServices = response
         window.scroll({
           top: 0,

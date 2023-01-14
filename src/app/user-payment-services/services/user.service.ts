@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {PaymentMethodDto} from "../dto/payment-method.dto";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {EnabledPaymentMethodDto} from "../dto/enabled-payment-method.dto";

@@ -3,7 +3,8 @@
   <div *ngIf="user" class="banner">
     <img alt="" class="banner-bg" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/home-banner-bg.svg">
 
-    <div *ngIf="user.permissions.includes('ROLE_USER')" class="navigation-section right-coming" routerLink="/payment-services"
+    <div *ngIf="user.permissions.includes('ROLE_USER')" class="navigation-section right-coming"
+         routerLink="/payment-services"
          style="margin-top: 0;">
       <h1>Services</h1>
       <img
@@ -16,7 +17,8 @@
       <h1>History</h1>
 
     </div>
-    <div *ngIf="user.permissions.includes('ROLE_ADMIN')" class="navigation-section right-coming" routerLink="/payment-service-manager"
+    <div *ngIf="user.permissions.includes('ROLE_ADMIN')" class="navigation-section right-coming"
+         routerLink="/payment-service-manager"
          style="margin-top: 0;">
       <h1>Services</h1>
       <img

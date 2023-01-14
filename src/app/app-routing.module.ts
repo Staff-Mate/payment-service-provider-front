@@ -50,7 +50,7 @@ const routes: Routes = [
     {
       scrollPositionRestoration: 'enabled',
       onSameUrlNavigation: 'reload',
-      anchorScrolling:'enabled'
+      anchorScrolling: 'enabled'
     })
   ],
   exports: [RouterModule],

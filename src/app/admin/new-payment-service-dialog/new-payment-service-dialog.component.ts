@@ -28,18 +28,18 @@ export class NewPaymentServiceDialogComponent {
   }
 
   initForm() {
-    if(this.data){
+    if (this.data) {
       this.id = new FormControl(this.data.paymentService.id);
-      this.name = new FormControl(this.data.paymentService.name,Validators.required);
+      this.name = new FormControl(this.data.paymentService.name, Validators.required);
       this.imagePath = new FormControl(this.data.paymentService.imagePath);
-      this.serviceName = new FormControl(this.data.paymentService.serviceName,Validators.required);
-      this.description = new FormControl(this.data.paymentService.description,Validators.required);
-    }else{
+      this.serviceName = new FormControl(this.data.paymentService.serviceName, Validators.required);
+      this.description = new FormControl(this.data.paymentService.description, Validators.required);
+    } else {
       this.id = new FormControl('');
-      this.name = new FormControl('',Validators.required);
+      this.name = new FormControl('', Validators.required);
       this.imagePath = new FormControl('https://cdn-icons-png.flaticon.com/512/40/40058.png');
-      this.serviceName = new FormControl('',Validators.required);
-      this.description = new FormControl('',Validators.required);
+      this.serviceName = new FormControl('', Validators.required);
+      this.description = new FormControl('', Validators.required);
     }
 
     this.form = new FormGroup({
@@ -52,7 +52,7 @@ export class NewPaymentServiceDialogComponent {
   }
 
   newEditPaymentService() {
-    if(this.data){
+    if (this.data) {
       this.paymentMethodService.updatePaymentService(this.form.value).subscribe({
         next: (response) => {
           this.dialogRef.close({editedPaymentMethod: response})
@@ -62,7 +62,7 @@ export class NewPaymentServiceDialogComponent {
           });
         }
       })
-    }else{
+    } else {
       this.paymentMethodService.addPaymentService(this.form.value).subscribe({
         next: (response) => {
           this.dialogRef.close({newPaymentMethod: response})

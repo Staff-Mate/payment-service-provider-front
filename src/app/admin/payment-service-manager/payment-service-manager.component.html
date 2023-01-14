@@ -5,7 +5,7 @@
       <h1><span>Payment Service Manager</span></h1>
       <h2>Manage all payment services available to users of Discash. Here you can make new payment service and make it
         available to users or edit already existing one.</h2>
-      <button class="blue-green-btn" (click)="onNew()">New</button>
+      <button (click)="onNew()" class="blue-green-btn">New</button>
     </div>
     <div class="right-container">
       <img
@@ -19,7 +19,7 @@
     <h2><span>All Available Services</span></h2>
   </div>
   <div *ngFor="let service of allPaymentServices; let i = index">
-    <div *ngIf="i%2 == 0" class="banner reverse" [id]="'id' + service.id" >
+    <div *ngIf="i%2 == 0" [id]="'id' + service.id" class="banner reverse">
       <div class="right-container">
         <img
           [src]="service.imagePath" alt="Payment Service Provider">
@@ -28,18 +28,18 @@
         <h1>{{service.name}}</h1>
         <p>{{service.description}}</p>
         <div class="submit-container">
-          <button class="light-blue-green-btn" (click)="onEdit(service)">Edit</button>
-          <button class="light-red-btn" (click)="onDelete(service)">Delete</button>
+          <button (click)="onEdit(service)" class="light-blue-green-btn">Edit</button>
+          <button (click)="onDelete(service)" class="light-red-btn">Delete</button>
         </div>
       </div>
     </div>
-    <div *ngIf="i%2 != 0" class="banner" [id]="'id' + service.id">
+    <div *ngIf="i%2 != 0" [id]="'id' + service.id" class="banner">
       <div class="left-container">
         <h3>{{service.name}}</h3>
         <p>{{service.description}}</p>
         <div class="submit-container">
-          <button class="light-blue-green-btn" (click)="onEdit(service)">Edit</button>
-          <button class="light-red-btn" (click)="onDelete(service)">Delete</button>
+          <button (click)="onEdit(service)" class="light-blue-green-btn">Edit</button>
+          <button (click)="onDelete(service)" class="light-red-btn">Delete</button>
         </div>
       </div>
       <div class="right-container">

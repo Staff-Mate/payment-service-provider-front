@@ -23,18 +23,20 @@
                   Service name</p>
               </div>
               <mat-form-field appearance="outline">
-                <input #serviceNameInput (keyup.enter)="imagePathInput.focus()" [formControl]="serviceName" autocomplete="serviceName" cdkFocusInitial
-                       class="serviceName" data-field="serviceName" data-label="serviceNameLabel" data-required="serviceNameRequired"
+                <input #serviceNameInput (keyup.enter)="imagePathInput.focus()" [formControl]="serviceName"
+                       autocomplete="serviceName" cdkFocusInitial
+                       class="serviceName" data-field="serviceName" data-label="serviceNameLabel"
+                       data-required="serviceNameRequired"
                        matInput name="serviceName" placeholder="" type="text">
               </mat-form-field>
             </div>
             <div class="description-input input-block">
               <div class="required-field-container"><p class="input-label" id="descriptionLabel">Description</p></div>
               <mat-form-field appearance="outline">
-                <textarea  #descriptionInput (keyup.enter)="serviceNameInput.focus()"
-                           [formControl]="description"
-                           aria-label="Description"
-                           autocomplete="description" matInput placeholder=""></textarea>
+                <textarea #descriptionInput (keyup.enter)="serviceNameInput.focus()"
+                          [formControl]="description"
+                          aria-label="Description"
+                          autocomplete="description" matInput placeholder=""></textarea>
               </mat-form-field>
             </div>
             <div class="image-fields">
@@ -44,8 +46,10 @@
                     Image path</p>
                 </div>
                 <mat-form-field appearance="outline">
-                  <input #imagePathInput (keyup.enter)="descriptionInput.focus()" [formControl]="imagePath" autocomplete="imagePath" cdkFocusInitial
-                         class="imagePath" data-field="imagePath" data-label="imagePathLabel" data-required="imagePathRequired"
+                  <input #imagePathInput (keyup.enter)="descriptionInput.focus()" [formControl]="imagePath"
+                         autocomplete="imagePath" cdkFocusInitial
+                         class="imagePath" data-field="imagePath" data-label="imagePathLabel"
+                         data-required="imagePathRequired"
                          matInput name="imagePath" placeholder="" type="text">
                 </mat-form-field>
               </div>

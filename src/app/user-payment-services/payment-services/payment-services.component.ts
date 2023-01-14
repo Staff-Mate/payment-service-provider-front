@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {PaymentMethodDto} from "../dto/payment-method.dto";
 import {UserService} from "../services/user.service";
 import {EnabledPaymentMethodDto} from "../dto/enabled-payment-method.dto";
-import {EnablePaymentMethodDialogComponent} from "../enable-paymeny-method-dialog/enable-payment-method-dialog.component";
+import {
+  EnablePaymentMethodDialogComponent
+} from "../enable-paymeny-method-dialog/enable-payment-method-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {PaymentMethodService} from "../../admin/services/payment-method.service";

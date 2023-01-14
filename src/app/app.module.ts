@@ -49,7 +49,9 @@ import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dia
 import {MatCardModule} from "@angular/material/card";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatButtonModule} from "@angular/material/button";
-import { NewPaymentServiceDialogComponent } from './admin/new-payment-service-dialog/new-payment-service-dialog.component';
+import {
+  NewPaymentServiceDialogComponent
+} from './admin/new-payment-service-dialog/new-payment-service-dialog.component';
 
 @NgModule({
   declarations: [
