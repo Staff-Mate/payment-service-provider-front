@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
-import {ActivatedRoute} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
+import {filter} from "rxjs/operators";
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,24 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AppComponent {
   title = 'Discash';
-  isFooterShowing: boolean = false;
+  isFooterShowing: boolean = true;
 
-  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private route: ActivatedRoute) {
+  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private router: Router) {
     this.matIconRegistry.addSvgIcon('error', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/error.svg'))
     this.matIconRegistry.addSvgIcon('failed', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/failed.svg'))
     this.matIconRegistry.addSvgIcon('active', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/active.svg'))
     this.matIconRegistry.addSvgIcon('finished', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/finished.svg'))
-    let res = this.route.routeConfig?.component?.name.includes("SignUpComponent") || this.route.routeConfig?.component?.name.includes("SingInComponent");
-    this.isFooterShowing = res == undefined ? false : res;
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event) => {
+      let navigationEvent = event as NavigationEnd;
+      console.log(navigationEvent.url)
+      let res =
+        navigationEvent.url.includes("signup") ||
+        navigationEvent.url.includes("signin") ||
+        navigationEvent.url.includes("home") ||
+        navigationEvent.url == "/";
+      this.isFooterShowing = !res;
+
+    })
+
   }
 }
