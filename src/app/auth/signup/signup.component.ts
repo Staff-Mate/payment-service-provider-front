@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from'@angular/core';
 import {GeoService} from "../service/geo.service";
 import {ICity, ICountry, IState} from 'country-state-city';
 import {FormControl, FormGroup, Validators} from "@angular/forms";

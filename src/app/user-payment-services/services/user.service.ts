@@ -16,8 +16,8 @@ export class UserService {
     return this._http.get<Array<EnabledPaymentMethodDto>>(environment.apiUrl + "/auth-service/users/payment-method");
   }
 
-  getEnabledPaymentServicesByApiKey(apiKey: string) {
-    return this._http.get<Array<EnabledPaymentMethodDto>>(environment.apiUrl + "/auth-service/users/payment-method/" + apiKey);
+  getEnabledPaymentServicesByPaymentAttemptId(paymentAttemptId: string) {
+    return this._http.get<Array<EnabledPaymentMethodDto>>(environment.apiUrl + "/auth-service/users/payment-method/" + paymentAttemptId);
   }
 
   enablePaymentService(enablePaymentMethod: EnabledPaymentMethodDto) {

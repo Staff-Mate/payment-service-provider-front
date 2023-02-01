@@ -13,20 +13,20 @@ import {NewPaymentDto} from "../dto/new-payment.dto";
 export class PaymentComponent implements OnInit {
 
   enabledPaymentService: Array<EnabledPaymentMethodDto>
-  companyApiKey: string;
+  paymentAttemptId: string;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router, private paymentService: PaymentService) {
   }
 
   ngOnInit(): void {
-    this.companyApiKey = this.route.snapshot.params['id']
-    this.userService.getEnabledPaymentServicesByApiKey(this.companyApiKey).subscribe((response) => {
+    this.paymentAttemptId = this.route.snapshot.params['id']
+    this.userService.getEnabledPaymentServicesByPaymentAttemptId(this.paymentAttemptId).subscribe((response) => {
       this.enabledPaymentService = response;
     })
   }
 
   onChooseMethod(paymentMethodId: string) {
-    this.paymentService.createPayment(new NewPaymentDto(this.companyApiKey, 10000, paymentMethodId)).subscribe((response) => {
+    this.paymentService.createPayment(new NewPaymentDto(this.paymentAttemptId, paymentMethodId)).subscribe((response) => {
       window.location.href = response;
     });
 

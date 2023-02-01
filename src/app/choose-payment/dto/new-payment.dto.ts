@@ -1,13 +1,10 @@
 export class NewPaymentDto {
-
-  private apiKey: string;
-  private amount: number;
+  private paymentAttemptId: string;
   private paymentMethodId: string;
 
 
-  constructor(apiKey: string, amount: number, paymentMethodId: string) {
-    this.apiKey = apiKey;
-    this.amount = amount;
+  constructor(paymentAttemptId: string, paymentMethodId: string) {
+    this.paymentAttemptId = paymentAttemptId;
     this.paymentMethodId = paymentMethodId;
   }
 }
