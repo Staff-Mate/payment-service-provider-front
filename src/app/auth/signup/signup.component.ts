@@ -10,7 +10,7 @@ import {BankDto} from "../dto/bank.dto";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
-import {NoSpaceValidator} from "./validators/no-space.validator";
+import {NoSpaceValidator} from "../validators/no-space.validator";
 
 
 @Component({

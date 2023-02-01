@@ -24,13 +24,38 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {authorizedAccess: ['ROLE_ADMIN', 'ROLE_USER']}
   },
-  {path: 'user-manager', component: UserManagerComponent},
-  {path: 'signup', component: SignupComponent},
-  {path: 'signin', component: SigninComponent},
-  {path: 'payment-services', component: PaymentServicesComponent},
-  {path: 'payment-service-manager', component: PaymentServiceManagerComponent},
-  {path: 'history', component: HistoryComponent},
-  {path: 'profile', component: ProfileComponent},
+  {
+    path: 'user-manager',
+    component: UserManagerComponent,
+    canActivate: [AuthGuard],
+    data: {authorizedAccess: ['ROLE_ADMIN']}},
+  {
+    path: 'signup',
+    component: SignupComponent},
+  {
+    path: 'signin',
+    component: SigninComponent},
+  {
+    path: 'payment-services',
+    component: PaymentServicesComponent,
+    canActivate: [AuthGuard],
+    data: {authorizedAccess: ['ROLE_USER']}},
+  {
+    path: 'payment-service-manager',
+    component: PaymentServiceManagerComponent,
+    canActivate: [AuthGuard],
+    data: {authorizedAccess: ['ROLE_ADMIN']}
+  },
+  {
+    path: 'history',
+    component: HistoryComponent,
+    canActivate: [AuthGuard],
+    data: {authorizedAccess: ['ROLE_USER']}},
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard],
+    data: {authorizedAccess: ['ROLE_ADMIN', 'ROLE_USER']}},
   {
     path: 'payment',
     component: PaymentResultEmptyComponent,
@@ -41,7 +66,7 @@ const routes: Routes = [
       {path: ':id', component: PaymentComponent},
     ]
   },
-  {path: '**', redirectTo: ''}
+  {path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({
