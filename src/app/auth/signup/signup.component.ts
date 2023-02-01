@@ -10,6 +10,7 @@ import {BankDto} from "../dto/bank.dto";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
+import {NoSpaceValidator} from "./validators/no-space.validator";
 
 
 @Component({
@@ -50,6 +51,12 @@ export class SignupComponent implements OnInit {
   hidePassword: boolean = true;
   allBanks: Array<BankDto>;
 
+  public PERSONAL_NAME_PATTERN: string = "^[a-zA-Z0-9' ]+$";
+  public CONTAINS_DIGIT_PATTERN: string = "[a-zA-Z0-9!?#$@.*+_]*[0-9][a-zA-Z0-9!?#$@.*+_]*";
+  public CONTAINS_UPPERCASE_PATTERN: string = "[a-zA-Z0-9!?#$@.*+_]*[A-Z][a-zA-Z0-9!?#$@.*+_]*";
+  public CONTAINS_LOWERCASE_PATTERN: string = "[a-zA-Z0-9!?#$@.*+_]*[a-z][a-zA-Z0-9!?#$@.*+_]*";
+  public CONTAINS_SPECIAL_CHAR_PATTERN: string = "[a-zA-Z0-9!?#$@.*+_]*[!?#$@.*+_][a-zA-Z0-9!?#$@.*+_]*";
+
   constructor(private geoService: GeoService, private authService: AuthService, private bankService: BankService, private _snackBar: MatSnackBar, private router: Router) {
     this.bankService.getAllBanks().subscribe(response =>{
       this.allBanks = response;
@@ -70,8 +77,8 @@ export class SignupComponent implements OnInit {
 
     this.firstName = new FormControl('', Validators.required);
     this.lastName = new FormControl('', Validators.required);
-    this.password = new FormControl('', Validators.required);
-    this.confirmPassword = new FormControl('', Validators.required);
+    this.password = new FormControl('', [Validators.required, Validators.pattern(this.CONTAINS_DIGIT_PATTERN), Validators.pattern(this.CONTAINS_LOWERCASE_PATTERN), Validators.pattern(this.CONTAINS_UPPERCASE_PATTERN), Validators.pattern(this.CONTAINS_SPECIAL_CHAR_PATTERN), Validators.minLength(8), Validators.maxLength(50), NoSpaceValidator.cannotContainSpace]);
+    this.confirmPassword = new FormControl('', [Validators.required, Validators.pattern(this.CONTAINS_DIGIT_PATTERN), Validators.pattern(this.CONTAINS_LOWERCASE_PATTERN), Validators.pattern(this.CONTAINS_UPPERCASE_PATTERN), Validators.pattern(this.CONTAINS_SPECIAL_CHAR_PATTERN), Validators.minLength(8), Validators.maxLength(50), NoSpaceValidator.cannotContainSpace]);
     this.email = new FormControl('', [Validators.required, Validators.email]);
     this.company = new FormControl('', Validators.required);
 
@@ -104,27 +111,6 @@ export class SignupComponent implements OnInit {
       })
   }
 
-  onCountryChange(isoCode: string) {
-    this.states = this.geoService.getStatesByCountry(isoCode);
-    this.stateIsoCode = isoCode;
-
-    this.filteredStates = this.state.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filterState(value || '')),
-    );
-
-  }
-
-  onStateChange(isoCode: string) {
-    this.cities = this.geoService.getCitiesByState(this.stateIsoCode, isoCode);
-
-    this.filteredCities = this.city.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filterCity(value || '')),
-    );
-
-  }
-
   checkRequired(control: string) {
     return this.form.get(control)?.hasValidator(Validators.required)
   }
@@ -154,17 +140,5 @@ export class SignupComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.countries.filter(option => option.name.toLowerCase().includes(filterValue));
-  }
-
-  private _filterState(value: string): IState[] {
-    const filterValue = value.toLowerCase();
-
-    return this.states.filter(option => option.name.toLowerCase().includes(filterValue));
-  }
-
-  private _filterCity(value: string): ICity[] {
-    const filterValue = value.toLowerCase();
-
-    return this.cities.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 }

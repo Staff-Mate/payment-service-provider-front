@@ -4,11 +4,17 @@ export class PaymentMethodDto {
   name: string = "";
   serviceName: string = "";
   description: string = "";
+  requiresCredentialsSecret: string;
+  requiresCredentialsId: string;
 
 
-  constructor(imagePath: string, fullName: string, description: string) {
+  constructor(id: string, imagePath: string, name: string, serviceName: string, description: string, requiresCredentialSecret: string, requiresCredentialId: string) {
+    this.id = id;
     this.imagePath = imagePath;
-    this.name = fullName;
+    this.name = name;
+    this.serviceName = serviceName;
     this.description = description;
+    this.requiresCredentialsSecret = requiresCredentialSecret;
+    this.requiresCredentialsId = requiresCredentialId;
   }
 }

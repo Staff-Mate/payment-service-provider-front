@@ -11,6 +11,7 @@ export class Client extends User {
   errorUrl: string;
   failedUrl: string;
   successUrl: string;
+  apiKey: string;
   bank: BankDto;
   paymentMethods: PaymentMethodDto[] = [];
 

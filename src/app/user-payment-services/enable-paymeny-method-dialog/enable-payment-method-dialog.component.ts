@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 
 import {PaymentMethodDto} from "../dto/payment-method.dto";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../services/user.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -28,8 +28,8 @@ export class EnablePaymentMethodDialogComponent implements OnInit {
 
   initForm() {
 
-    this.id = new FormControl('');
-    this.secret = new FormControl('')
+    this.id = new FormControl('', this.data.paymentService.requiresCredentialsId ? Validators.required : {});
+    this.secret = new FormControl('', this.data.paymentService.requiresCredentialsSecret ? Validators.required : {})
     this.paymentMethod = new FormControl(this.data.paymentService)
 
     this.form = new FormGroup({

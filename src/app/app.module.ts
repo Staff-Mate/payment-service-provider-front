@@ -52,6 +52,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {
   NewPaymentServiceDialogComponent
 } from './admin/new-payment-service-dialog/new-payment-service-dialog.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -73,32 +74,33 @@ import {
     EnablePaymentMethodDialogComponent,
     NewPaymentServiceDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-    MatListModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    HttpClientModule,
-    MatGridListModule,
-    MatTooltipModule,
-    MatCardModule,
-    MatProgressBarModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    MatChipsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatAutocompleteModule,
+        MatListModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        HttpClientModule,
+        MatGridListModule,
+        MatTooltipModule,
+        MatCardModule,
+        MatProgressBarModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatChipsModule,
+        MatCheckboxModule,
+    ],
   providers: [
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,

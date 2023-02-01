@@ -55,6 +55,13 @@
               </div>
               <div class="company-name-input input-block img-container">
                 <img [src]="imagePath.value ? imagePath.value : 'https://cdn-icons-png.flaticon.com/512/40/40058.png'">
+
+                <mat-checkbox [formControl]="requiresCredentialsId" >
+                  Requires credentials id
+                </mat-checkbox>
+                <mat-checkbox [formControl]="requiresCredentialsSecret">
+                  Requires credentials secret
+                </mat-checkbox>
               </div>
             </div>
           </div>

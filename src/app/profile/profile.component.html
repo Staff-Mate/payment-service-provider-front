@@ -18,6 +18,15 @@
             <h2>Failed URL: {{user.failedUrl}}</h2>
             <h2>Error URL: {{user.errorUrl}}</h2>
           </div>
+          <div class="profile-contact" *ngIf="user.permissions.includes('ROLE_USER')">
+            <h2>API Key: </h2>
+            <mat-form-field class="example-form-field" appearance="outline">
+              <input matInput [value]="user.apiKey" type="text" readonly>
+              <button matSuffix mat-icon-button aria-label="Clear" (click)="copyText()">
+                <mat-icon>content_copy</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
         </div>
         <div class="submit-container">
           <button (click)="activeView = 'infoChange'" *ngIf="user.permissions.includes('ROLE_USER')"

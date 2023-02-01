@@ -40,20 +40,20 @@
               <mat-option value="SUCCESS">
                 <div class="option">
                   <div>
-                    <mat-icon class="finished-icon" svgIcon="finished"></mat-icon>
+                    <mat-icon class="finished-icon" svgIcon="finished" ></mat-icon>
                   </div>
                   <p>Successful</p>
                 </div>
               </mat-option>
               <mat-option value="FAILED">
                 <div class="option">
-                  <mat-icon class="canceled-icon" svgIcon="failed"></mat-icon>
+                  <mat-icon class="canceled-icon" svgIcon="failed" ></mat-icon>
                   <p>Failed</p>
                 </div>
               </mat-option>
               <mat-option value="ERROR">
                 <div class="option">
-                  <mat-icon class="canceled-icon" svgIcon="error"></mat-icon>
+                  <mat-icon class="canceled-icon" svgIcon="error" ></mat-icon>
                   <p>Error</p>
                 </div>
               </mat-option>
@@ -107,10 +107,10 @@
       <ng-container matColumnDef="status">
         <th *matHeaderCellDef mat-header-cell> Status</th>
         <td *matCellDef="let element" class="cell-amount" mat-cell>
-          <mat-icon *ngIf="element.status == 'SUCCESS'" class="finished-icon ">check_circle_outline</mat-icon>
-          <mat-icon *ngIf="element.status == 'FAILED'" class="canceled-icon ">error_outline</mat-icon>
-          <mat-icon *ngIf="element.status == 'ERROR'" class="canceled-icon ">highlight_off</mat-icon>
-          <mat-icon *ngIf="element.status == 'ACTIVE'" class="active-icon ">cached</mat-icon>
+          <mat-icon *ngIf="element.status == 'SUCCESS'" class="finished-icon " matTooltip="Success">check_circle_outline</mat-icon>
+          <mat-icon *ngIf="element.status == 'FAILED'" class="canceled-icon " matTooltip="Failed">error_outline</mat-icon>
+          <mat-icon *ngIf="element.status == 'ERROR'" class="canceled-icon " matTooltip="Error">highlight_off</mat-icon>
+          <mat-icon *ngIf="element.status == 'ACTIVE'" class="active-icon " >cached</mat-icon>
         </td>
       </ng-container>
 

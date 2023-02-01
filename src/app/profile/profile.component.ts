@@ -155,4 +155,12 @@ export class ProfileComponent implements OnInit {
       this.confirmPassword.enable()
     }
   }
+
+  copyText() {
+    navigator.clipboard.writeText(this.user.apiKey).then(r => {
+      this._snackBar.open("You have successfully copied API Key!", "", {
+        duration: 2000
+      })
+    });
+  }
 }

@@ -18,6 +18,8 @@ export class NewPaymentServiceDialogComponent {
   imagePath: FormControl;
   serviceName: FormControl;
   description: FormControl;
+  requiresCredentialsId: FormControl;
+  requiresCredentialsSecret: FormControl;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { paymentService: PaymentMethodDto }, private paymentMethodService: PaymentMethodService, private dialogRef: MatDialogRef<NewPaymentServiceDialogComponent>, private _snackBar: MatSnackBar) {
     this.hide = true;
@@ -28,18 +30,23 @@ export class NewPaymentServiceDialogComponent {
   }
 
   initForm() {
+    console.log(this.data)
     if (this.data) {
       this.id = new FormControl(this.data.paymentService.id);
       this.name = new FormControl(this.data.paymentService.name, Validators.required);
       this.imagePath = new FormControl(this.data.paymentService.imagePath);
       this.serviceName = new FormControl(this.data.paymentService.serviceName, Validators.required);
       this.description = new FormControl(this.data.paymentService.description, Validators.required);
+      this.requiresCredentialsId = new FormControl(this.data.paymentService.requiresCredentialsId);
+      this.requiresCredentialsSecret = new FormControl(this.data.paymentService.requiresCredentialsSecret);
     } else {
       this.id = new FormControl('');
       this.name = new FormControl('', Validators.required);
       this.imagePath = new FormControl('https://cdn-icons-png.flaticon.com/512/40/40058.png');
       this.serviceName = new FormControl('', Validators.required);
       this.description = new FormControl('', Validators.required);
+      this.requiresCredentialsId = new FormControl(true);
+      this.requiresCredentialsSecret = new FormControl(true);
     }
 
     this.form = new FormGroup({
@@ -48,6 +55,8 @@ export class NewPaymentServiceDialogComponent {
       imagePath: this.imagePath,
       serviceName: this.serviceName,
       description: this.description,
+      requiresCredentialsId: this.requiresCredentialsId,
+      requiresCredentialsSecret: this.requiresCredentialsSecret
     })
   }
 
@@ -63,6 +72,7 @@ export class NewPaymentServiceDialogComponent {
         }
       })
     } else {
+      console.log(this.form.value)
       this.paymentMethodService.addPaymentService(this.form.value).subscribe({
         next: (response) => {
           this.dialogRef.close({newPaymentMethod: response})
