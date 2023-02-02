@@ -15,6 +15,7 @@ import {
   PaymentResultEmptyComponent
 } from "./choose-payment/payment-result/payment-result-empty/payment-result-empty.component";
 import {AuthGuard} from "./auth.guard";
+import {ConfirmAccountComponent} from "./confirm-account/confirm-account.component";
 
 const routes: Routes = [
   {path: '', component: HomepageComponent, canActivate: [AuthGuard], data: {authorizedAccess: []}},
@@ -56,6 +57,9 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuard],
     data: {authorizedAccess: ['ROLE_ADMIN', 'ROLE_USER']}},
+  {
+    path: 'confirm-account/:token',
+    component: ConfirmAccountComponent},
   {
     path: 'payment',
     component: PaymentResultEmptyComponent,

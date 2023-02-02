@@ -53,6 +53,7 @@ import {
   NewPaymentServiceDialogComponent
 } from './admin/new-payment-service-dialog/new-payment-service-dialog.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     PaymentResultComponent,
     PaymentResultEmptyComponent,
     EnablePaymentMethodDialogComponent,
-    NewPaymentServiceDialogComponent
+    NewPaymentServiceDialogComponent,
+    ConfirmAccountComponent
   ],
     imports: [
         BrowserModule,

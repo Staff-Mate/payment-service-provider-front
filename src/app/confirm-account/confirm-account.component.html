@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="homepage">
+  <div class="banner">
+    <img alt="" class="banner-bg" src="https://d18fuqpnk61mcc.cloudfront.net/build/images/home-banner-bg.svg">
+    <div class="text-content">
+      <div class="welcome-text-container" *ngIf="isSuccess">
+        <h1>
+          THANK YOU FOR VALIDATING YOUR ACCOUNT.
+        </h1>
+        <h3>
+          You can now proceed to <a href="/login" style="color: #4BA7F9;">login page</a>.
+        </h3>
+      </div>
+      <div class="welcome-text-container" *ngIf="!isSuccess">
+        <h1>
+          SORRY, IT SEEMS SOMETHING WENT WRONG.
+        </h1>
+        <h3>
+          Go to <a href="/" style="color: #4BA7F9;">home page</a>.
+        </h3>
+      </div>
+    </div>
+    <div class="image-content">
+      <img alt="Decentro is a full-stack API banking platform for financial integrations."
+           src="https://d18fuqpnk61mcc.cloudfront.net/build/images/decentro-banking-api-platform-banner.svg">
+    </div>
+  </div>
+</div>
