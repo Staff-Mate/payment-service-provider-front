@@ -10,7 +10,7 @@ export class PaymentService {
   }
 
   createPayment(newPaymentDto: NewPaymentDto) {
-    return this._http.post(environment.apiUrl + "/auth-service/payments/", newPaymentDto, {responseType: 'text'});
+    return this._http.post(environment.host + "/auth-service/payments/", newPaymentDto, {responseType: 'text'});
   }
 
 }
